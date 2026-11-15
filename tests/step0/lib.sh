@@ -24,7 +24,7 @@ sandbox_up() {
 # known_marketplaces.json is left out: any running Claude session rewrites it when it
 # refreshes a marketplace, which made this check fail with no test at fault.
 real_fingerprint() {
-  cat "$REAL_CONFIG/plugins/installed_plugins.json" 2>/dev/null \
+  { cat "$REAL_CONFIG/plugins/installed_plugins.json" 2>/dev/null || true; } \
     | shasum -a 256 | cut -d' ' -f1
 }
 

@@ -134,20 +134,6 @@
     "license": "MIT"
   },
   {
-    "name": "homunculus",
-    "description": "Watches your sessions, learns small patterns as instincts and can grow them into skills. Needs nothing beyond Claude Code.",
-    "source": {
-      "source": "git-subdir",
-      "url": "humanplane/homunculus",
-      "path": "plugins/homunculus",
-      "sha": "59b6520f3b31fc5c31e57f7ffa3e7fee28a365c4"
-    },
-    "author": {
-      "name": "Nikshep Saravanna"
-    },
-    "license": "MIT"
-  },
-  {
     "name": "codex",
     "description": "Use OpenAI Codex from Claude Code to review code or hand off tasks. Needs Node 18.18 or newer, the Codex CLI and a ChatGPT account or OpenAI API key.",
     "source": {

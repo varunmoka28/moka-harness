@@ -36,14 +36,9 @@
       "description": "Mods and skills built on the TypeSafe (Jev) models. Needs a TypeSafe API key, paid per call."
     },
     {
-      "name": "memory",
-      "source": "./plugins/memory",
-      "description": "Session learning through homunculus. Needs nothing extra; Claude Code's built-in memory needs no install."
-    },
-    {
       "name": "writing",
       "source": "./plugins/writing",
-      "description": "Skills for writing and editing prose that reads like a person wrote it, plus Word, PDF, PowerPoint and Excel files. Needs nothing."
+      "description": "Skills for writing and editing prose that reads like a person wrote it. Needs nothing."
     },
     {
       "name": "media",
@@ -359,20 +354,6 @@
       "license": "MIT"
     },
     {
-      "name": "homunculus",
-      "description": "Watches your sessions, learns small patterns as instincts and can grow them into skills. Needs nothing beyond Claude Code.",
-      "source": {
-        "source": "git-subdir",
-        "url": "humanplane/homunculus",
-        "path": "plugins/homunculus",
-        "sha": "59b6520f3b31fc5c31e57f7ffa3e7fee28a365c4"
-      },
-      "author": {
-        "name": "Nikshep Saravanna"
-      },
-      "license": "MIT"
-    },
-    {
       "name": "codex",
       "description": "Use OpenAI Codex from Claude Code to review code or hand off tasks. Needs Node 18.18 or newer, the Codex CLI and a ChatGPT account or OpenAI API key.",
       "source": {
@@ -552,23 +533,6 @@
         "sha": "b4ee71d557d96e3cbc14f88fa6e953a1362865f5"
       },
       "homepage": "https://github.com/JuliusBrussee/caveman"
-    },
-    {
-      "name": "office-files",
-      "description": "Anthropic's Word, PDF, PowerPoint and Excel skills. Their licence is restrictive; the entry links to the source and copies nothing.",
-      "source": {
-        "source": "github",
-        "repo": "anthropics/skills",
-        "sha": "9d2f1ae187231d8199c64b5b762e1bdf2244733d"
-      },
-      "strict": false,
-      "skills": [
-        "./skills/docx",
-        "./skills/pdf",
-        "./skills/pptx",
-        "./skills/xlsx"
-      ],
-      "homepage": "https://github.com/anthropics/skills"
     },
     {
       "name": "unlazy",

@@ -21,7 +21,6 @@ recorded commit equals the pin.
 | modwall | RadTech-Solutions/modwall | 959879ec08e5 | MIT | repo root | yes: hooks | none |
 | claude-code-setup | anthropics/claude-plugins-official | fbe07fb6ce7d | Apache-2.0 | `plugins/claude-code-setup` | text only: one skill and references | none; the validator flags the name as reserved, which is expected |
 | mod-scout | LeeHigma0201/claude-code-mods | 5e72188580da | MIT | `mods/mod-scout` | yes: hooks and a Node scanner script | none |
-| homunculus | humanplane/homunculus | 59b6520f3b31 | MIT (declared) | `plugins/homunculus` | yes: hooks, scripts | the repo has no LICENSE file; MIT comes from the author's plugin.json and README. Treat as declared, not confirmed |
 | codex | openai/codex-plugin-cc | 8e403f9d4b49 | Apache-2.0 | `plugins/codex` | yes: hooks, scripts that run the Codex CLI | none |
 | session-board | danilpavlov/telescope-claude-code | 4a1c6ac36c7e | MIT | repo root | yes: hooks, scripts | none |
 | diagram-design | cathrynlavery/diagram-design | f6db0decea96 | MIT | repo root | scripts, no hooks | none |

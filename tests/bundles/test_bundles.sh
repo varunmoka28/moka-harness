@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Bundle plugins: every dependency is a marketplace entry; memory and jev install their members.
+# Bundle plugins: every dependency is a marketplace entry; jev installs its members.
 source "$(dirname "$0")/../step0/lib.sh"
 cd "$REPO_ROOT"
-BUNDLES="core-bundle writing design media research memory multi-agent jev cloud"
+BUNDLES="core-bundle writing design media research multi-agent jev cloud"
 BEFORE="$(real_fingerprint)"
 
-# 1. Every dependency of all nine bundles has an entry in marketplace.d/.
+# 1. Every dependency of all eight bundles has an entry in marketplace.d/.
 python3 - $BUNDLES <<'PY' || fail "a bundle depends on a name with no marketplace entry"
 import glob, json, sys
 names = {e["name"] for f in glob.glob("marketplace.d/*.json") for e in json.load(open(f))}
@@ -18,9 +18,9 @@ for b in sys.argv[1:]:
     if b not in names: print(f"{b}: bundle has no entry"); bad += 1
 sys.exit(bad)
 PY
-pass "all nine bundles list only dependencies that have an entry"
+pass "all eight bundles list only dependencies that have an entry"
 
-# 2. Install memory and jev from a local marketplace holding the real entries; check members.
+# 2. Install jev from a local marketplace holding the real entries; check members.
 sandbox_up
 MK="$SANDBOX/market"; mkdir -p "$MK/.claude-plugin"
 python3 - "$MK" <<'PY'
@@ -37,7 +37,7 @@ json.dump({"name": "moka-bundles-test", "owner": {"name": "moka-harness"}, "plug
 PY
 claude plugin marketplace add "$MK" >/dev/null || fail "could not add the test marketplace"
 M="moka-bundles-test"
-for b in memory jev; do
+for b in jev; do
   claude plugin install "$b@$M" >/dev/null || fail "install of $b failed"
   [ -n "$(installed_field "$b@$M" installPath)" ] || fail "$b not recorded"
   for d in $(jq -r '.dependencies[]' "plugins/$b/.claude-plugin/plugin.json"); do
@@ -46,4 +46,4 @@ for b in memory jev; do
 done
 [ -z "$(installed_field "writing@$M" installPath)" ] || fail "writing was installed though not asked for"
 [ "$(real_fingerprint)" = "$BEFORE" ] || fail "the real config changed"
-pass "memory and jev installed with every member recorded; real config untouched"
+pass "jev installed with every member recorded; real config untouched"

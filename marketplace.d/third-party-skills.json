@@ -74,23 +74,6 @@
     "homepage": "https://github.com/JuliusBrussee/caveman"
   },
   {
-    "name": "office-files",
-    "description": "Anthropic's Word, PDF, PowerPoint and Excel skills. Their licence is restrictive; the entry links to the source and copies nothing.",
-    "source": {
-      "source": "github",
-      "repo": "anthropics/skills",
-      "sha": "9d2f1ae187231d8199c64b5b762e1bdf2244733d"
-    },
-    "strict": false,
-    "skills": [
-      "./skills/docx",
-      "./skills/pdf",
-      "./skills/pptx",
-      "./skills/xlsx"
-    ],
-    "homepage": "https://github.com/anthropics/skills"
-  },
-  {
     "name": "unlazy",
     "description": "Completion discipline for long tasks: write the checks first, then verify before reporting.",
     "source": {

@@ -1,7 +1,7 @@
 {
   "name": "writing",
   "version": "0.1.0",
-  "description": "Skills for writing and editing prose that reads like a person wrote it, plus Word, PDF, PowerPoint and Excel files. Needs nothing.",
+  "description": "Skills for writing and editing prose that reads like a person wrote it. Needs nothing.",
   "author": {
     "name": "moka-harness"
   },
@@ -13,7 +13,6 @@
     "sepia",
     "unslop",
     "no-ai-slop",
-    "caveman",
-    "office-files"
+    "caveman"
   ]
 }

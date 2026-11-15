@@ -30,14 +30,9 @@
     "description": "Mods and skills built on the TypeSafe (Jev) models. Needs a TypeSafe API key, paid per call."
   },
   {
-    "name": "memory",
-    "source": "./plugins/memory",
-    "description": "Session learning through homunculus. Needs nothing extra; Claude Code's built-in memory needs no install."
-  },
-  {
     "name": "writing",
     "source": "./plugins/writing",
-    "description": "Skills for writing and editing prose that reads like a person wrote it, plus Word, PDF, PowerPoint and Excel files. Needs nothing."
+    "description": "Skills for writing and editing prose that reads like a person wrote it. Needs nothing."
   },
   {
     "name": "media",

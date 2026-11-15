@@ -18,7 +18,6 @@ How an entry is written:
 | unslop | heydamir/unslop | `becf3ed1b3386b03a5545b29d06cecd2bc11542b` | CC-BY-4.0 (credit required) | unslop | matches installed copy (older than head) |  |
 | no-ai-slop | petergyang/no-ai-slop | `000650b156983f5159695b441477f4e63b25dc85` | MIT | no-ai-slop | manifest pin (is head); matches installed copy |  |
 | caveman | JuliusBrussee/caveman | `b4ee71d557d96e3cbc14f88fa6e953a1362865f5` | Apache-2.0 and MIT (two files) | caveman | head; installed copy is shorter and matches no commit | Points at the `skills/caveman` folder only. The author's plugin.json adds Node hooks and loads 21 more skills. |
-| office-files | anthropics/skills | `9d2f1ae187231d8199c64b5b762e1bdf2244733d` | Anthropic terms, all rights reserved (see below) | docx, pdf, pptx, xlsx | matches installed copy for pdf, pptx, xlsx; docx matches no commit | Kept, but the four LICENSE.txt files are not an open licence (below). |
 | unlazy | Leonxlnx/unlazy | `16671491f6679ad9378f52604d3bc2415b4120c7` | MIT | unlazy | manifest pin (is head); matches installed copy |  |
 | pocock-skills | mattpocock/skills | `5863806dd4e15c63174bee4e7515a4256792ecfa` | MIT | grilling, grill-with-docs, diagnosing-bugs, domain-modeling, writing-for-agents | manifest pin (is head); matches installed copy for 2 of 5 | Uses the author's plugin.json, so it loads 27 skills, not 5. |
 | debug-agent | millionco/debug-agent | `295af90bcfc16ba3578e6be91ed1c552261bb257` | MIT | debug-agent | manifest pin (is head); installed copy differs |  |
@@ -60,7 +59,6 @@ How an entry is written:
 
 ## Licence notes
 
-- `office-files`: `docx`, `pdf`, `pptx` and `xlsx` each carry a `LICENSE.txt` of "All rights reserved" under Anthropic's service terms. It forbids copying the files or keeping them outside the services. The entry copies nothing and Claude Code fetches the author's repo, but a person reading it as a redistribution should treat this entry as the one to check or remove. `frontend-design` from the same repo is Apache-2.0.
 - `treg`, `make-ugc`: the licence is Apache-2.0 with additional terms that bar offering the software to third parties as a hosted or embedded service. Linking is fine; copying or forking needs a read of those terms.
 - `unslop`: CC-BY-4.0 requires credit to the author. The entry links to the author's repo, which keeps it.
 - `caveman`, `graphify`: two licence files; the entry text above names both.

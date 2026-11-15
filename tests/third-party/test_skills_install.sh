@@ -27,7 +27,6 @@ sepia: sepia sepia-hemingway sepia-recreate sepia-refactor sepia-review sepia-wr
 unslop: unslop
 no-ai-slop: no-ai-slop
 caveman: caveman
-office-files: docx pdf pptx xlsx
 unlazy: unlazy
 pocock-skills: grilling grill-with-docs diagnosing-bugs domain-modeling writing-for-agents
 debug-agent: debug-agent

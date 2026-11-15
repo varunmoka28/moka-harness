@@ -12,7 +12,7 @@ How to read it:
 
 No plugin here edits your `settings.json` or `CLAUDE.md`; a search of the plugin code finds only reads of them. The status line is not set by any plugin; `/core:doctor` prints the setting for you to add yourself if you want it. The code has no place where a personal integration was cut out and a stub left behind: where a plugin needs a key or an outside tool it shows a notice or does nothing, and the README of that plugin says which.
 
-Bundle plugins (`core-bundle`, `writing`, `design`, `media`, `research`, `memory`, `multi-agent`, `jev`, `cloud`) have no hooks of their own. They list their members as dependencies, so installing one also installs its members, including third-party plugins that run hooks (see the [trust table](trust-table.md)). Some bundles carry MCP servers; those are listed at the end.
+Bundle plugins (`core-bundle`, `writing`, `design`, `media`, `research`, `multi-agent`, `jev`, `cloud`) have no hooks of their own. They list their members as dependencies, so installing one also installs its members, including third-party plugins that run hooks (see the [trust table](trust-table.md)). Some bundles carry MCP servers; those are listed at the end.
 
 | Plugin | Events | Commands | Tools | Settings | Writes |
 |---|---|---|---|---|---|

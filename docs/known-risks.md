@@ -26,7 +26,7 @@ Smaller ones, all limited to the plugin's own files: `design-direction` deletes 
 
 Three more can compact or send something when you ask or opt in: `context-guard` (auto-compact is off unless `CONTEXT_GUARD_AUTO_COMPACT=1`), `cache-clock` (a button you press) and `agent-board` (sends `/compact` to an idle Codex tab only with `AGENT_BOARD_COMPACT=1`).
 
-Third-party hooks are not covered by these rules. `scope-guard`, `modwall`, `micro-compaction`, `smart-compact`, `cache-tax`, `secret-box`, `mod-scout`, `homunculus`, `session-board`, `impeccable`, `codex`, `watch` and others ship hooks that run on your machine. I list which ones run code in the trust table. I have not read all of that code.
+Third-party hooks are not covered by these rules. `scope-guard`, `modwall`, `micro-compaction`, `smart-compact`, `cache-tax`, `secret-box`, `mod-scout`, `session-board`, `impeccable`, `codex`, `watch` and others ship hooks that run on your machine. I list which ones run code in the trust table. I have not read all of that code.
 
 ## Plugins that send text to a model or an outside service
 
@@ -69,10 +69,8 @@ Keys that a plugin asks for are stored through Claude Code's plugin settings as 
 
 ## Licence cautions
 
-- `office-files` points at `docx`, `pdf`, `pptx` and `xlsx` from Anthropic's skills repo. Each carries an "All rights reserved" licence under Anthropic's service terms that forbids copying the files or keeping them outside the services. Nothing is copied here and Claude Code fetches the author's repo, but if you read this entry as redistribution, check it or remove it.
 - `treg` and `make-ugc`: Apache-2.0 with additional terms that bar offering the software to third parties as a hosted or embedded service. Using it is fine. Copying or forking needs a read of those terms.
 - `unslop` is CC-BY-4.0 and needs credit to its author. [CREDITS.md](../CREDITS.md) gives it.
-- `homunculus` has no LICENSE file in its repo. MIT comes from the author's `plugin.json` and README.
 - `health` and `diagram-skills` have no LICENSE file at the pinned commit either. The READMEs state MIT.
 
 More detail is in [docs/third-party-skills-notes.md](third-party-skills-notes.md) and [docs/third-party-plugins-notes.md](third-party-plugins-notes.md).

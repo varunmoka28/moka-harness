@@ -1,6 +1,6 @@
 # writing
 
-Skills for writing and editing prose that reads like a person wrote it, plus Word, PDF, PowerPoint and Excel files. Needs nothing.
+Skills for writing and editing prose that reads like a person wrote it. Needs nothing.
 
 ## Members
 
@@ -10,7 +10,6 @@ Skills for writing and editing prose that reads like a person wrote it, plus Wor
 - `unslop`: Turns an AI-looking interface into a designed one: spacing, colour, icons, copy and type.
 - `no-ai-slop`: Edits drafts into sharper, more human writing in the writer's own voice, or flags AI-writing patterns without rewriting.
 - `caveman`: Compressed reply mode that cuts prose and keeps code and exact errors. The skill only; the author's hooks are not loaded.
-- `office-files`: Anthropic's Word, PDF, PowerPoint and Excel skills. Their licence is restrictive; the entry links to the source and copies nothing.
 
 ## What it needs
 

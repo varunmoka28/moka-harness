@@ -1,0 +1,31 @@
+{
+  "name": "research",
+  "version": "0.1.0",
+  "description": "Paper search, science, web and video research skills plus a subreddit watcher. Needs a free alphaXiv account for the paper search server, and ffmpeg and yt-dlp for watch.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "dependencies": [
+    "reddit-watch",
+    "watch",
+    "k-dense-science",
+    "orchestra-research",
+    "book-to-skill",
+    "anysearch",
+    "agent-reach",
+    "graphify",
+    "big-arrow",
+    "supabase-skills"
+  ],
+  "userConfig": {
+    "alphaxiv_token": {
+      "type": "string",
+      "title": "alphaXiv token",
+      "description": "Token from a free alphaXiv account, for the paper search server.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "prompt-enhancer",
+    "source": "./plugins/prompt-enhancer",
+    "description": "Rewrite a rough prompt in place using project rules and Jev-ranked skills. Needs a TypeSafe API key; calls are paid."
+  },
+  {
+    "name": "run-ledger",
+    "source": "./plugins/run-ledger",
+    "description": "Estimated API cost per run, model and plugin, subagent status, and optional Jev model advice. Jev advice needs a TypeSafe API key; calls are paid."
+  }
+]

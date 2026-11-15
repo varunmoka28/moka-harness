@@ -1,0 +1,43 @@
+{
+  "name": "next-steps-autopilot",
+  "version": "0.6.0",
+  "description": "A What next? button above the prompt box asks for suggested next prompts only when pressed. Type /auto to have suggestion 1 sent after a countdown you set; off by default.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/varunmoka28/moka-harness",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "suggestions",
+    "next-steps",
+    "autopilot"
+  ],
+  "userConfig": {
+    "minAnswerChars": {
+      "type": "number",
+      "title": "Shortest answer to offer What next? after",
+      "description": "Skip the What next? button after answers shorter than this many characters.",
+      "required": false,
+      "default": 80
+    },
+    "suggestSkills": {
+      "type": "boolean",
+      "title": "Suggest skills and slash commands",
+      "description": "Tell the suggester which skills and slash commands this session has, so a suggestion can be one of them.",
+      "required": false,
+      "default": true
+    },
+    "autoSeconds": {
+      "type": "number",
+      "title": "Auto mode countdown (seconds)",
+      "description": "How long /auto waits before sending suggestion 1. 0 sends at once. /auto <seconds> changes it for one session.",
+      "required": false,
+      "default": 10
+    }
+  }
+}

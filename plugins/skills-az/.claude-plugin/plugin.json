@@ -1,0 +1,19 @@
+{
+  "name": "skills-az",
+  "version": "0.2.3",
+  "description": "Shows a list of your slash commands and skills in A to Z order as soon as you type / in the prompt, and narrows it as you keep typing.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "slash-command",
+    "skills"
+  ],
+  "types": "./types/index.d.ts"
+}

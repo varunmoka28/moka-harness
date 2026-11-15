@@ -1,0 +1,21 @@
+{
+  "name": "agent-board",
+  "version": "0.3.0",
+  "description": "Keeps an eye on your other herdr agent tabs: shows their state and context size, pops a message when one finishes or gets stuck, and adds /tabs.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/varunmoka28/moka-harness",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "herdr",
+    "agents",
+    "tabs"
+  ],
+  "types": "./types/index.d.ts"
+}

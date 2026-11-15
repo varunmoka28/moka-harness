@@ -1,0 +1,9 @@
+strict-guard
+Copyright 2026 Anthropic PBC (original work)
+Modifications Copyright (c) 2026 Varun Moka
+
+This product is adapted from "Blast Radius" in anthropics/claude-code-playground,
+licensed under the Apache License, Version 2.0, Copyright 2026 Anthropic PBC.
+
+Changes: the command classifier and dry runs of the original are kept. The pane and
+the hold are replaced by fixed rules that allow or refuse a command with nobody asked.

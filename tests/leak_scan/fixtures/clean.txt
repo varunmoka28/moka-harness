@@ -1,0 +1,1 @@
+Nothing private here. Plain text used by the clean-repo test.

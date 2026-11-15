@@ -1,0 +1,44 @@
+{
+  "name": "multi-agent-kit",
+  "version": "0.1.0",
+  "description": "Guidance on splitting work between agents, plus hooks for tuios users: list tuios windows, close finished ones (dry-run until switched on). Each hook does nothing when its tool is missing.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-plugin",
+    "multi-agent",
+    "herdr",
+    "tuios"
+  ],
+  "userConfig": {
+    "tuios_session": {
+      "type": "string",
+      "title": "tuios session",
+      "description": "Name of the one tuios session the status line and the window reaper work in. Empty: both do nothing.",
+      "default": ""
+    },
+    "reaper_dry_run": {
+      "type": "boolean",
+      "title": "Window reaper: dry-run",
+      "description": "On: log the tuios windows it would close and close nothing. Off: close them.",
+      "default": true
+    },
+    "reaper_idle_minutes": {
+      "type": "number",
+      "title": "Window reaper: idle minutes",
+      "description": "A window whose screen has not changed for this long, with no agent working in it, is closed.",
+      "default": 15,
+      "min": 0
+    },
+    "herdr_tab_label": {
+      "type": "string",
+      "title": "Window reaper: herdr tab to close",
+      "description": "Label of a herdr tab to close once the tuios session has no windows left. Empty: no tab is closed.",
+      "default": ""
+    }
+  }
+}

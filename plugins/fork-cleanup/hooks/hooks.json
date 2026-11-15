@@ -1,0 +1,16 @@
+{
+  "description": "Remove stale forks from your own GitHub account (dry-run unless switched on)",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/fork_cleanup.sh\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

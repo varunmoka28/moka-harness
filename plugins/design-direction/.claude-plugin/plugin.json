@@ -1,0 +1,10 @@
+{
+  "name": "design-direction",
+  "version": "0.1.2",
+  "description": "Shows design-direction options as rendered mockups in the browser so you pick by sight",
+  "author": {
+    "name": "moka-harness"
+  },
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "license": "MIT"
+}

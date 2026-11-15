@@ -1,0 +1,12 @@
+[
+  {
+    "name": "dispatch-router",
+    "source": "./plugins/dispatch-router",
+    "description": "Asks a TypeSafe model which CLI and model should take each agent task and refuses unrouted launches. Needs a TypeSafe API key; without one it does nothing. Sends task text to api.typesafe.ai."
+  },
+  {
+    "name": "multi-agent-kit",
+    "source": "./plugins/multi-agent-kit",
+    "description": "A skill on splitting work between agents, plus hooks for tuios users (window list, window reaper that starts in dry-run). Each hook does nothing when its tool is missing."
+  }
+]

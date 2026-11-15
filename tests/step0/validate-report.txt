@@ -1,0 +1,8 @@
+Validating marketplace manifest: <repo>/tests/step0/fixture-marketplace/.claude-plugin/marketplace.json
+
+✘ Found 1 error:
+
+  ❯ plugins[3].name: Plugin name "claude-mem" is reserved: it passes as one of Anthropic's own. A third party's plugin name cannot start with "claude-", "anthropic-", "anthropics-", or "cc-plugin-", be "claude", "anthropic", "anthropics", "claude-code", or "claude-mods", or put "official" beside "claude" or "anthropic". Name it for what it does.
+
+✘ Validation failed
+exit code: 1

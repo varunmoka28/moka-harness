@@ -1,0 +1,10 @@
+{
+  "name": "band-frame",
+  "version": "0.1.0",
+  "description": "Top rule line and tinted background around the whole above-prompt band",
+  "author": {
+    "name": "moka-harness"
+  },
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "license": "MIT"
+}

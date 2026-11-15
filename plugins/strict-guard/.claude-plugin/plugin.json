@@ -1,0 +1,10 @@
+{
+  "name": "strict-guard",
+  "version": "0.1.1",
+  "description": "Decides destructive shell commands (rm, git reset --hard, git clean, force push, migrations) by fixed rules: allows the harmless ones, refuses the rest, and never asks",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "Apache-2.0",
+  "repository": "https://github.com/varunmoka28/moka-harness"
+}

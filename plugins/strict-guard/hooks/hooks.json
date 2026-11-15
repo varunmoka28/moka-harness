@@ -1,0 +1,4 @@
+{
+  "description": "Strict Guard: a tool.call hook that allows or refuses destructive Bash commands by fixed rules",
+  "modules": ["./strict-guard.mjs"]
+}

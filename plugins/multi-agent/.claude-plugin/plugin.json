@@ -1,0 +1,26 @@
+{
+  "name": "multi-agent",
+  "version": "0.1.0",
+  "description": "Tools for running several agents side by side and handing work between them. Needs herdr and tuios installed; Codex and agy are optional; dispatch-router needs a TypeSafe key.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "dependencies": [
+    "agent-board",
+    "tab-namer",
+    "dispatch-router",
+    "multi-agent-kit",
+    "codex",
+    "session-board"
+  ],
+  "userConfig": {
+    "claude_peers_dir": {
+      "type": "directory",
+      "title": "claude-peers folder",
+      "description": "Your clone of louislva/claude-peers-mcp at commit fc2649154d6c5aa94ae4fc766989d7f247be0617, after bun install.",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "tab-namer",
+  "version": "0.6.0",
+  "description": "Names your herdr tab and its workspace after the task you give Claude, from your first prompt. Can also rename it as the work changes, if you turn that on.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/varunmoka28/moka-harness",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "herdr",
+    "tabs"
+  ]
+}

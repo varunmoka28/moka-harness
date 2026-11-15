@@ -1,0 +1,49 @@
+{
+  "name": "moka-step0",
+  "description": "Fixture for the moka-harness step 0 pin proof. Not for use.",
+  "owner": { "name": "moka-harness" },
+  "plugins": [
+    {
+      "name": "ponytail",
+      "description": "Third-party plugin with its own plugin.json, pinned behind head",
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail",
+        "sha": "356918eba965ee1eac64bd3a7f0dd02108350de5"
+      }
+    },
+    {
+      "name": "humanizer",
+      "description": "Single-skill repo that has a plugin.json",
+      "source": {
+        "source": "github",
+        "repo": "blader/humanizer",
+        "sha": "b48c832f0f809c1b5658edbb838c2521b72f2413"
+      }
+    },
+    {
+      "name": "unlazy",
+      "description": "Single-skill repo with SKILL.md at its root and no plugin.json",
+      "source": {
+        "source": "github",
+        "repo": "Leonxlnx/unlazy",
+        "sha": "16671491f6679ad9378f52604d3bc2415b4120c7"
+      }
+    },
+    {
+      "name": "claude-mem",
+      "description": "Plugin in a subfolder of its repo, with a reserved-looking name",
+      "source": {
+        "source": "git-subdir",
+        "url": "thedotmack/claude-mem",
+        "path": "plugin",
+        "sha": "71ddd11735d6dc38a6356fe376921fc216f2aa38"
+      }
+    },
+    {
+      "name": "bundle-test",
+      "description": "Fixture group bundle: installs ponytail and humanizer",
+      "source": "./plugins/bundle-test"
+    }
+  ]
+}

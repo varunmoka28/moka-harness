@@ -1,0 +1,36 @@
+{
+  "name": "run-ledger",
+  "version": "0.1.2",
+  "description": "A pane of estimated API cost per run, model and source plugin, each subagent's status, and Jev's model recommendation beside the model that actually ran. Needs a TypeSafe API key; calls to api.typesafe.ai are paid.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "license": "MIT",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "TYPESAFE_API_KEY": {
+      "type": "string",
+      "title": "TypeSafe API key",
+      "description": "Used to ask Jev (api.typesafe.ai) for a model recommendation when Jev model advice is not off. Calls are paid. Without a key the mod does nothing.",
+      "sensitive": true
+    },
+    "mode": {
+      "type": "string",
+      "title": "Jev model advice",
+      "description": "off: Jev is never called. recommend: Jev recommends a model for each subagent and the pane shows it beside the model that ran. auto-route: the same, and a subagent whose call names no model runs on Jev's pick.",
+      "options": [
+        "off",
+        "recommend",
+        "auto-route"
+      ],
+      "default": "off"
+    },
+    "budgetUsd": {
+      "type": "number",
+      "title": "Budget per subagent task (USD)",
+      "description": "Handed to Jev with the task, so it can weigh price against the work.",
+      "default": 1
+    }
+  }
+}

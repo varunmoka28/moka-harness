@@ -1,0 +1,20 @@
+{
+  "name": "unattended",
+  "version": "0.1.0",
+  "description": "Stops a Claude Code session from asking you questions when nobody is at the keyboard. Type /unattended, or launch with CLAUDE_UNATTENDED=1.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/varunmoka28/moka-harness",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "unattended",
+    "automation"
+  ],
+  "types": "./types/index.d.ts"
+}

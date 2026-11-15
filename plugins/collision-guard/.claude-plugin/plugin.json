@@ -1,0 +1,18 @@
+{
+  "name": "collision-guard",
+  "version": "0.1.1",
+  "description": "Asks before Claude edits a file that something else changed in the last 30 minutes, so two Claude sessions do not overwrite each other's work.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "safety",
+    "edits"
+  ]
+}

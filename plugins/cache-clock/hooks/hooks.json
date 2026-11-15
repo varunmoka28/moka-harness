@@ -1,0 +1,4 @@
+{
+  "description": "Cache clock: a band above the prompt counting down to a cold prompt cache",
+  "modules": ["./register.tsx"]
+}

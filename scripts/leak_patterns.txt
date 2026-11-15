@@ -1,0 +1,11 @@
+# name<TAB>extended regex. Generic leak patterns only; private terms live outside the repo.
+home_path_mac	/Users/[A-Za-z0-9._-]+
+home_path_linux	/home/[A-Za-z0-9._-]+
+email	[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}
+lesson_id	(^|[^A-Za-z0-9])L[0-9]{4}([^0-9A-Za-z]|$)
+key_sk	sk-[A-Za-z0-9_-]{20,}
+key_ghp	ghp_[A-Za-z0-9]{20,}
+key_github_pat	github_pat_[A-Za-z0-9_]{20,}
+key_aws	AKIA[0-9A-Z]{16}
+key_slack	xox[bp]-[A-Za-z0-9-]{10,}
+private_key	-----BEGIN [A-Z ]*PRIVATE KEY-----

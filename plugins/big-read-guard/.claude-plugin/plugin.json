@@ -1,0 +1,10 @@
+{
+  "name": "big-read-guard",
+  "version": "0.1.0",
+  "description": "Stops Claude reading a whole text file over 50 KB in one go and tells it to search the file or read a range instead, so big files do not ride along in every later request.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "license": "MIT"
+}

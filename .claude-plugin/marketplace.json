@@ -1,0 +1,990 @@
+{
+  "name": "moka-harness",
+  "owner": {
+    "name": "moka-harness"
+  },
+  "description": "One person's Claude Code setup, packaged as plugins.",
+  "plugins": [
+    {
+      "name": "core",
+      "source": "./plugins/core",
+      "description": "Working-style rules for Claude Code, loaded into each session by a SessionStart hook, plus guard hooks that start in dry-run."
+    },
+    {
+      "name": "core-bundle",
+      "source": "./plugins/core-bundle",
+      "description": "The everyday set: working-style rules, guard hooks, session mods, and general-purpose skills. Needs nothing beyond Claude Code, python3, git and jq; a few mods are macOS only."
+    },
+    {
+      "name": "multi-agent",
+      "source": "./plugins/multi-agent",
+      "description": "Tools for running several agents side by side and handing work between them. Needs herdr and tuios installed; Codex and agy are optional; dispatch-router needs a TypeSafe key."
+    },
+    {
+      "name": "research",
+      "source": "./plugins/research",
+      "description": "Paper search, science, web and video research skills plus a subreddit watcher. Needs a free alphaXiv account for the paper search server, and ffmpeg and yt-dlp for watch."
+    },
+    {
+      "name": "design",
+      "source": "./plugins/design",
+      "description": "Design and diagram skills and plugins for interfaces, motion, accessibility and technical figures. Needs nothing; design-direction is macOS only."
+    },
+    {
+      "name": "jev",
+      "source": "./plugins/jev",
+      "description": "Mods and skills built on the TypeSafe (Jev) models. Needs a TypeSafe API key, paid per call."
+    },
+    {
+      "name": "memory",
+      "source": "./plugins/memory",
+      "description": "Session learning through homunculus. Needs nothing extra; Claude Code's built-in memory needs no install."
+    },
+    {
+      "name": "writing",
+      "source": "./plugins/writing",
+      "description": "Skills for writing and editing prose that reads like a person wrote it, plus Word, PDF, PowerPoint and Excel files. Needs nothing."
+    },
+    {
+      "name": "media",
+      "source": "./plugins/media",
+      "description": "Skills for video and image generation. Some need a paid image or video key."
+    },
+    {
+      "name": "cloud",
+      "source": "./plugins/cloud",
+      "description": "AWS skills and an AWS MCP server. Needs an AWS account and credentials."
+    },
+    {
+      "name": "clawd-spinner",
+      "description": "Animated spinner for the Claude Code terminal. Needs nothing extra.",
+      "source": {
+        "source": "github",
+        "repo": "saiharsha03/clawd-spinner",
+        "sha": "83550929abac306fe71b12588a53e996321b6e76"
+      },
+      "author": {
+        "name": "saiharsha03"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "fork-cleanup",
+      "source": "./plugins/fork-cleanup",
+      "description": "Off by default. Deletes stale forks from your own GitHub account; dry-run until switched on.",
+      "defaultEnabled": false
+    },
+    {
+      "name": "prompt-enhancer",
+      "source": "./plugins/prompt-enhancer",
+      "description": "Rewrite a rough prompt in place using project rules and Jev-ranked skills. Needs a TypeSafe API key; calls are paid."
+    },
+    {
+      "name": "run-ledger",
+      "source": "./plugins/run-ledger",
+      "description": "Estimated API cost per run, model and plugin, subagent status, and optional Jev model advice. Jev advice needs a TypeSafe API key; calls are paid."
+    },
+    {
+      "name": "assumption-log",
+      "source": "./plugins/assumption-log",
+      "description": "Claude logs each guess it makes about what you want into a side panel. Needs Claude Code 2.1.287 or newer; tested on macOS."
+    },
+    {
+      "name": "collision-guard",
+      "source": "./plugins/collision-guard",
+      "description": "Asks before Claude edits a file that something else changed in the last 30 minutes. Needs nothing; reads the unattended plugin's state if present."
+    },
+    {
+      "name": "context-guard",
+      "source": "./plugins/context-guard",
+      "description": "Warns when the conversation context gets large; opt-in auto-compact of idle sessions. Needs nothing."
+    },
+    {
+      "name": "cache-clock",
+      "source": "./plugins/cache-clock",
+      "description": "Countdown above the prompt for the prompt cache, with a compact button. Needs the unattended and layman plugins (installed as dependencies)."
+    },
+    {
+      "name": "image-shrinker",
+      "source": "./plugins/image-shrinker",
+      "description": "Shrinks big images before Claude reads them. macOS only: needs sips."
+    },
+    {
+      "name": "input-router",
+      "source": "./plugins/input-router",
+      "description": "Hands large file reads and connector results to a small model first. Off by default; sends the text to a model through your own account."
+    },
+    {
+      "name": "read-fence",
+      "source": "./plugins/read-fence",
+      "description": "Stops Claude from opening your skill, rule and plugin folders file by file while switched on. Off by default; macOS and Linux."
+    },
+    {
+      "name": "skills-az",
+      "source": "./plugins/skills-az",
+      "description": "Lists your slash commands and skills A to Z when you type /. Needs Claude Code 2.1.287 or newer; tested on macOS."
+    },
+    {
+      "name": "next-steps-autopilot",
+      "source": "./plugins/next-steps-autopilot",
+      "description": "A What next? button above the prompt box asks for suggested next prompts only when pressed. Type /auto to have suggestion 1 sent after a countdown you set; off by default. Needs Claude Code 2.1.287 or newer. Built on Thariq Shihipar's next-steps (MIT)."
+    },
+    {
+      "name": "unattended",
+      "source": "./plugins/unattended",
+      "description": "Stops a Claude Code session from asking you questions when nobody is at the keyboard. Type /unattended, or launch with CLAUDE_UNATTENDED=1. Needs Claude Code 2.1.287 or newer."
+    },
+    {
+      "name": "park",
+      "source": "./plugins/park",
+      "description": "Save this Claude Code session and write a note for the next one. If you use herdr, /park also asks your other agent tabs to save, and can close them. /unpark picks the note up. Needs Claude Code 2.1.287 or newer. herdr optional: with it, /park also saves and /park close closes other agent tabs."
+    },
+    {
+      "name": "agent-board",
+      "source": "./plugins/agent-board",
+      "description": "Keeps an eye on your other herdr agent tabs: shows their state and context size, pops a message when one finishes or gets stuck, and adds /tabs. Needs herdr and Claude Code 2.1.287 or newer; does nothing outside herdr."
+    },
+    {
+      "name": "tab-namer",
+      "source": "./plugins/tab-namer",
+      "description": "Names your herdr tab and its workspace after the task you give Claude, from your first prompt. Can also rename it as the work changes, if you turn that on. Needs herdr and Claude Code 2.1.287 or newer; sends your first prompt to Haiku only if relabelling is on."
+    },
+    {
+      "name": "disk-sweep",
+      "source": "./plugins/disk-sweep",
+      "description": "macOS only. Warns when your Mac is low on disk space and, with /disk, lists old Claude Code leftovers you can tick and delete. Starts in dry-run mode: it deletes nothing until you turn dryRun off and list a folder in deleteRoots."
+    },
+    {
+      "name": "reddit-watch",
+      "source": "./plugins/reddit-watch",
+      "description": "Watches subreddits you choose, has Claude's small model (Haiku) pick out posts that could improve your Claude Code use, and lists them with links in a side pane. Off until you turn it on. Contacts reddit.com and sends post text to Haiku once you run /reddit on; off until then."
+    },
+    {
+      "name": "clean-view",
+      "source": "./plugins/clean-view",
+      "description": "Hides tool calls, diffs and command output and shows a plain checklist above the prompt. Needs nothing else; sends a short text to Haiku to name the checklist."
+    },
+    {
+      "name": "idea-shelf",
+      "source": "./plugins/idea-shelf",
+      "description": "Park ideas with /idea and send them to Claude later. Needs nothing else."
+    },
+    {
+      "name": "noticeboard",
+      "source": "./plugins/noticeboard",
+      "description": "A /board side pane that explains the question at the end of a reply with explorable options. Needs the claude command; herdr is optional."
+    },
+    {
+      "name": "design-direction",
+      "source": "./plugins/design-direction",
+      "description": "Shows design-direction options as rendered mockups in the browser. macOS only (uses open)."
+    },
+    {
+      "name": "band-frame",
+      "source": "./plugins/band-frame",
+      "description": "A top rule and tinted background around the band above the prompt. Needs nothing else."
+    },
+    {
+      "name": "session-peers",
+      "source": "./plugins/session-peers",
+      "description": "Records each Claude session in a folder for a pane such as terminal-desk, and warns when two edit the same file. Useful with terminal-desk."
+    },
+    {
+      "name": "strict-guard",
+      "source": "./plugins/strict-guard",
+      "description": "Allows harmless destructive shell commands and refuses the rest by fixed rules, without asking. Needs git and bash. Apache-2.0."
+    },
+    {
+      "name": "terminal-desk",
+      "source": "./plugins/terminal-desk",
+      "description": "Stats bar above the prompt and a /desk pane. Needs Claude Code 2.1.287 or later; herdr optional. Optional second-model check sends your request and Claude's final report to Haiku."
+    },
+    {
+      "name": "side-chat",
+      "source": "./plugins/side-chat",
+      "description": "A side pane for follow-up questions (/btw). macOS only. Sends your question and the main conversation to a model fork; falls back to Haiku."
+    },
+    {
+      "name": "layman",
+      "source": "./plugins/layman",
+      "description": "Plain-language replies on request. No dependencies; makes no model or network calls."
+    },
+    {
+      "name": "big-read-guard",
+      "source": "./plugins/big-read-guard",
+      "description": "Refuses whole-file Reads of text files over 50 KB. Needs awk."
+    },
+    {
+      "name": "dispatch-router",
+      "source": "./plugins/dispatch-router",
+      "description": "Asks a TypeSafe model which CLI and model should take each agent task and refuses unrouted launches. Needs a TypeSafe API key; without one it does nothing. Sends task text to api.typesafe.ai."
+    },
+    {
+      "name": "multi-agent-kit",
+      "source": "./plugins/multi-agent-kit",
+      "description": "A skill on splitting work between agents, plus hooks for tuios users (window list, window reaper that starts in dry-run). Each hook does nothing when its tool is missing."
+    },
+    {
+      "name": "superpowers",
+      "description": "Skills for test-driven development, debugging and planning work in steps. Needs nothing.",
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers",
+        "sha": "f2cbfbefebbfef77321e4c9abc9e949826bea9d7"
+      },
+      "author": {
+        "name": "Jesse Vincent"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "ponytail",
+      "description": "Pushes Claude toward the shortest solution that works, with review and audit commands. Needs nothing.",
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail",
+        "sha": "356918eba965ee1eac64bd3a7f0dd02108350de5"
+      },
+      "author": {
+        "name": "Dietrich Gebert"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "scope-guard",
+      "description": "Counts the files a turn edits and stops at a threshold so you restate the goal. Needs Claude Code 2.1.287 or newer.",
+      "source": {
+        "source": "git-subdir",
+        "url": "yash-gadodia/claude-mods",
+        "path": "scope-guard",
+        "sha": "f4c1c751f67918c73f29977cbd52b8398f8556ac"
+      },
+      "author": {
+        "name": "Yash Gadodia"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "smart-compact",
+      "description": "Compacts at a good moment: after a commit or green tests, or just before the prompt cache expires. Needs Claude Code 2.1.295 or newer.",
+      "source": {
+        "source": "github",
+        "repo": "hellosverre/smart-compact",
+        "sha": "5808714645dafabac65c4f51aab577759f615fc3"
+      },
+      "author": {
+        "name": "hellosverre"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "micro-compaction",
+      "description": "Adds /compact micro, which drops old file reads and thinking from the transcript without a model summary. Needs Claude Code 2.1.287 or newer.",
+      "source": {
+        "source": "github",
+        "repo": "ruihe774/cc-micro-compaction",
+        "sha": "7409c6265aa977c01cfd6b070af3c734f56fb467"
+      },
+      "author": {
+        "name": "Rui He"
+      },
+      "license": "Unlicense"
+    },
+    {
+      "name": "cache-tax",
+      "description": "Keeps the one-hour prompt cache warm during breaks and warns once before a cold send. Warming sends model requests that cost tokens. Needs Claude Code 2.1.287 or newer.",
+      "source": {
+        "source": "github",
+        "repo": "karanb192/cache-tax",
+        "sha": "06cac47ec125a41a4aeeb78a6b006bec8cc6d6ed"
+      },
+      "author": {
+        "name": "Karan Bansal"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "secret-box",
+      "description": "Lets Claude use a secret without seeing it: you paste the key in a masked box and Claude gets a placeholder. Needs Claude Code 2.1.287 or newer.",
+      "source": {
+        "source": "git-subdir",
+        "url": "ray-amjad/claude-code-mods",
+        "path": "plugins/secret-box",
+        "sha": "812a5e91bf14f70f210d3f93b7a99f7737b5d38e"
+      },
+      "author": {
+        "name": "Ray Amjad"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "modwall",
+      "description": "Shows what each mod can reach as it loads and holds or refuses it by your policy. Needs Claude Code 2.1.287 or newer.",
+      "source": {
+        "source": "github",
+        "repo": "RadTech-Solutions/modwall",
+        "sha": "959879ec08e5672dfe5e8c76133828baed24b607"
+      },
+      "author": {
+        "name": "RadTech"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "claude-code-setup",
+      "description": "Reads a codebase and recommends hooks, skills, MCP servers and subagents for it. Needs nothing.",
+      "source": {
+        "source": "git-subdir",
+        "url": "anthropics/claude-plugins-official",
+        "path": "plugins/claude-code-setup",
+        "sha": "fbe07fb6ce7d51d8e86ca6efdf050059894cdb80"
+      },
+      "author": {
+        "name": "Anthropic"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "mod-scout",
+      "description": "Ranks the mods you would use most from your recent sessions, with a skill that designs them. Needs Claude Code 2.1.287 or newer and Node 18 or newer.",
+      "source": {
+        "source": "git-subdir",
+        "url": "LeeHigma0201/claude-code-mods",
+        "path": "mods/mod-scout",
+        "sha": "5e72188580dafd07ec2dcf22c426f9be9b3d6b3f"
+      },
+      "author": {
+        "name": "Jason Walls"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "homunculus",
+      "description": "Watches your sessions, learns small patterns as instincts and can grow them into skills. Needs nothing beyond Claude Code.",
+      "source": {
+        "source": "git-subdir",
+        "url": "humanplane/homunculus",
+        "path": "plugins/homunculus",
+        "sha": "59b6520f3b31fc5c31e57f7ffa3e7fee28a365c4"
+      },
+      "author": {
+        "name": "Nikshep Saravanna"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "codex",
+      "description": "Use OpenAI Codex from Claude Code to review code or hand off tasks. Needs Node 18.18 or newer, the Codex CLI and a ChatGPT account or OpenAI API key.",
+      "source": {
+        "source": "git-subdir",
+        "url": "openai/codex-plugin-cc",
+        "path": "plugins/codex",
+        "sha": "8e403f9d4b496b0b0aff50fa3673f889f6a22cb1"
+      },
+      "author": {
+        "name": "OpenAI"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "session-board",
+      "description": "A floating board of running Claude Code sessions, with a jump to the tmux window of the one you pick. Needs tmux.",
+      "source": {
+        "source": "github",
+        "repo": "danilpavlov/telescope-claude-code",
+        "sha": "4a1c6ac36c7ec13ace1ef83384c7d79e09e35fa4"
+      },
+      "author": {
+        "name": "Daniil Pavlov"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "diagram-design",
+      "description": "Draws diagrams (architecture, flowcharts, sequence, ER and more) as self-contained HTML and SVG. Needs nothing.",
+      "source": {
+        "source": "github",
+        "repo": "cathrynlavery/diagram-design",
+        "sha": "f6db0decea96de66b901331a0f79a8d4b147ebae"
+      },
+      "author": {
+        "name": "Cathryn Lavery"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "diagram-pane",
+      "description": "A side pane that pins every diagram Claude draws and keeps a live map of the work. Needs Claude Code 2.1.287 or newer.",
+      "source": {
+        "source": "git-subdir",
+        "url": "ray-amjad/claude-code-mods",
+        "path": "plugins/diagram-pane",
+        "sha": "3af667dde3d41a7b4a0e493b98af9a0048ec0638"
+      },
+      "author": {
+        "name": "Ray Amjad"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "impeccable",
+      "description": "Design commands for frontend work: critique, audit, polish and anti-pattern checks. Needs nothing.",
+      "source": {
+        "source": "git-subdir",
+        "url": "pbakaus/impeccable",
+        "path": "plugin",
+        "sha": "6af45ac9a5eb8792f033d3242f52e99812fd91fa"
+      },
+      "author": {
+        "name": "Paul Bakaus"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "modern-web-guidance",
+      "description": "Keeps Claude current on modern web best practices, including a Chrome extensions skill. Needs nothing.",
+      "source": {
+        "source": "github",
+        "repo": "GoogleChrome/modern-web-guidance",
+        "sha": "4dd968349e54ca45a05dd5c818fb035c9054b022"
+      },
+      "author": {
+        "name": "Google Chrome"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "watch",
+      "description": "Lets Claude watch a video from a link or file: frames, captions or Whisper transcript. Needs ffmpeg and yt-dlp.",
+      "source": {
+        "source": "github",
+        "repo": "bradautomates/claude-video",
+        "sha": "c333c2289e57bf040b32846f18d669e3f8edad9b"
+      },
+      "author": {
+        "name": "Bradley Bonanno"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "typesafe",
+      "description": "Skills for designing workflows with the TypeSafe System One API and finding its current docs. Needs nothing to install.",
+      "source": {
+        "source": "github",
+        "repo": "typesafe-ai/skills",
+        "sha": "65a39f393687675ce170e6094757de20370365b9"
+      },
+      "author": {
+        "name": "TypeSafe AI"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "humanizer",
+      "description": "Rewrites AI-sounding text so it reads like the writer without changing what it says.",
+      "source": {
+        "source": "github",
+        "repo": "blader/humanizer",
+        "sha": "b48c832f0f809c1b5658edbb838c2521b72f2413"
+      },
+      "homepage": "https://github.com/blader/humanizer"
+    },
+    {
+      "name": "anti-slop",
+      "description": "Rules that keep generated UI, copy and code from looking like generic AI output. Six skills, text only.",
+      "source": {
+        "source": "git-subdir",
+        "url": "miqdadbadjuber/anti-slop",
+        "path": "skills",
+        "sha": "568d2f3c9894ddb1b865baf900504ca3ca91ccae"
+      },
+      "strict": false,
+      "skills": [
+        "./"
+      ],
+      "homepage": "https://github.com/miqdadbadjuber/anti-slop"
+    },
+    {
+      "name": "sepia",
+      "description": "Writing skills for removing AI tells: write, review, refactor, recreate and a Hemingway pass.",
+      "source": {
+        "source": "github",
+        "repo": "Nanako0129/sepia",
+        "sha": "a8d562f7b7d1e5773001f65dfa19f755156162d0"
+      },
+      "homepage": "https://github.com/Nanako0129/sepia"
+    },
+    {
+      "name": "unslop",
+      "description": "Turns an AI-looking interface into a designed one: spacing, colour, icons, copy and type.",
+      "source": {
+        "source": "github",
+        "repo": "heydamir/unslop",
+        "sha": "becf3ed1b3386b03a5545b29d06cecd2bc11542b"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/unslop"
+      ],
+      "homepage": "https://github.com/heydamir/unslop"
+    },
+    {
+      "name": "no-ai-slop",
+      "description": "Edits drafts into sharper, more human writing in the writer's own voice, or flags AI-writing patterns without rewriting.",
+      "source": {
+        "source": "github",
+        "repo": "petergyang/no-ai-slop",
+        "sha": "000650b156983f5159695b441477f4e63b25dc85"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/no-ai-slop"
+      ],
+      "homepage": "https://github.com/petergyang/no-ai-slop"
+    },
+    {
+      "name": "caveman",
+      "description": "Compressed reply mode that cuts prose and keeps code and exact errors. The skill only; the author's hooks are not loaded.",
+      "source": {
+        "source": "git-subdir",
+        "url": "JuliusBrussee/caveman",
+        "path": "skills/caveman",
+        "sha": "b4ee71d557d96e3cbc14f88fa6e953a1362865f5"
+      },
+      "homepage": "https://github.com/JuliusBrussee/caveman"
+    },
+    {
+      "name": "office-files",
+      "description": "Anthropic's Word, PDF, PowerPoint and Excel skills. Their licence is restrictive; the entry links to the source and copies nothing.",
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills",
+        "sha": "9d2f1ae187231d8199c64b5b762e1bdf2244733d"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/docx",
+        "./skills/pdf",
+        "./skills/pptx",
+        "./skills/xlsx"
+      ],
+      "homepage": "https://github.com/anthropics/skills"
+    },
+    {
+      "name": "unlazy",
+      "description": "Completion discipline for long tasks: write the checks first, then verify before reporting.",
+      "source": {
+        "source": "github",
+        "repo": "Leonxlnx/unlazy",
+        "sha": "16671491f6679ad9378f52604d3bc2415b4120c7"
+      },
+      "strict": false,
+      "skills": [
+        "./"
+      ],
+      "homepage": "https://github.com/Leonxlnx/unlazy"
+    },
+    {
+      "name": "pocock-skills",
+      "description": "Matt Pocock's engineering skills: grilling, domain modelling, bug diagnosis, writing for agents. The plugin loads the author's whole set.",
+      "source": {
+        "source": "github",
+        "repo": "mattpocock/skills",
+        "sha": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+      },
+      "homepage": "https://github.com/mattpocock/skills"
+    },
+    {
+      "name": "debug-agent",
+      "description": "Debugging from runtime evidence: adds logging, guides reproduction and cites log lines to prove the root cause.",
+      "source": {
+        "source": "github",
+        "repo": "millionco/debug-agent",
+        "sha": "295af90bcfc16ba3578e6be91ed1c552261bb257"
+      },
+      "strict": false,
+      "skills": [
+        "./.agents/skills/debug-agent"
+      ],
+      "homepage": "https://github.com/millionco/debug-agent"
+    },
+    {
+      "name": "health",
+      "description": "Audits a Claude Code setup: instruction drift, hooks, MCP servers and config layers.",
+      "source": {
+        "source": "github",
+        "repo": "tw93/claude-health",
+        "sha": "163af0e2a9ce5170bd78840ebaf1ad989a767cff"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/health"
+      ],
+      "homepage": "https://github.com/tw93/claude-health"
+    },
+    {
+      "name": "tare",
+      "description": "Finds where Claude Code usage went, from the session logs already on disk.",
+      "source": {
+        "source": "github",
+        "repo": "kelviq/tare",
+        "sha": "03159f2c354e52e5309b0e0d7582b32a5c0d00d0"
+      },
+      "homepage": "https://github.com/kelviq/tare"
+    },
+    {
+      "name": "gstack",
+      "description": "Garry Tan's skill set: browse, QA, review, ship, retro and more. Needs the author's own binary for the browser skills.",
+      "source": {
+        "source": "github",
+        "repo": "garrytan/gstack",
+        "sha": "db35b8e5bffb596144c4c7f4a3b7eb5c078edaaf"
+      },
+      "strict": false,
+      "skills": [
+        "./",
+        "./benchmark",
+        "./browse",
+        "./careful",
+        "./codex",
+        "./design-review",
+        "./document-release",
+        "./freeze",
+        "./guard",
+        "./investigate",
+        "./learn",
+        "./qa",
+        "./qa-only",
+        "./retro",
+        "./review",
+        "./ship"
+      ],
+      "homepage": "https://github.com/garrytan/gstack"
+    },
+    {
+      "name": "diagram-skills",
+      "description": "Diagram skills: ArchiMate, BPMN, UML, architecture, network, cloud, Graphviz, Vega and others.",
+      "source": {
+        "source": "github",
+        "repo": "markdown-viewer/skills",
+        "sha": "11bb2e80ee1f95f3d6afd4755e1a8c2b0b7340eb"
+      },
+      "strict": false,
+      "skills": [
+        "./archimate",
+        "./architecture",
+        "./bpmn",
+        "./canvas",
+        "./cloud",
+        "./data-analytics",
+        "./graphviz",
+        "./infocard",
+        "./infographic",
+        "./iot",
+        "./network",
+        "./security",
+        "./uml",
+        "./vega"
+      ],
+      "homepage": "https://github.com/markdown-viewer/skills"
+    },
+    {
+      "name": "fireworks-tech-graph",
+      "description": "Draws technical diagrams from a description and exports SVG and PNG.",
+      "source": {
+        "source": "github",
+        "repo": "yizhiyanhua-ai/fireworks-tech-graph",
+        "sha": "ec98579d6c234fdd8b133db53fd4839a7f6520fe"
+      },
+      "strict": false,
+      "skills": [
+        "./"
+      ],
+      "homepage": "https://github.com/yizhiyanhua-ai/fireworks-tech-graph"
+    },
+    {
+      "name": "anatomy",
+      "description": "Builds detailed interactive isometric SVG figures that explain a technical idea as a physical object.",
+      "source": {
+        "source": "github",
+        "repo": "wheresryan22/anatomy",
+        "sha": "1482e8469b0a9e0d8cc18ea2740a01423d29ae80"
+      },
+      "strict": false,
+      "skills": [
+        "./"
+      ],
+      "homepage": "https://github.com/wheresryan22/anatomy"
+    },
+    {
+      "name": "awwwards",
+      "description": "Builds award-level websites from a one-line prompt: concept, type, motion, checks.",
+      "source": {
+        "source": "github",
+        "repo": "juliobsz/skills",
+        "sha": "add880bd6ec9f5592a1482846fc0dd282c9161bc"
+      },
+      "strict": false,
+      "skills": [
+        "./awwwards"
+      ],
+      "homepage": "https://github.com/juliobsz/skills"
+    },
+    {
+      "name": "frontend-design",
+      "description": "Anthropic's frontend design skill.",
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills",
+        "sha": "00756142ab04c82a447693cf373c4e0c554d1005"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/frontend-design"
+      ],
+      "homepage": "https://github.com/anthropics/skills"
+    },
+    {
+      "name": "accessibility",
+      "description": "Web accessibility checks against WCAG 2.2. The plugin loads the author's other web-quality skills too.",
+      "source": {
+        "source": "github",
+        "repo": "addyosmani/web-quality-skills",
+        "sha": "afa8da942115f2961fdbfa80807ea0b232ff6c00"
+      },
+      "homepage": "https://github.com/addyosmani/web-quality-skills"
+    },
+    {
+      "name": "reanimate",
+      "description": "Clones a section, widget or animation from a reference site or recording into your own code, frame by frame, then checks it.",
+      "source": {
+        "source": "github",
+        "repo": "NiazMorshed2007/reanimate",
+        "sha": "3f7a55a2986a84ca2173e86ee9127eefe31d046d"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/reanimate"
+      ],
+      "homepage": "https://github.com/NiazMorshed2007/reanimate"
+    },
+    {
+      "name": "blank-page",
+      "description": "Turns a one-line motion or design brief into a full prompt with references, beats and attached assets.",
+      "source": {
+        "source": "github",
+        "repo": "StewdioAI/blank-page",
+        "sha": "cd42b37fa7cd0a5550e51f45cc8f82f63377b98c"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/blank-page"
+      ],
+      "homepage": "https://github.com/StewdioAI/blank-page"
+    },
+    {
+      "name": "infographics",
+      "description": "Creates infographics with image-generation models and iterative review. Needs the author's API keys.",
+      "source": {
+        "source": "github",
+        "repo": "K-Dense-AI/claude-scientific-writer",
+        "sha": "9d12788db0b2bb7f18a12fc882e2009beae077b6"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/infographics"
+      ],
+      "homepage": "https://github.com/K-Dense-AI/claude-scientific-writer"
+    },
+    {
+      "name": "hyperframes",
+      "description": "HeyGen's HyperFrames: write HTML, render video. The plugin loads the author's whole skill set.",
+      "source": {
+        "source": "github",
+        "repo": "heygen-com/hyperframes",
+        "sha": "87baff884253b0cfd8bb6efb299afb1d04525c11"
+      },
+      "homepage": "https://github.com/heygen-com/hyperframes"
+    },
+    {
+      "name": "gpt-image-2",
+      "description": "Image generation and editing skill for GPT Image 2, with prompt templates. Text is mostly in Chinese.",
+      "source": {
+        "source": "github",
+        "repo": "ConardLi/garden-skills",
+        "sha": "9578a34edf3c359da23d8a632b72790834961d11"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/gpt-image-2"
+      ],
+      "homepage": "https://github.com/ConardLi/garden-skills"
+    },
+    {
+      "name": "make-ugc",
+      "description": "treg's make-ugc workflow: short user-style videos. Needs a treg account.",
+      "source": {
+        "source": "git-subdir",
+        "url": "superdesigndev/treg",
+        "path": "plugins/workflows/make-ugc",
+        "sha": "6ffe8df7126479631a4c649467aa307505e28a1b"
+      },
+      "homepage": "https://github.com/superdesigndev/treg"
+    },
+    {
+      "name": "k-dense-science",
+      "description": "K-Dense scientific skills: literature review, scientific writing, data access, plotting and peer review.",
+      "source": {
+        "source": "github",
+        "repo": "K-Dense-AI/claude-scientific-skills",
+        "sha": "04a7be2319492a1b084cfd36ee1f82219d743b90"
+      },
+      "strict": false,
+      "skills": [
+        "./scientific-skills/datacommons-client",
+        "./scientific-skills/edgartools",
+        "./scientific-skills/fred-economic-data",
+        "./scientific-skills/generate-image",
+        "./scientific-skills/geopandas",
+        "./scientific-skills/literature-review",
+        "./scientific-skills/market-research-reports",
+        "./scientific-skills/markitdown",
+        "./scientific-skills/matplotlib",
+        "./scientific-skills/openalex-database",
+        "./scientific-skills/parallel-web",
+        "./scientific-skills/peer-review",
+        "./scientific-skills/perplexity-search",
+        "./scientific-skills/research-grants",
+        "./scientific-skills/research-lookup",
+        "./scientific-skills/scientific-schematics",
+        "./scientific-skills/scientific-slides",
+        "./scientific-skills/scientific-visualization",
+        "./scientific-skills/scientific-writing",
+        "./scientific-skills/scikit-learn",
+        "./scientific-skills/writing"
+      ],
+      "homepage": "https://github.com/K-Dense-AI/claude-scientific-skills"
+    },
+    {
+      "name": "orchestra-research",
+      "description": "Orchestra Research's autoresearch skill: runs autonomous research projects as an inner experiment loop and an outer steering loop.",
+      "source": {
+        "source": "github",
+        "repo": "Orchestra-Research/AI-research-SKILLs",
+        "sha": "773a52944ba4747a18bd4ae9ade53fff041adcbc"
+      },
+      "strict": false,
+      "skills": [
+        "./0-autoresearch-skill"
+      ],
+      "homepage": "https://github.com/Orchestra-Research/AI-research-SKILLs"
+    },
+    {
+      "name": "book-to-skill",
+      "description": "Converts a book or document into a structured agent skill.",
+      "source": {
+        "source": "github",
+        "repo": "virgiliojr94/book-to-skill",
+        "sha": "e7bb659d3261491c8b28793dcb9102fa64a46c22"
+      },
+      "strict": false,
+      "skills": [
+        "./"
+      ],
+      "homepage": "https://github.com/virgiliojr94/book-to-skill"
+    },
+    {
+      "name": "anysearch",
+      "description": "Specialist search for finance, legal, code, security, academic and other domain queries, for when native web search is not enough.",
+      "source": {
+        "source": "github",
+        "repo": "anysearch-ai/anysearch-skill",
+        "sha": "e70355ba9957cf69923f49ae8ffb224ccc3ae7f0"
+      },
+      "strict": false,
+      "skills": [
+        "./"
+      ],
+      "homepage": "https://github.com/anysearch-ai/anysearch-skill"
+    },
+    {
+      "name": "agent-reach",
+      "description": "Lets an agent search or read the web, Twitter/X, Reddit, YouTube, GitHub and more.",
+      "source": {
+        "source": "github",
+        "repo": "Panniantong/Agent-Reach",
+        "sha": "c70ae6da5d39bc90e09ad2ae0575ccc89f31e284"
+      },
+      "strict": false,
+      "skills": [
+        "./agent_reach/skill"
+      ],
+      "homepage": "https://github.com/Panniantong/Agent-Reach"
+    },
+    {
+      "name": "graphify",
+      "description": "Turns code, documents, papers and images into a knowledge graph with an HTML report.",
+      "source": {
+        "source": "github",
+        "repo": "Graphify-Labs/graphify",
+        "sha": "7ff7bd2e8f555405bb73081b3698cbf22e8b9aa0"
+      },
+      "strict": false,
+      "skills": [
+        "./graphify"
+      ],
+      "homepage": "https://github.com/Graphify-Labs/graphify"
+    },
+    {
+      "name": "big-arrow",
+      "description": "Points at a spot on the user's macOS screen with the bigarrow command-line tool.",
+      "source": {
+        "source": "github",
+        "repo": "franzenzenhofer/big-arrow-on-the-screen",
+        "sha": "64ed5397e45c44164629e0aef6c3622fe233b881"
+      },
+      "strict": false,
+      "skills": [
+        "./skill/big-arrow"
+      ],
+      "homepage": "https://github.com/franzenzenhofer/big-arrow-on-the-screen"
+    },
+    {
+      "name": "supabase-skills",
+      "description": "Supabase's skills for Supabase and Postgres best practice.",
+      "source": {
+        "source": "github",
+        "repo": "supabase/agent-skills",
+        "sha": "c9be0e931b7930f7d02126d04774d904c381e7d7"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/supabase",
+        "./skills/supabase-postgres-best-practices"
+      ],
+      "homepage": "https://github.com/supabase/agent-skills"
+    },
+    {
+      "name": "treg",
+      "description": "treg: external and live data and generative models behind one tool catalogue. Needs a treg account.",
+      "source": {
+        "source": "git-subdir",
+        "url": "superdesigndev/treg",
+        "path": "plugins/treg",
+        "sha": "6ffe8df7126479631a4c649467aa307505e28a1b"
+      },
+      "homepage": "https://github.com/superdesigndev/treg"
+    },
+    {
+      "name": "aws-core",
+      "description": "AWS agent toolkit core plugin: AWS skills plus the author's MCP servers and hooks.",
+      "source": {
+        "source": "git-subdir",
+        "url": "aws/agent-toolkit-for-aws",
+        "path": "plugins/aws-core",
+        "sha": "f18bffee72a2b35cb979a015926208fdab8b6548"
+      },
+      "homepage": "https://github.com/aws/agent-toolkit-for-aws"
+    }
+  ]
+}

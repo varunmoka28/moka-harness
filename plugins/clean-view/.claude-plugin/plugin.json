@@ -1,0 +1,11 @@
+{
+  "name": "clean-view",
+  "version": "0.1.0",
+  "description": "Hides tool calls, diffs and command output while Claude works, and shows a plain checklist above the prompt",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "types": "./types/index.d.ts",
+  "repository": "https://github.com/varunmoka28/moka-harness"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "input-router",
+  "version": "0.1.0",
+  "description": "Hands large file reads and connector results to a small model first, so Claude gets short notes on what matters for your task plus the path to the full text. Starts off.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "tokens",
+    "context"
+  ],
+  "types": "./types/index.d.ts"
+}

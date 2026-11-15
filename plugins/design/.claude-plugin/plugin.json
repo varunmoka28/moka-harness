@@ -1,0 +1,26 @@
+{
+  "name": "design",
+  "version": "0.1.0",
+  "description": "Design and diagram skills and plugins for interfaces, motion, accessibility and technical figures. Needs nothing; design-direction is macOS only.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "dependencies": [
+    "design-direction",
+    "diagram-design",
+    "diagram-pane",
+    "impeccable",
+    "modern-web-guidance",
+    "diagram-skills",
+    "fireworks-tech-graph",
+    "anatomy",
+    "awwwards",
+    "frontend-design",
+    "accessibility",
+    "reanimate",
+    "blank-page",
+    "infographics"
+  ]
+}

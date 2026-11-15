@@ -1,0 +1,15 @@
+{
+  "name": "cache-clock",
+  "version": "0.1.2",
+  "description": "Shows above the prompt how many minutes are left before the prompt cache goes cold, with a button to compact the conversation, and under it one green line with what unattended and layman have to say",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "types": "./types/index.d.ts",
+  "dependencies": [
+    "unattended",
+    "layman"
+  ]
+}

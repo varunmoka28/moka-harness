@@ -1,0 +1,60 @@
+{
+  "name": "core-bundle",
+  "version": "0.1.0",
+  "description": "The everyday set: working-style rules, guard hooks, session mods, and general-purpose skills. Needs nothing beyond Claude Code, python3, git and jq; a few mods are macOS only.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "dependencies": [
+    "core",
+    "assumption-log",
+    "collision-guard",
+    "context-guard",
+    "cache-clock",
+    "image-shrinker",
+    "input-router",
+    "read-fence",
+    "skills-az",
+    "next-steps-autopilot",
+    "unattended",
+    "park",
+    "disk-sweep",
+    "clean-view",
+    "idea-shelf",
+    "noticeboard",
+    "band-frame",
+    "session-peers",
+    "strict-guard",
+    "terminal-desk",
+    "side-chat",
+    "layman",
+    "big-read-guard",
+    "superpowers",
+    "ponytail",
+    "scope-guard",
+    "smart-compact",
+    "micro-compaction",
+    "cache-tax",
+    "secret-box",
+    "modwall",
+    "claude-code-setup",
+    "mod-scout",
+    "clawd-spinner",
+    "unlazy",
+    "pocock-skills",
+    "debug-agent",
+    "health",
+    "tare"
+  ],
+  "userConfig": {
+    "context7_api_key": {
+      "type": "string",
+      "title": "Context7 API key",
+      "description": "Optional. Raises the Context7 rate limit. Leave empty to use it without a key.",
+      "sensitive": true,
+      "required": false
+    }
+  }
+}

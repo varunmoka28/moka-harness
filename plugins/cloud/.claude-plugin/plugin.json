@@ -1,0 +1,22 @@
+{
+  "name": "cloud",
+  "version": "0.1.0",
+  "description": "AWS skills and an AWS MCP server. Needs an AWS account and credentials.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "dependencies": [
+    "aws-core"
+  ],
+  "userConfig": {
+    "aws_profile": {
+      "type": "string",
+      "title": "AWS profile",
+      "description": "Name of the AWS CLI profile the server signs requests with.",
+      "default": "default",
+      "required": false
+    }
+  }
+}

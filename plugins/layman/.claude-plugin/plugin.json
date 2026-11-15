@@ -1,0 +1,27 @@
+{
+  "name": "layman",
+  "version": "0.1.7",
+  "description": "Plain-language replies when you ask for them. Say \"layman\", \"I'm lost\" or \"explain again\" and the next reply uses everyday words, one idea, one real example. Ask twice and plain mode stays on for the session; /layman on|off switches it by hand.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "plain-language",
+    "plain-english",
+    "explain",
+    "explanation",
+    "eli5",
+    "layman",
+    "beginner",
+    "accessibility",
+    "readability",
+    "hooks",
+    "slash-command",
+    "claude-code",
+    "claude-code-plugin",
+    "productivity"
+  ],
+  "types": "./types/index.d.ts"
+}

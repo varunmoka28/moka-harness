@@ -1,0 +1,34 @@
+{
+  "name": "fork-cleanup",
+  "version": "0.1.0",
+  "description": "Off by default. Deletes stale forks from your own GitHub account when a session starts. Dry-run until you switch it on.",
+  "author": { "name": "moka-harness" },
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "license": "MIT",
+  "defaultEnabled": false,
+  "userConfig": {
+    "github_account": {
+      "type": "string",
+      "title": "GitHub account",
+      "description": "The account whose forks may be cleaned up. Empty means the hook does nothing."
+    },
+    "delete_forks": {
+      "type": "boolean",
+      "title": "Delete for real",
+      "description": "Off: only log what would be deleted. On: delete forks that meet every condition. Deleting a repository cannot be undone.",
+      "default": false
+    },
+    "min_age_days": {
+      "type": "number",
+      "title": "Minimum fork age in days",
+      "description": "Only forks created at least this many days ago are considered.",
+      "default": 90,
+      "min": 1
+    },
+    "keep": {
+      "type": "string",
+      "title": "Keep list",
+      "description": "Comma-separated forks to never touch, as owner/name or just name."
+    }
+  }
+}

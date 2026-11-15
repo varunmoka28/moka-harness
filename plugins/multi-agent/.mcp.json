@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "claude-peers": {
+      "command": "bun",
+      "args": [
+        "${user_config.claude_peers_dir}/server.ts"
+      ]
+    },
+    "kanzo": {
+      "command": "kanzo",
+      "args": [
+        "mcp"
+      ]
+    }
+  }
+}

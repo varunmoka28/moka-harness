@@ -1,0 +1,40 @@
+{
+  "name": "disk-sweep",
+  "version": "0.2.0",
+  "description": "macOS only. Warns when your Mac is low on disk space and, with /disk, lists old Claude Code leftovers you can tick and delete. Starts in dry-run mode: it deletes nothing until you turn dryRun off and list a folder in deleteRoots.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/varunmoka28/moka-harness",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "disk-space",
+    "cleanup"
+  ],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "dryRun": {
+      "type": "boolean",
+      "title": "Dry run (delete nothing)",
+      "description": "While on, Remove ticked only reports and logs what it would delete. Turn it off to let /disk delete.",
+      "default": true
+    },
+    "deleteRoots": {
+      "type": "string",
+      "title": "Folders /disk may delete from",
+      "description": "Comma-separated Claude config folders under your home folder, ~ allowed (for example ~/.claude). Nothing outside them is ever deleted. Empty: nothing is deleted.",
+      "default": ""
+    },
+    "alsoSweep": {
+      "type": "string",
+      "title": "Other config folders to scan",
+      "description": "Comma-separated Claude config folders under your home folder to scan along with this session's, ~ allowed (for example ~/.claude-work). Scanning only lists; deleting still needs deleteRoots.",
+      "default": ""
+    }
+  }
+}

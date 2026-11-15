@@ -1,0 +1,257 @@
+[
+  {
+    "name": "superpowers",
+    "description": "Skills for test-driven development, debugging and planning work in steps. Needs nothing.",
+    "source": {
+      "source": "github",
+      "repo": "obra/superpowers",
+      "sha": "f2cbfbefebbfef77321e4c9abc9e949826bea9d7"
+    },
+    "author": {
+      "name": "Jesse Vincent"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "ponytail",
+    "description": "Pushes Claude toward the shortest solution that works, with review and audit commands. Needs nothing.",
+    "source": {
+      "source": "github",
+      "repo": "DietrichGebert/ponytail",
+      "sha": "356918eba965ee1eac64bd3a7f0dd02108350de5"
+    },
+    "author": {
+      "name": "Dietrich Gebert"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "scope-guard",
+    "description": "Counts the files a turn edits and stops at a threshold so you restate the goal. Needs Claude Code 2.1.287 or newer.",
+    "source": {
+      "source": "git-subdir",
+      "url": "yash-gadodia/claude-mods",
+      "path": "scope-guard",
+      "sha": "f4c1c751f67918c73f29977cbd52b8398f8556ac"
+    },
+    "author": {
+      "name": "Yash Gadodia"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "smart-compact",
+    "description": "Compacts at a good moment: after a commit or green tests, or just before the prompt cache expires. Needs Claude Code 2.1.295 or newer.",
+    "source": {
+      "source": "github",
+      "repo": "hellosverre/smart-compact",
+      "sha": "5808714645dafabac65c4f51aab577759f615fc3"
+    },
+    "author": {
+      "name": "hellosverre"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "micro-compaction",
+    "description": "Adds /compact micro, which drops old file reads and thinking from the transcript without a model summary. Needs Claude Code 2.1.287 or newer.",
+    "source": {
+      "source": "github",
+      "repo": "ruihe774/cc-micro-compaction",
+      "sha": "7409c6265aa977c01cfd6b070af3c734f56fb467"
+    },
+    "author": {
+      "name": "Rui He"
+    },
+    "license": "Unlicense"
+  },
+  {
+    "name": "cache-tax",
+    "description": "Keeps the one-hour prompt cache warm during breaks and warns once before a cold send. Warming sends model requests that cost tokens. Needs Claude Code 2.1.287 or newer.",
+    "source": {
+      "source": "github",
+      "repo": "karanb192/cache-tax",
+      "sha": "06cac47ec125a41a4aeeb78a6b006bec8cc6d6ed"
+    },
+    "author": {
+      "name": "Karan Bansal"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "secret-box",
+    "description": "Lets Claude use a secret without seeing it: you paste the key in a masked box and Claude gets a placeholder. Needs Claude Code 2.1.287 or newer.",
+    "source": {
+      "source": "git-subdir",
+      "url": "ray-amjad/claude-code-mods",
+      "path": "plugins/secret-box",
+      "sha": "812a5e91bf14f70f210d3f93b7a99f7737b5d38e"
+    },
+    "author": {
+      "name": "Ray Amjad"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "modwall",
+    "description": "Shows what each mod can reach as it loads and holds or refuses it by your policy. Needs Claude Code 2.1.287 or newer.",
+    "source": {
+      "source": "github",
+      "repo": "RadTech-Solutions/modwall",
+      "sha": "959879ec08e5672dfe5e8c76133828baed24b607"
+    },
+    "author": {
+      "name": "RadTech"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "claude-code-setup",
+    "description": "Reads a codebase and recommends hooks, skills, MCP servers and subagents for it. Needs nothing.",
+    "source": {
+      "source": "git-subdir",
+      "url": "anthropics/claude-plugins-official",
+      "path": "plugins/claude-code-setup",
+      "sha": "fbe07fb6ce7d51d8e86ca6efdf050059894cdb80"
+    },
+    "author": {
+      "name": "Anthropic"
+    },
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "mod-scout",
+    "description": "Ranks the mods you would use most from your recent sessions, with a skill that designs them. Needs Claude Code 2.1.287 or newer and Node 18 or newer.",
+    "source": {
+      "source": "git-subdir",
+      "url": "LeeHigma0201/claude-code-mods",
+      "path": "mods/mod-scout",
+      "sha": "5e72188580dafd07ec2dcf22c426f9be9b3d6b3f"
+    },
+    "author": {
+      "name": "Jason Walls"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "homunculus",
+    "description": "Watches your sessions, learns small patterns as instincts and can grow them into skills. Needs nothing beyond Claude Code.",
+    "source": {
+      "source": "git-subdir",
+      "url": "humanplane/homunculus",
+      "path": "plugins/homunculus",
+      "sha": "59b6520f3b31fc5c31e57f7ffa3e7fee28a365c4"
+    },
+    "author": {
+      "name": "Nikshep Saravanna"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "codex",
+    "description": "Use OpenAI Codex from Claude Code to review code or hand off tasks. Needs Node 18.18 or newer, the Codex CLI and a ChatGPT account or OpenAI API key.",
+    "source": {
+      "source": "git-subdir",
+      "url": "openai/codex-plugin-cc",
+      "path": "plugins/codex",
+      "sha": "8e403f9d4b496b0b0aff50fa3673f889f6a22cb1"
+    },
+    "author": {
+      "name": "OpenAI"
+    },
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "session-board",
+    "description": "A floating board of running Claude Code sessions, with a jump to the tmux window of the one you pick. Needs tmux.",
+    "source": {
+      "source": "github",
+      "repo": "danilpavlov/telescope-claude-code",
+      "sha": "4a1c6ac36c7ec13ace1ef83384c7d79e09e35fa4"
+    },
+    "author": {
+      "name": "Daniil Pavlov"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "diagram-design",
+    "description": "Draws diagrams (architecture, flowcharts, sequence, ER and more) as self-contained HTML and SVG. Needs nothing.",
+    "source": {
+      "source": "github",
+      "repo": "cathrynlavery/diagram-design",
+      "sha": "f6db0decea96de66b901331a0f79a8d4b147ebae"
+    },
+    "author": {
+      "name": "Cathryn Lavery"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "diagram-pane",
+    "description": "A side pane that pins every diagram Claude draws and keeps a live map of the work. Needs Claude Code 2.1.287 or newer.",
+    "source": {
+      "source": "git-subdir",
+      "url": "ray-amjad/claude-code-mods",
+      "path": "plugins/diagram-pane",
+      "sha": "3af667dde3d41a7b4a0e493b98af9a0048ec0638"
+    },
+    "author": {
+      "name": "Ray Amjad"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "impeccable",
+    "description": "Design commands for frontend work: critique, audit, polish and anti-pattern checks. Needs nothing.",
+    "source": {
+      "source": "git-subdir",
+      "url": "pbakaus/impeccable",
+      "path": "plugin",
+      "sha": "6af45ac9a5eb8792f033d3242f52e99812fd91fa"
+    },
+    "author": {
+      "name": "Paul Bakaus"
+    },
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "modern-web-guidance",
+    "description": "Keeps Claude current on modern web best practices, including a Chrome extensions skill. Needs nothing.",
+    "source": {
+      "source": "github",
+      "repo": "GoogleChrome/modern-web-guidance",
+      "sha": "4dd968349e54ca45a05dd5c818fb035c9054b022"
+    },
+    "author": {
+      "name": "Google Chrome"
+    },
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "watch",
+    "description": "Lets Claude watch a video from a link or file: frames, captions or Whisper transcript. Needs ffmpeg and yt-dlp.",
+    "source": {
+      "source": "github",
+      "repo": "bradautomates/claude-video",
+      "sha": "c333c2289e57bf040b32846f18d669e3f8edad9b"
+    },
+    "author": {
+      "name": "Bradley Bonanno"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "typesafe",
+    "description": "Skills for designing workflows with the TypeSafe System One API and finding its current docs. Needs nothing to install.",
+    "source": {
+      "source": "github",
+      "repo": "typesafe-ai/skills",
+      "sha": "65a39f393687675ce170e6094757de20370365b9"
+    },
+    "author": {
+      "name": "TypeSafe AI"
+    },
+    "license": "MIT"
+  }
+]

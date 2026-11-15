@@ -1,0 +1,52 @@
+[
+  {
+    "name": "core",
+    "source": "./plugins/core",
+    "description": "Working-style rules for Claude Code, loaded into each session by a SessionStart hook, plus guard hooks that start in dry-run."
+  },
+  {
+    "name": "core-bundle",
+    "source": "./plugins/core-bundle",
+    "description": "The everyday set: working-style rules, guard hooks, session mods, and general-purpose skills. Needs nothing beyond Claude Code, python3, git and jq; a few mods are macOS only."
+  },
+  {
+    "name": "multi-agent",
+    "source": "./plugins/multi-agent",
+    "description": "Tools for running several agents side by side and handing work between them. Needs herdr and tuios installed; Codex and agy are optional; dispatch-router needs a TypeSafe key."
+  },
+  {
+    "name": "research",
+    "source": "./plugins/research",
+    "description": "Paper search, science, web and video research skills plus a subreddit watcher. Needs a free alphaXiv account for the paper search server, and ffmpeg and yt-dlp for watch."
+  },
+  {
+    "name": "design",
+    "source": "./plugins/design",
+    "description": "Design and diagram skills and plugins for interfaces, motion, accessibility and technical figures. Needs nothing; design-direction is macOS only."
+  },
+  {
+    "name": "jev",
+    "source": "./plugins/jev",
+    "description": "Mods and skills built on the TypeSafe (Jev) models. Needs a TypeSafe API key, paid per call."
+  },
+  {
+    "name": "memory",
+    "source": "./plugins/memory",
+    "description": "Session learning through homunculus. Needs nothing extra; Claude Code's built-in memory needs no install."
+  },
+  {
+    "name": "writing",
+    "source": "./plugins/writing",
+    "description": "Skills for writing and editing prose that reads like a person wrote it, plus Word, PDF, PowerPoint and Excel files. Needs nothing."
+  },
+  {
+    "name": "media",
+    "source": "./plugins/media",
+    "description": "Skills for video and image generation. Some need a paid image or video key."
+  },
+  {
+    "name": "cloud",
+    "source": "./plugins/cloud",
+    "description": "AWS skills and an AWS MCP server. Needs an AWS account and credentials."
+  }
+]

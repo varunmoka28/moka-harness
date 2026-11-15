@@ -1,0 +1,52 @@
+{
+  "name": "core",
+  "version": "0.1.0",
+  "description": "Working-style rules for Claude Code, loaded into each session by a SessionStart hook, plus guard hooks that start in dry-run.",
+  "author": { "name": "moka-harness" },
+  "license": "MIT",
+  "userConfig": {
+    "delete_guard_dry_run": {
+      "type": "boolean",
+      "title": "Delete guard: dry-run",
+      "description": "On: log the deletes it would block and allow them. Off: block them.",
+      "default": true
+    },
+    "protected_paths": {
+      "type": "string",
+      "title": "Delete guard: protected paths",
+      "description": "Absolute paths (or ~/...) the guard protects, one per line or separated by colons. Empty: the guard does nothing.",
+      "default": ""
+    },
+    "worktree_sweep_dry_run": {
+      "type": "boolean",
+      "title": "Worktree sweep: dry-run",
+      "description": "On: log the merged, clean worktrees it would remove. Off: remove them and their local branches.",
+      "default": true
+    },
+    "worktree_sweep_roots": {
+      "type": "string",
+      "title": "Worktree sweep: root folders",
+      "description": "Absolute folders; only worktrees under them are swept. One per line or separated by colons. Empty: the sweep does nothing.",
+      "default": ""
+    },
+    "reaper_dry_run": {
+      "type": "boolean",
+      "title": "Stale-agent reaper: dry-run",
+      "description": "On: log the processes it would stop. Off: stop them.",
+      "default": true
+    },
+    "reaper_max_age_hours": {
+      "type": "number",
+      "title": "Stale-agent reaper: age in hours",
+      "description": "Processes that started longer ago than this are stopped. Counts time since start, not idleness.",
+      "default": 24,
+      "min": 0.001
+    },
+    "reaper_match": {
+      "type": "string",
+      "title": "Stale-agent reaper: command match",
+      "description": "Text a process command line must contain to be stopped, one per line or separated by colons. Empty: the reaper does nothing.",
+      "default": ""
+    }
+  }
+}

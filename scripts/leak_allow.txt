@@ -1,0 +1,2 @@
+# Paths the leak scan skips. One glob per line, relative to the scanned directory.
+tests/leak_scan/fixtures/**

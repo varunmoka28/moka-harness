@@ -1,0 +1,11 @@
+{
+  "name": "idea-shelf",
+  "version": "0.3.0",
+  "description": "Park ideas globally with /idea and send them to Claude later",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "moka-harness"
+  },
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "license": "MIT"
+}

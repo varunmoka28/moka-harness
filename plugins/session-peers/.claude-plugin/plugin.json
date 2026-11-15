@@ -1,0 +1,11 @@
+{
+  "name": "session-peers",
+  "version": "0.3.4",
+  "description": "Record each Claude session in a folder (working, waiting, done) for the terminal-desk pane, and warn when two edit the same file",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "moka-harness"
+  },
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "license": "MIT"
+}

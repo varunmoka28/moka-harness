@@ -1,0 +1,39 @@
+name: checks
+on: [push, pull_request]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - run: npm install -g @anthropic-ai/claude-code
+      - name: Marketplace is up to date
+        run: python3 scripts/build_marketplace.py --check
+      - name: Validate marketplace and own plugins
+        run: |
+          # Only known finding: the reserved-name rule on claude-code-setup.
+          ok() { # $1 = output file; pass if every error line names claude-code-setup
+            ! grep -E '^\s*❯' "$1" | grep -v 'claude-code-setup' | grep -q .
+          }
+          rc=0
+          if ! claude plugin validate .claude-plugin/marketplace.json > out.txt 2>&1; then
+            cat out.txt; ok out.txt || rc=1
+          fi
+          for d in plugins/*/; do
+            claude plugin validate "$d" || rc=1
+          done
+          exit $rc
+      - name: Leak scan
+        run: bash scripts/leak_scan.sh --no-private .
+      - name: Tests that need no network
+        run: |
+          rc=0
+          for t in $(find tests -name 'test_*.sh' -o -name 'run_tests.sh' | grep -v '^tests/step0/' | grep -v 'install' | sort); do
+            echo "== $t"; bash "$t" || rc=1
+          done
+          exit $rc
+      - name: Pin changelog
+        run: |
+          base="${{ github.event.pull_request.base.sha || github.event.before }}"
+          case "$base" in ''|0000000*) echo "no base commit, skipping"; exit 0 ;; esac
+          bash scripts/pin_changelog_check.sh "$base" "${{ github.sha }}"

@@ -1,0 +1,9 @@
+[
+  { "name": "clean-view", "source": "./plugins/clean-view", "description": "Hides tool calls, diffs and command output and shows a plain checklist above the prompt. Needs nothing else; sends a short text to Haiku to name the checklist." },
+  { "name": "idea-shelf", "source": "./plugins/idea-shelf", "description": "Park ideas with /idea and send them to Claude later. Needs nothing else." },
+  { "name": "noticeboard", "source": "./plugins/noticeboard", "description": "A /board side pane that explains the question at the end of a reply with explorable options. Needs the claude command; herdr is optional." },
+  { "name": "design-direction", "source": "./plugins/design-direction", "description": "Shows design-direction options as rendered mockups in the browser. macOS only (uses open)." },
+  { "name": "band-frame", "source": "./plugins/band-frame", "description": "A top rule and tinted background around the band above the prompt. Needs nothing else." },
+  { "name": "session-peers", "source": "./plugins/session-peers", "description": "Records each Claude session in a folder for a pane such as terminal-desk, and warns when two edit the same file. Useful with terminal-desk." },
+  { "name": "strict-guard", "source": "./plugins/strict-guard", "description": "Allows harmless destructive shell commands and refuses the rest by fixed rules, without asking. Needs git and bash. Apache-2.0." }
+]

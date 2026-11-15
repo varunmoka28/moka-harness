@@ -1,0 +1,22 @@
+[
+  {
+    "name": "terminal-desk",
+    "source": "./plugins/terminal-desk",
+    "description": "Stats bar above the prompt and a /desk pane. Needs Claude Code 2.1.287 or later; herdr optional. Optional second-model check sends your request and Claude's final report to Haiku."
+  },
+  {
+    "name": "side-chat",
+    "source": "./plugins/side-chat",
+    "description": "A side pane for follow-up questions (/btw). macOS only. Sends your question and the main conversation to a model fork; falls back to Haiku."
+  },
+  {
+    "name": "layman",
+    "source": "./plugins/layman",
+    "description": "Plain-language replies on request. No dependencies; makes no model or network calls."
+  },
+  {
+    "name": "big-read-guard",
+    "source": "./plugins/big-read-guard",
+    "description": "Refuses whole-file Reads of text files over 50 KB. Needs awk."
+  }
+]

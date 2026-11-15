@@ -1,0 +1,42 @@
+[
+  {
+    "name": "assumption-log",
+    "source": "./plugins/assumption-log",
+    "description": "Claude logs each guess it makes about what you want into a side panel. Needs Claude Code 2.1.287 or newer; tested on macOS."
+  },
+  {
+    "name": "collision-guard",
+    "source": "./plugins/collision-guard",
+    "description": "Asks before Claude edits a file that something else changed in the last 30 minutes. Needs nothing; reads the unattended plugin's state if present."
+  },
+  {
+    "name": "context-guard",
+    "source": "./plugins/context-guard",
+    "description": "Warns when the conversation context gets large; opt-in auto-compact of idle sessions. Needs nothing."
+  },
+  {
+    "name": "cache-clock",
+    "source": "./plugins/cache-clock",
+    "description": "Countdown above the prompt for the prompt cache, with a compact button. Needs the unattended and layman plugins (installed as dependencies)."
+  },
+  {
+    "name": "image-shrinker",
+    "source": "./plugins/image-shrinker",
+    "description": "Shrinks big images before Claude reads them. macOS only: needs sips."
+  },
+  {
+    "name": "input-router",
+    "source": "./plugins/input-router",
+    "description": "Hands large file reads and connector results to a small model first. Off by default; sends the text to a model through your own account."
+  },
+  {
+    "name": "read-fence",
+    "source": "./plugins/read-fence",
+    "description": "Stops Claude from opening your skill, rule and plugin folders file by file while switched on. Off by default; macOS and Linux."
+  },
+  {
+    "name": "skills-az",
+    "source": "./plugins/skills-az",
+    "description": "Lists your slash commands and skills A to Z when you type /. Needs Claude Code 2.1.287 or newer; tested on macOS."
+  }
+]

@@ -1,0 +1,105 @@
+{
+  "name": "dispatch-router",
+  "version": "0.1.0",
+  "description": "Asks a TypeSafe model which CLI and model should take each agent task, and refuses an agent launch that was not routed. Needs a TypeSafe API key; without one it does nothing. Sends the task text to api.typesafe.ai.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "multi-agent",
+    "routing"
+  ],
+  "userConfig": {
+    "typesafeApiKey": {
+      "type": "string",
+      "title": "TypeSafe API key",
+      "description": "Key for api.typesafe.ai. Without it (and without TYPESAFE_API_KEY in the environment) this plugin does nothing.",
+      "sensitive": true,
+      "default": ""
+    },
+    "runners": {
+      "type": "string",
+      "title": "Runners to route between",
+      "description": "Comma-separated: claude, codex, agy. Name only CLIs you have installed.",
+      "default": "claude"
+    },
+    "claudeModelLow": {
+      "type": "string",
+      "title": "Claude model, cheap tier",
+      "description": "Model name passed to claude --model for mechanical bulk work.",
+      "default": "haiku"
+    },
+    "claudeModelMid": {
+      "type": "string",
+      "title": "Claude model, middle tier",
+      "description": "Model name for writing, reviewing and general work.",
+      "default": "sonnet"
+    },
+    "claudeModelHigh": {
+      "type": "string",
+      "title": "Claude model, top tier",
+      "description": "Model name for subtle or expensive-to-get-wrong work.",
+      "default": "opus"
+    },
+    "codexModel": {
+      "type": "string",
+      "title": "Codex model",
+      "description": "Model name passed to codex -m. Empty: the launch is matched on the codex command alone.",
+      "default": ""
+    },
+    "agyModelLow": {
+      "type": "string",
+      "title": "agy model, cheap tier",
+      "description": "Model name passed to agy --model. Empty: matched on the agy command alone.",
+      "default": ""
+    },
+    "agyModelHigh": {
+      "type": "string",
+      "title": "agy model, top tier",
+      "description": "Model name for a second opinion from another model family. Empty: matched on the agy command alone.",
+      "default": ""
+    },
+    "claudeFlags": {
+      "type": "string",
+      "title": "Extra flags for claude launches",
+      "description": "Appended to the launch command shown to you, for example --permission-mode acceptEdits.",
+      "default": ""
+    },
+    "codexFlags": {
+      "type": "string",
+      "title": "Extra flags for codex launches",
+      "description": "Appended to the launch command shown to you, for example -s workspace-write.",
+      "default": ""
+    },
+    "agyFlags": {
+      "type": "string",
+      "title": "Extra flags for agy launches",
+      "description": "Appended to the launch command shown to you.",
+      "default": ""
+    },
+    "briefFiles": {
+      "type": "string",
+      "title": "Files codex and agy launches must be pointed at",
+      "description": "Comma-separated paths. Those CLIs do not load CLAUDE.md on their own, so the brief must name these files.",
+      "default": "AGENTS.md"
+    },
+    "allowCloud": {
+      "type": "boolean",
+      "title": "Allow cloud sessions",
+      "description": "On: the router may send a Claude task to a claude --cloud session. Off: every task stays local.",
+      "default": false
+    },
+    "localOnlyPattern": {
+      "type": "string",
+      "title": "Local-only pattern",
+      "description": "Regular expression. A task or path that matches it is never sent to the cloud.",
+      "default": "\\.env\\b|\\blfs\\b|/tmp/"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "terminal-desk",
+  "displayName": "Terminal Desk",
+  "version": "0.2.21",
+  "description": "Session dashboard: a live stats bar above the prompt and a /desk pane for context, cache, subagents, cost, the assumptions Claude is making and the work it puts off. Adapted from ClariSortAi's Terminal Desk (MIT).",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "keywords": [
+    "mod",
+    "dashboard",
+    "tokens",
+    "context",
+    "cache",
+    "subagents"
+  ],
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "types": "./types/index.d.ts"
+}

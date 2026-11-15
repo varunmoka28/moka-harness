@@ -1,0 +1,8 @@
+{
+  "name": "bundle-test",
+  "version": "0.0.1",
+  "description": "Fixture group bundle: installs ponytail and humanizer",
+  "author": { "name": "moka-harness" },
+  "license": "MIT",
+  "dependencies": ["ponytail", "humanizer"]
+}

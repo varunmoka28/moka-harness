@@ -1,0 +1,37 @@
+[
+  {
+    "name": "next-steps-autopilot",
+    "source": "./plugins/next-steps-autopilot",
+    "description": "A What next? button above the prompt box asks for suggested next prompts only when pressed. Type /auto to have suggestion 1 sent after a countdown you set; off by default. Needs Claude Code 2.1.287 or newer. Built on Thariq Shihipar's next-steps (MIT)."
+  },
+  {
+    "name": "unattended",
+    "source": "./plugins/unattended",
+    "description": "Stops a Claude Code session from asking you questions when nobody is at the keyboard. Type /unattended, or launch with CLAUDE_UNATTENDED=1. Needs Claude Code 2.1.287 or newer."
+  },
+  {
+    "name": "park",
+    "source": "./plugins/park",
+    "description": "Save this Claude Code session and write a note for the next one. If you use herdr, /park also asks your other agent tabs to save, and can close them. /unpark picks the note up. Needs Claude Code 2.1.287 or newer. herdr optional: with it, /park also saves and /park close closes other agent tabs."
+  },
+  {
+    "name": "agent-board",
+    "source": "./plugins/agent-board",
+    "description": "Keeps an eye on your other herdr agent tabs: shows their state and context size, pops a message when one finishes or gets stuck, and adds /tabs. Needs herdr and Claude Code 2.1.287 or newer; does nothing outside herdr."
+  },
+  {
+    "name": "tab-namer",
+    "source": "./plugins/tab-namer",
+    "description": "Names your herdr tab and its workspace after the task you give Claude, from your first prompt. Can also rename it as the work changes, if you turn that on. Needs herdr and Claude Code 2.1.287 or newer; sends your first prompt to Haiku only if relabelling is on."
+  },
+  {
+    "name": "disk-sweep",
+    "source": "./plugins/disk-sweep",
+    "description": "macOS only. Warns when your Mac is low on disk space and, with /disk, lists old Claude Code leftovers you can tick and delete. Starts in dry-run mode: it deletes nothing until you turn dryRun off and list a folder in deleteRoots."
+  },
+  {
+    "name": "reddit-watch",
+    "source": "./plugins/reddit-watch",
+    "description": "Watches subreddits you choose, has Claude's small model (Haiku) pick out posts that could improve your Claude Code use, and lists them with links in a side pane. Off until you turn it on. Contacts reddit.com and sends post text to Haiku once you run /reddit on; off until then."
+  }
+]

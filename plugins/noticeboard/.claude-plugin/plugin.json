@@ -1,0 +1,10 @@
+{
+  "name": "noticeboard",
+  "version": "0.1.0",
+  "description": "A side pane run only from /board: explains the question at the end of Claude's reply with explorable options, and holds tables, diagrams and summaries Claude pins there when you ask",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness"
+}

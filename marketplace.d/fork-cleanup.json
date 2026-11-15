@@ -1,0 +1,8 @@
+[
+  {
+    "name": "fork-cleanup",
+    "source": "./plugins/fork-cleanup",
+    "description": "Off by default. Deletes stale forks from your own GitHub account; dry-run until switched on.",
+    "defaultEnabled": false
+  }
+]

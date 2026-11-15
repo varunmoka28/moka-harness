@@ -1,0 +1,19 @@
+{
+  "name": "writing",
+  "version": "0.1.0",
+  "description": "Skills for writing and editing prose that reads like a person wrote it, plus Word, PDF, PowerPoint and Excel files. Needs nothing.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "dependencies": [
+    "humanizer",
+    "anti-slop",
+    "sepia",
+    "unslop",
+    "no-ai-slop",
+    "caveman",
+    "office-files"
+  ]
+}

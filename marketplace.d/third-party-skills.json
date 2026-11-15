@@ -1,0 +1,509 @@
+[
+  {
+    "name": "humanizer",
+    "description": "Rewrites AI-sounding text so it reads like the writer without changing what it says.",
+    "source": {
+      "source": "github",
+      "repo": "blader/humanizer",
+      "sha": "b48c832f0f809c1b5658edbb838c2521b72f2413"
+    },
+    "homepage": "https://github.com/blader/humanizer"
+  },
+  {
+    "name": "anti-slop",
+    "description": "Rules that keep generated UI, copy and code from looking like generic AI output. Six skills, text only.",
+    "source": {
+      "source": "git-subdir",
+      "url": "miqdadbadjuber/anti-slop",
+      "path": "skills",
+      "sha": "568d2f3c9894ddb1b865baf900504ca3ca91ccae"
+    },
+    "strict": false,
+    "skills": [
+      "./"
+    ],
+    "homepage": "https://github.com/miqdadbadjuber/anti-slop"
+  },
+  {
+    "name": "sepia",
+    "description": "Writing skills for removing AI tells: write, review, refactor, recreate and a Hemingway pass.",
+    "source": {
+      "source": "github",
+      "repo": "Nanako0129/sepia",
+      "sha": "a8d562f7b7d1e5773001f65dfa19f755156162d0"
+    },
+    "homepage": "https://github.com/Nanako0129/sepia"
+  },
+  {
+    "name": "unslop",
+    "description": "Turns an AI-looking interface into a designed one: spacing, colour, icons, copy and type.",
+    "source": {
+      "source": "github",
+      "repo": "heydamir/unslop",
+      "sha": "becf3ed1b3386b03a5545b29d06cecd2bc11542b"
+    },
+    "strict": false,
+    "skills": [
+      "./skills/unslop"
+    ],
+    "homepage": "https://github.com/heydamir/unslop"
+  },
+  {
+    "name": "no-ai-slop",
+    "description": "Edits drafts into sharper, more human writing in the writer's own voice, or flags AI-writing patterns without rewriting.",
+    "source": {
+      "source": "github",
+      "repo": "petergyang/no-ai-slop",
+      "sha": "000650b156983f5159695b441477f4e63b25dc85"
+    },
+    "strict": false,
+    "skills": [
+      "./skills/no-ai-slop"
+    ],
+    "homepage": "https://github.com/petergyang/no-ai-slop"
+  },
+  {
+    "name": "caveman",
+    "description": "Compressed reply mode that cuts prose and keeps code and exact errors. The skill only; the author's hooks are not loaded.",
+    "source": {
+      "source": "git-subdir",
+      "url": "JuliusBrussee/caveman",
+      "path": "skills/caveman",
+      "sha": "b4ee71d557d96e3cbc14f88fa6e953a1362865f5"
+    },
+    "homepage": "https://github.com/JuliusBrussee/caveman"
+  },
+  {
+    "name": "office-files",
+    "description": "Anthropic's Word, PDF, PowerPoint and Excel skills. Their licence is restrictive; the entry links to the source and copies nothing.",
+    "source": {
+      "source": "github",
+      "repo": "anthropics/skills",
+      "sha": "9d2f1ae187231d8199c64b5b762e1bdf2244733d"
+    },
+    "strict": false,
+    "skills": [
+      "./skills/docx",
+      "./skills/pdf",
+      "./skills/pptx",
+      "./skills/xlsx"
+    ],
+    "homepage": "https://github.com/anthropics/skills"
+  },
+  {
+    "name": "unlazy",
+    "description": "Completion discipline for long tasks: write the checks first, then verify before reporting.",
+    "source": {
+      "source": "github",
+      "repo": "Leonxlnx/unlazy",
+      "sha": "16671491f6679ad9378f52604d3bc2415b4120c7"
+    },
+    "strict": false,
+    "skills": [
+      "./"
+    ],
+    "homepage": "https://github.com/Leonxlnx/unlazy"
+  },
+  {
+    "name": "pocock-skills",
+    "description": "Matt Pocock's engineering skills: grilling, domain modelling, bug diagnosis, writing for agents. The plugin loads the author's whole set.",
+    "source": {
+      "source": "github",
+      "repo": "mattpocock/skills",
+      "sha": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    },
+    "homepage": "https://github.com/mattpocock/skills"
+  },
+  {
+    "name": "debug-agent",
+    "description": "Debugging from runtime evidence: adds logging, guides reproduction and cites log lines to prove the root cause.",
+    "source": {
+      "source": "github",
+      "repo": "millionco/debug-agent",
+      "sha": "295af90bcfc16ba3578e6be91ed1c552261bb257"
+    },
+    "strict": false,
+    "skills": [
+      "./.agents/skills/debug-agent"
+    ],
+    "homepage": "https://github.com/millionco/debug-agent"
+  },
+  {
+    "name": "health",
+    "description": "Audits a Claude Code setup: instruction drift, hooks, MCP servers and config layers.",
+    "source": {
+      "source": "github",
+      "repo": "tw93/claude-health",
+      "sha": "163af0e2a9ce5170bd78840ebaf1ad989a767cff"
+    },
+    "strict": false,
+    "skills": [
+      "./skills/health"
+    ],
+    "homepage": "https://github.com/tw93/claude-health"
+  },
+  {
+    "name": "tare",
+    "description": "Finds where Claude Code usage went, from the session logs already on disk.",
+    "source": {
+      "source": "github",
+      "repo": "kelviq/tare",
+      "sha": "03159f2c354e52e5309b0e0d7582b32a5c0d00d0"
+    },
+    "homepage": "https://github.com/kelviq/tare"
+  },
+  {
+    "name": "gstack",
+    "description": "Garry Tan's skill set: browse, QA, review, ship, retro and more. Needs the author's own binary for the browser skills.",
+    "source": {
+      "source": "github",
+      "repo": "garrytan/gstack",
+      "sha": "db35b8e5bffb596144c4c7f4a3b7eb5c078edaaf"
+    },
+    "strict": false,
+    "skills": [
+      "./",
+      "./benchmark",
+      "./browse",
+      "./careful",
+      "./codex",
+      "./design-review",
+      "./document-release",
+      "./freeze",
+      "./guard",
+      "./investigate",
+      "./learn",
+      "./qa",
+      "./qa-only",
+      "./retro",
+      "./review",
+      "./ship"
+    ],
+    "homepage": "https://github.com/garrytan/gstack"
+  },
+  {
+    "name": "diagram-skills",
+    "description": "Diagram skills: ArchiMate, BPMN, UML, architecture, network, cloud, Graphviz, Vega and others.",
+    "source": {
+      "source": "github",
+      "repo": "markdown-viewer/skills",
+      "sha": "11bb2e80ee1f95f3d6afd4755e1a8c2b0b7340eb"
+    },
+    "strict": false,
+    "skills": [
+      "./archimate",
+      "./architecture",
+      "./bpmn",
+      "./canvas",
+      "./cloud",
+      "./data-analytics",
+      "./graphviz",
+      "./infocard",
+      "./infographic",
+      "./iot",
+      "./network",
+      "./security",
+      "./uml",
+      "./vega"
+    ],
+    "homepage": "https://github.com/markdown-viewer/skills"
+  },
+  {
+    "name": "fireworks-tech-graph",
+    "description": "Draws technical diagrams from a description and exports SVG and PNG.",
+    "source": {
+      "source": "github",
+      "repo": "yizhiyanhua-ai/fireworks-tech-graph",
+      "sha": "ec98579d6c234fdd8b133db53fd4839a7f6520fe"
+    },
+    "strict": false,
+    "skills": [
+      "./"
+    ],
+    "homepage": "https://github.com/yizhiyanhua-ai/fireworks-tech-graph"
+  },
+  {
+    "name": "anatomy",
+    "description": "Builds detailed interactive isometric SVG figures that explain a technical idea as a physical object.",
+    "source": {
+      "source": "github",
+      "repo": "wheresryan22/anatomy",
+      "sha": "1482e8469b0a9e0d8cc18ea2740a01423d29ae80"
+    },
+    "strict": false,
+    "skills": [
+      "./"
+    ],
+    "homepage": "https://github.com/wheresryan22/anatomy"
+  },
+  {
+    "name": "awwwards",
+    "description": "Builds award-level websites from a one-line prompt: concept, type, motion, checks.",
+    "source": {
+      "source": "github",
+      "repo": "juliobsz/skills",
+      "sha": "add880bd6ec9f5592a1482846fc0dd282c9161bc"
+    },
+    "strict": false,
+    "skills": [
+      "./awwwards"
+    ],
+    "homepage": "https://github.com/juliobsz/skills"
+  },
+  {
+    "name": "frontend-design",
+    "description": "Anthropic's frontend design skill.",
+    "source": {
+      "source": "github",
+      "repo": "anthropics/skills",
+      "sha": "00756142ab04c82a447693cf373c4e0c554d1005"
+    },
+    "strict": false,
+    "skills": [
+      "./skills/frontend-design"
+    ],
+    "homepage": "https://github.com/anthropics/skills"
+  },
+  {
+    "name": "accessibility",
+    "description": "Web accessibility checks against WCAG 2.2. The plugin loads the author's other web-quality skills too.",
+    "source": {
+      "source": "github",
+      "repo": "addyosmani/web-quality-skills",
+      "sha": "afa8da942115f2961fdbfa80807ea0b232ff6c00"
+    },
+    "homepage": "https://github.com/addyosmani/web-quality-skills"
+  },
+  {
+    "name": "reanimate",
+    "description": "Clones a section, widget or animation from a reference site or recording into your own code, frame by frame, then checks it.",
+    "source": {
+      "source": "github",
+      "repo": "NiazMorshed2007/reanimate",
+      "sha": "3f7a55a2986a84ca2173e86ee9127eefe31d046d"
+    },
+    "strict": false,
+    "skills": [
+      "./skills/reanimate"
+    ],
+    "homepage": "https://github.com/NiazMorshed2007/reanimate"
+  },
+  {
+    "name": "blank-page",
+    "description": "Turns a one-line motion or design brief into a full prompt with references, beats and attached assets.",
+    "source": {
+      "source": "github",
+      "repo": "StewdioAI/blank-page",
+      "sha": "cd42b37fa7cd0a5550e51f45cc8f82f63377b98c"
+    },
+    "strict": false,
+    "skills": [
+      "./skills/blank-page"
+    ],
+    "homepage": "https://github.com/StewdioAI/blank-page"
+  },
+  {
+    "name": "infographics",
+    "description": "Creates infographics with image-generation models and iterative review. Needs the author's API keys.",
+    "source": {
+      "source": "github",
+      "repo": "K-Dense-AI/claude-scientific-writer",
+      "sha": "9d12788db0b2bb7f18a12fc882e2009beae077b6"
+    },
+    "strict": false,
+    "skills": [
+      "./skills/infographics"
+    ],
+    "homepage": "https://github.com/K-Dense-AI/claude-scientific-writer"
+  },
+  {
+    "name": "hyperframes",
+    "description": "HeyGen's HyperFrames: write HTML, render video. The plugin loads the author's whole skill set.",
+    "source": {
+      "source": "github",
+      "repo": "heygen-com/hyperframes",
+      "sha": "87baff884253b0cfd8bb6efb299afb1d04525c11"
+    },
+    "homepage": "https://github.com/heygen-com/hyperframes"
+  },
+  {
+    "name": "gpt-image-2",
+    "description": "Image generation and editing skill for GPT Image 2, with prompt templates. Text is mostly in Chinese.",
+    "source": {
+      "source": "github",
+      "repo": "ConardLi/garden-skills",
+      "sha": "9578a34edf3c359da23d8a632b72790834961d11"
+    },
+    "strict": false,
+    "skills": [
+      "./skills/gpt-image-2"
+    ],
+    "homepage": "https://github.com/ConardLi/garden-skills"
+  },
+  {
+    "name": "make-ugc",
+    "description": "treg's make-ugc workflow: short user-style videos. Needs a treg account.",
+    "source": {
+      "source": "git-subdir",
+      "url": "superdesigndev/treg",
+      "path": "plugins/workflows/make-ugc",
+      "sha": "6ffe8df7126479631a4c649467aa307505e28a1b"
+    },
+    "homepage": "https://github.com/superdesigndev/treg"
+  },
+  {
+    "name": "k-dense-science",
+    "description": "K-Dense scientific skills: literature review, scientific writing, data access, plotting and peer review.",
+    "source": {
+      "source": "github",
+      "repo": "K-Dense-AI/claude-scientific-skills",
+      "sha": "04a7be2319492a1b084cfd36ee1f82219d743b90"
+    },
+    "strict": false,
+    "skills": [
+      "./scientific-skills/datacommons-client",
+      "./scientific-skills/edgartools",
+      "./scientific-skills/fred-economic-data",
+      "./scientific-skills/generate-image",
+      "./scientific-skills/geopandas",
+      "./scientific-skills/literature-review",
+      "./scientific-skills/market-research-reports",
+      "./scientific-skills/markitdown",
+      "./scientific-skills/matplotlib",
+      "./scientific-skills/openalex-database",
+      "./scientific-skills/parallel-web",
+      "./scientific-skills/peer-review",
+      "./scientific-skills/perplexity-search",
+      "./scientific-skills/research-grants",
+      "./scientific-skills/research-lookup",
+      "./scientific-skills/scientific-schematics",
+      "./scientific-skills/scientific-slides",
+      "./scientific-skills/scientific-visualization",
+      "./scientific-skills/scientific-writing",
+      "./scientific-skills/scikit-learn",
+      "./scientific-skills/writing"
+    ],
+    "homepage": "https://github.com/K-Dense-AI/claude-scientific-skills"
+  },
+  {
+    "name": "orchestra-research",
+    "description": "Orchestra Research's autoresearch skill: runs autonomous research projects as an inner experiment loop and an outer steering loop.",
+    "source": {
+      "source": "github",
+      "repo": "Orchestra-Research/AI-research-SKILLs",
+      "sha": "773a52944ba4747a18bd4ae9ade53fff041adcbc"
+    },
+    "strict": false,
+    "skills": [
+      "./0-autoresearch-skill"
+    ],
+    "homepage": "https://github.com/Orchestra-Research/AI-research-SKILLs"
+  },
+  {
+    "name": "book-to-skill",
+    "description": "Converts a book or document into a structured agent skill.",
+    "source": {
+      "source": "github",
+      "repo": "virgiliojr94/book-to-skill",
+      "sha": "e7bb659d3261491c8b28793dcb9102fa64a46c22"
+    },
+    "strict": false,
+    "skills": [
+      "./"
+    ],
+    "homepage": "https://github.com/virgiliojr94/book-to-skill"
+  },
+  {
+    "name": "anysearch",
+    "description": "Specialist search for finance, legal, code, security, academic and other domain queries, for when native web search is not enough.",
+    "source": {
+      "source": "github",
+      "repo": "anysearch-ai/anysearch-skill",
+      "sha": "e70355ba9957cf69923f49ae8ffb224ccc3ae7f0"
+    },
+    "strict": false,
+    "skills": [
+      "./"
+    ],
+    "homepage": "https://github.com/anysearch-ai/anysearch-skill"
+  },
+  {
+    "name": "agent-reach",
+    "description": "Lets an agent search or read the web, Twitter/X, Reddit, YouTube, GitHub and more.",
+    "source": {
+      "source": "github",
+      "repo": "Panniantong/Agent-Reach",
+      "sha": "c70ae6da5d39bc90e09ad2ae0575ccc89f31e284"
+    },
+    "strict": false,
+    "skills": [
+      "./agent_reach/skill"
+    ],
+    "homepage": "https://github.com/Panniantong/Agent-Reach"
+  },
+  {
+    "name": "graphify",
+    "description": "Turns code, documents, papers and images into a knowledge graph with an HTML report.",
+    "source": {
+      "source": "github",
+      "repo": "Graphify-Labs/graphify",
+      "sha": "7ff7bd2e8f555405bb73081b3698cbf22e8b9aa0"
+    },
+    "strict": false,
+    "skills": [
+      "./graphify"
+    ],
+    "homepage": "https://github.com/Graphify-Labs/graphify"
+  },
+  {
+    "name": "big-arrow",
+    "description": "Points at a spot on the user's macOS screen with the bigarrow command-line tool.",
+    "source": {
+      "source": "github",
+      "repo": "franzenzenhofer/big-arrow-on-the-screen",
+      "sha": "64ed5397e45c44164629e0aef6c3622fe233b881"
+    },
+    "strict": false,
+    "skills": [
+      "./skill/big-arrow"
+    ],
+    "homepage": "https://github.com/franzenzenhofer/big-arrow-on-the-screen"
+  },
+  {
+    "name": "supabase-skills",
+    "description": "Supabase's skills for Supabase and Postgres best practice.",
+    "source": {
+      "source": "github",
+      "repo": "supabase/agent-skills",
+      "sha": "c9be0e931b7930f7d02126d04774d904c381e7d7"
+    },
+    "strict": false,
+    "skills": [
+      "./skills/supabase",
+      "./skills/supabase-postgres-best-practices"
+    ],
+    "homepage": "https://github.com/supabase/agent-skills"
+  },
+  {
+    "name": "treg",
+    "description": "treg: external and live data and generative models behind one tool catalogue. Needs a treg account.",
+    "source": {
+      "source": "git-subdir",
+      "url": "superdesigndev/treg",
+      "path": "plugins/treg",
+      "sha": "6ffe8df7126479631a4c649467aa307505e28a1b"
+    },
+    "homepage": "https://github.com/superdesigndev/treg"
+  },
+  {
+    "name": "aws-core",
+    "description": "AWS agent toolkit core plugin: AWS skills plus the author's MCP servers and hooks.",
+    "source": {
+      "source": "git-subdir",
+      "url": "aws/agent-toolkit-for-aws",
+      "path": "plugins/aws-core",
+      "sha": "f18bffee72a2b35cb979a015926208fdab8b6548"
+    },
+    "homepage": "https://github.com/aws/agent-toolkit-for-aws"
+  }
+]

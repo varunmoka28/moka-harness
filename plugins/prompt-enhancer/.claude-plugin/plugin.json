@@ -1,0 +1,17 @@
+{
+  "name": "prompt-enhancer",
+  "version": "0.1.3",
+  "description": "Rewrite a rough prompt in place using project rules and Jev-ranked skills. Needs a TypeSafe API key; calls are paid.",
+  "author": { "name": "moka-harness" },
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "license": "MIT",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "TYPESAFE_API_KEY": {
+      "type": "string",
+      "title": "TypeSafe API key",
+      "description": "Used to rank your skills against the prompt (api.typesafe.ai). Calls are paid. Without a key the Enhance button does nothing.",
+      "sensitive": true
+    }
+  }
+}

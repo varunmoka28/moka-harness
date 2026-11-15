@@ -1,0 +1,19 @@
+# group	kind	name	how to get it
+# kind: tool (on PATH), env (variable set, value never shown), account (see check.sh), plugin (names an installed plugin that puts its group in scope)
+core	tool	python3	install Python 3 from python.org or: brew install python
+core	tool	git	install Git from git-scm.com or: brew install git
+core	tool	jq	brew install jq
+research	tool	ffmpeg	brew install ffmpeg
+research	tool	yt-dlp	brew install yt-dlp
+research	tool	terminal-browser	install the terminal-browser app (no public install command recorded yet)
+research	tool	big-arrow	see https://github.com/franzenzenhofer/big-arrow-on-the-screen
+research	account	alphaxiv	free account: sign in when Claude Code asks to authorise the alphaxiv server
+research	plugin	reddit-watch	
+multi-agent	tool	herdr	brew install herdr
+multi-agent	tool	tuios	brew install tuios
+multi-agent	plugin	agent-board	
+multi-agent	plugin	tab-namer	
+jev	env	TYPESAFE_API_KEY	get a TypeSafe API key (paid per call) and export it in your shell profile
+jev	plugin	prompt-enhancer	
+jev	plugin	run-ledger	
+cloud	account	aws	configure AWS credentials: aws configure, or set AWS_PROFILE

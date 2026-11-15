@@ -1,0 +1,20 @@
+{
+  "name": "assumption-log",
+  "version": "0.1.0",
+  "description": "Claude writes down each guess it makes about what you want, and they show up in a side panel as they happen, so you can catch a wrong one early.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "assumptions",
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "productivity",
+    "slash-command"
+  ],
+  "types": "./types/index.d.ts"
+}

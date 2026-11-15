@@ -1,0 +1,32 @@
+{
+  "name": "read-fence",
+  "version": "0.2.0",
+  "description": "Stops Claude from opening your skill, rule and plugin folders file by file while you have the fence switched on. Skills still run normally.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "context",
+    "skills"
+  ],
+  "userConfig": {
+    "configDirs": {
+      "type": "string",
+      "title": "Config folders to fence",
+      "description": "Comma-separated Claude config folders whose skills, rules and plugin cache are fenced, ~ allowed. The first one keeps the on/off switch, so accounts given the same list share it. Empty: this account's folder only.",
+      "default": ""
+    },
+    "exempt": {
+      "type": "string",
+      "title": "Folders never fenced",
+      "description": "Comma-separated folders that stay readable while the fence is on, ~ allowed.",
+      "default": ""
+    }
+  }
+}

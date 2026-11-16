@@ -14,6 +14,12 @@ Hand off work that needs many files read, many edits, or a test run: the agent s
 
 Don't read files in your own session just to describe them to an agent. Name the task and where to look; it reads what it needs.
 
+## Where the agents run
+
+- **Ask every time.** Before the first hand-off of a task, ask the user whether to run the agents as tuios windows or as subagents inside this session. Never pick for them, even when an earlier task used tuios.
+- **tuios view in the caller's space.** When the user picks tuios, show the tuios view in the herdr space this session runs in. In the Herdr app (`HC_TERMINAL_ID` set), use `herdr-core run`. With the herdr CLI, reuse or create the `agents (tuios)` tab in the current workspace. If neither is running, ask the user where to show it. Never open a separate Terminal window.
+- The launch steps (session, one worktree per window, auto mode, attach, short prompt) are in this plugin's README under "Running agents in tuios".
+
 ## The brief
 
 - **One task per agent.** If the brief has an "and" joining two outcomes, make two briefs.

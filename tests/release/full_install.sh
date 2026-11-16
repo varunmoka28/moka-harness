@@ -5,7 +5,7 @@
 source "$(dirname "$0")/../step0/lib.sh"
 before=$(real_fingerprint); sandbox_up
 claude plugin marketplace add "$REPO_ROOT" >/dev/null || fail "could not add the marketplace"
-for b in core core-bundle writing design media research multi-agent jev cloud; do
+for b in core core-bundle writing design media research multi-agent jev; do
   claude plugin install "$b@moka-harness" >/dev/null 2>&1 && echo "installed $b" || echo "FAIL install $b"
 done
 python3 - "$REPO_ROOT" "$SANDBOX/plugins/installed_plugins.json" <<'PY'
@@ -13,7 +13,7 @@ import json, sys
 root, rec = sys.argv[1:3]
 market = {p["name"]: p for p in json.load(open(root + "/.claude-plugin/marketplace.json"))["plugins"]}
 installed = json.load(open(rec)).get("plugins", {})
-bundles = ["core-bundle", "writing", "design", "media", "research", "multi-agent", "jev", "cloud"]
+bundles = ["core-bundle", "writing", "design", "media", "research", "multi-agent", "jev"]
 want = {"core"} | set(bundles)
 for b in bundles:
     want |= set(json.load(open(f"{root}/plugins/{b}/.claude-plugin/plugin.json")).get("dependencies", []))

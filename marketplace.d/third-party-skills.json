@@ -477,16 +477,5 @@
       "sha": "6ffe8df7126479631a4c649467aa307505e28a1b"
     },
     "homepage": "https://github.com/superdesigndev/treg"
-  },
-  {
-    "name": "aws-core",
-    "description": "AWS agent toolkit core plugin: AWS skills plus the author's MCP servers and hooks.",
-    "source": {
-      "source": "git-subdir",
-      "url": "aws/agent-toolkit-for-aws",
-      "path": "plugins/aws-core",
-      "sha": "f18bffee72a2b35cb979a015926208fdab8b6548"
-    },
-    "homepage": "https://github.com/aws/agent-toolkit-for-aws"
   }
 ]

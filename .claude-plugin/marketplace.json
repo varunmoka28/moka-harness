@@ -46,11 +46,6 @@
       "description": "Skills for video and image generation. Some need a paid image or video key."
     },
     {
-      "name": "cloud",
-      "source": "./plugins/cloud",
-      "description": "AWS skills and an AWS MCP server. Needs an AWS account and credentials."
-    },
-    {
       "name": "clawd-spinner",
       "description": "Animated spinner for the Claude Code terminal. Needs nothing extra.",
       "source": {
@@ -938,17 +933,6 @@
         "sha": "6ffe8df7126479631a4c649467aa307505e28a1b"
       },
       "homepage": "https://github.com/superdesigndev/treg"
-    },
-    {
-      "name": "aws-core",
-      "description": "AWS agent toolkit core plugin: AWS skills plus the author's MCP servers and hooks.",
-      "source": {
-        "source": "git-subdir",
-        "url": "aws/agent-toolkit-for-aws",
-        "path": "plugins/aws-core",
-        "sha": "f18bffee72a2b35cb979a015926208fdab8b6548"
-      },
-      "homepage": "https://github.com/aws/agent-toolkit-for-aws"
     }
   ]
 }

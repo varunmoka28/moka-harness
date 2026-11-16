@@ -9,7 +9,7 @@ export HOME="$T/home" CLAUDE_CONFIG_DIR="$T/cfg"
 mkdir -p "$HOME" "$CLAUDE_CONFIG_DIR/plugins" "$T/bin"
 ln -s "$(command -v jq)" "$T/bin/jq"
 export PATH="$T/bin:/usr/bin:/bin"
-unset TYPESAFE_API_KEY AWS_PROFILE AWS_ACCESS_KEY_ID
+unset TYPESAFE_API_KEY
 fail=0
 check() { if "${@:2}"; then echo "ok   $1"; else echo "FAIL $1"; fail=1; fi; }
 run() { out="$(bash "$CHECK" 2>&1)"; rc=$?; }
@@ -40,8 +40,5 @@ export TYPESAFE_API_KEY="secret-value-123"; run
 check "key set: exit 0" test $rc -eq 0
 check "key set: ok line" grep -q 'ok .*TYPESAFE_API_KEY' <<<"$out"
 check "key value never printed" test "$out" = "${out%secret-value-123*}"
-
-record cloud; run; check "no cloud credentials: exit 1" test $rc -eq 1
-export AWS_PROFILE=x; run; check "cloud credentials via profile: exit 0" test $rc -eq 0
 
 exit $fail

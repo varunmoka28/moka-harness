@@ -30,7 +30,6 @@ while IFS=$'\t' read -r g kind name how; do
     env) [ -n "${!name:-}" ] && ok=1 || ok=0 ;;
     account)
       case "$name" in
-        aws) { [ -n "${AWS_ACCESS_KEY_ID:-}" ] || [ -n "${AWS_PROFILE:-}" ] || [ -r "$HOME/.aws/credentials" ]; } && ok=1 || ok=0 ;;
         *) printf '%-12s unchecked  %s  %s\n' "$g" "$name" "$how"; continue ;;  # no way to test from a shell
       esac ;;
     *) continue ;;

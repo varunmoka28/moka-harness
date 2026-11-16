@@ -38,10 +38,5 @@
     "name": "media",
     "source": "./plugins/media",
     "description": "Skills for video and image generation. Some need a paid image or video key."
-  },
-  {
-    "name": "cloud",
-    "source": "./plugins/cloud",
-    "description": "AWS skills and an AWS MCP server. Needs an AWS account and credentials."
   }
 ]

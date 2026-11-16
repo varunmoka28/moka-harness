@@ -53,8 +53,7 @@ agent-reach: agent-reach
 graphify: graphify
 big-arrow: big-arrow
 supabase-skills: supabase supabase-postgres-best-practices
-treg: treg
-aws-core: aws-ai-ml aws-auth aws-billing-and-cost-management aws-blocks aws-cdk aws-cloudformation aws-compute aws-containers aws-database aws-deployment aws-iam aws-investigation aws-messaging-and-streaming aws-networking aws-observability aws-sdk-js-v3-usage aws-sdk-python-usage aws-sdk-swift-usage aws-security aws-serverless aws-storage aws-well-architected-review amazon-bedrock launch-with-aws signing-in-to-aws'
+treg: treg'
 
 # skills_in <installPath>: every SKILL.md folder name and frontmatter name under it, one per line
 skills_in() {

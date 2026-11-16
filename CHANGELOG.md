@@ -4,6 +4,11 @@ Every change to a pinned commit of a third-party entry gets a line here naming t
 
 ## Unreleased
 
+## v0.3.0 (2026-11-16)
+
+- Removed the `cloud` group and the `aws-core` entry (aws/agent-toolkit-for-aws), pinned at `f18bffee72a2b35cb979a015926208fdab8b6548`. It needed an AWS account and credentials. `doctor` no longer checks for AWS credentials.
+- Noted why `homunculus` left in v0.1.0: its repo has no LICENSE file, only an MIT line in the author's plugin.json. It is not in the marketplace.
+
 ## v0.2.0 (2026-11-16)
 
 - Fixed clean-view: plan_steps and report_progress now read their arguments from the event, so its tool gate no longer denies every tool.

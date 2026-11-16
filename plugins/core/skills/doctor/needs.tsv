@@ -16,4 +16,3 @@ multi-agent	plugin	tab-namer
 jev	env	TYPESAFE_API_KEY	get a TypeSafe API key (paid per call) and export it in your shell profile
 jev	plugin	prompt-enhancer	
 jev	plugin	run-ledger	
-cloud	account	aws	configure AWS credentials: aws configure, or set AWS_PROFILE

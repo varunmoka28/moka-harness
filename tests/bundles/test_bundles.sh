@@ -2,7 +2,7 @@
 # Bundle plugins: every dependency is a marketplace entry; jev installs its members.
 source "$(dirname "$0")/../step0/lib.sh"
 cd "$REPO_ROOT"
-BUNDLES="core-bundle writing design media research multi-agent jev cloud"
+BUNDLES="core-bundle writing design media research multi-agent jev"
 BEFORE="$(real_fingerprint)"
 
 # 1. Every dependency of all eight bundles has an entry in marketplace.d/.

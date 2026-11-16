@@ -8,7 +8,7 @@ How an entry is written:
 
 - The repo has its own `.claude-plugin/plugin.json` that covers the skills taken and adds no code: the entry points at the repo and loads what the author's plugin loads.
 - The repo has none: the entry is the manifest (`strict: false`) and lists the skill folders.
-- The author's plugin.json adds hooks or an MCP server beyond the skills taken (anti-slop, caveman): the entry points at the skill folder instead, so only text loads. aws-core, treg and make-ugc keep the author's plugin.json as the manifest names them; aws-core and treg run code (hooks, MCP servers).
+- The author's plugin.json adds hooks or an MCP server beyond the skills taken (anti-slop, caveman): the entry points at the skill folder instead, so only text loads. treg and make-ugc keep the author's plugin.json as the manifest names them; treg runs code (hooks, MCP servers).
 
 | entry | repo | pin | licence | skills taken | how the pin was chosen | change from the manifest and why |
 |---|---|---|---|---|---|---|
@@ -45,7 +45,6 @@ How an entry is written:
 | big-arrow | franzenzenhofer/big-arrow-on-the-screen | `64ed5397e45c44164629e0aef6c3622fe233b881` | MIT | big-arrow | manifest pin; installed copy differs |  |
 | supabase-skills | supabase/agent-skills | `c9be0e931b7930f7d02126d04774d904c381e7d7` | MIT | supabase, supabase-postgres-best-practices | head; matches installed copy for both |  |
 | treg | superdesigndev/treg | `6ffe8df7126479631a4c649467aa307505e28a1b` | Apache-2.0 plus the author's additional terms | treg | manifest pin (is head); installed copy differs | Subfolder `plugins/treg`: plugin.json declares an MCP server. |
-| aws-core | aws/agent-toolkit-for-aws | `f18bffee72a2b35cb979a015926208fdab8b6548` | Apache-2.0 | 25 skills: aws-ai-ml, aws-auth, aws-billing-and-cost-management, ... | head; installed copies match no commit | Subfolder `plugins/aws-core`: plugin.json declares hooks, and the folder has an MCP config. Loads 27 skills; two of them (`aws-emulator`, `aws-secrets-manager`) are not among the 25. |
 
 ## Left out
 

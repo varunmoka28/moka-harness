@@ -52,7 +52,6 @@ The `core` plugin needs `python3`, `git`, `jq`, bash, awk and ps. The rest depen
 | multi-agent | `herdr` and `tuios`. bun and a claude-peers folder, kanzo, tmux for `session-board`, a TypeSafe key for `dispatch-router`. Codex CLI and agy are optional. |
 | research | A free alphaXiv account. `ffmpeg` and `yt-dlp` for `watch`. |
 | jev | A TypeSafe API key, paid per call. |
-| cloud | AWS credentials, and uv. |
 | design, media | Some entries need their author's API keys. |
 | writing | Nothing. |
 
@@ -69,7 +68,6 @@ Most single mods work from Claude Code 2.1.287. The [group pages](docs/groups/co
 | [research](docs/groups/research.md) | Paper search, and reading web pages and videos. |
 | [multi-agent](docs/groups/multi-agent.md) | Running several agents side by side. |
 | [jev](docs/groups/jev.md) | Mods and a skill that call the TypeSafe (Jev) service. |
-| [cloud](docs/groups/cloud.md) | AWS skills and the AWS MCP server. |
 
 Three entries belong to no group: `fork-cleanup`, `gstack` and `treg` ([add-ons](docs/groups/add-ons.md)). Three pairs overlap, so pick one of each: `cache-clock` or `cache-tax`, `agent-board` or `session-board`, `input-router` or `big-read-guard`.
 
@@ -77,7 +75,7 @@ Three entries belong to no group: `fork-cleanup`, `gstack` and `treg` ([add-ons]
 
 A pin stops an author's later changes from reaching you, but it does not make the pinned code safe. Plugins run hooks and MCP servers with your permissions, and mods are not sandboxed. Nobody has read every line of every third-party repo here.
 
-The [trust table](docs/trust-table.md) shows, for every entry, the author, licence, pinned commit, whether it runs code and whether it sends text off your machine. [docs/known-risks.md](docs/known-risks.md) covers the plugins that can delete or stop things. Those start in dry-run or off and act only inside a scope you set. Four guards are active as soon as they are installed, because they only refuse or ask: `strict-guard`, `big-read-guard`, `collision-guard` and `dispatch-router`.
+The [trust table](docs/trust-table.md) shows, for every entry, the author, licence, pinned commit, whether it runs code and whether it sends text off your machine. [docs/known-risks.md](docs/known-risks.md) covers the plugins that can delete or stop things. Those start in dry-run or off and act only inside a scope you set. Three guards are active as soon as they are installed, because they only refuse or ask: `strict-guard`, `big-read-guard` and `collision-guard`. `dispatch-router` is different: it does nothing without a TypeSafe key. Once a key is set, it sends the first 4,000 characters of task text to api.typesafe.ai and refuses any `claude`, `codex` or `agy` launch that was not routed first.
 
 On every push, CI validates the marketplace and scans for leaked personal data. A weekly job checks that every pinned commit still exists. A pin moves only after the new version has been tried, and each move gets a line in [CHANGELOG.md](CHANGELOG.md).
 

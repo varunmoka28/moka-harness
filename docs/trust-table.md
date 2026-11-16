@@ -48,7 +48,6 @@ One row per entry in `.claude-plugin/marketplace.json`. Read [how far to trust t
 | superpowers | core | Jesse Vincent | MIT | [f2cbfbefebbf](https://github.com/obra/superpowers/commit/f2cbfbefebbfef77321e4c9abc9e949826bea9d7) | Yes: hooks | Not checked. Hooks run on your machine; where they send text, if anywhere, has not been read. |  |  |
 | tare | core | kelviq | MIT | [03159f2c354e](https://github.com/kelviq/tare/commit/03159f2c354e52e5309b0e0d7582b32a5c0d00d0) | Scripts only: ships scripts Claude may run if the skill says so | Not checked. Scripts run only if Claude runs them, and a skill can tell Claude to use a tool or service. |  |  |
 | unlazy | core | Leonxlnx | MIT | [16671491f667](https://github.com/Leonxlnx/unlazy/commit/16671491f6679ad9378f52604d3bc2415b4120c7) | Scripts only: ships scripts Claude may run if the skill says so | Not checked. Scripts run only if Claude runs them, and a skill can tell Claude to use a tool or service. |  |  |
-| cloud | bundle | moka-harness | MIT | in this repo | Lists a plugin; its aws-mcp server runs through uvx | The aws-mcp server talks to AWS with your profile. |  |  |
 | core-bundle | bundle | moka-harness | MIT | in this repo | Lists plugins; its context7 server runs through npx | The context7 server sends library lookups to the Context7 service. |  |  |
 | design | bundle | moka-harness | MIT | in this repo | No, a list of plugins | No |  |  |
 | jev | bundle | moka-harness | MIT | in this repo | No, a list of plugins | No |  |  |
@@ -98,7 +97,6 @@ One row per entry in `.claude-plugin/marketplace.json`. Read [how far to trust t
 | prompt-enhancer | jev | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript) | Yes: your draft and some skill names to api.typesafe.ai, and context to a Claude model, only when you press Enhance. |  |  |
 | run-ledger | jev | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript) | Yes, only if mode is not off: subagent task text to api.typesafe.ai. |  |  |
 | typesafe | jev | TypeSafe AI | MIT | [65a39f393687](https://github.com/typesafe-ai/skills/commit/65a39f393687675ce170e6094757de20370365b9) | Text only | No code of its own. A skill can still tell Claude to use a tool or service; read the skill. |  |  |
-| aws-core | cloud | aws | Apache-2.0 | [f18bffee72a2](https://github.com/aws/agent-toolkit-for-aws/commit/f18bffee72a2b35cb979a015926208fdab8b6548) | Yes: MCP server, hooks | Yes: the MCP server talks to AWS. Hooks not read. |  |  |
 | fork-cleanup | add-on | moka-harness | MIT | in this repo | Yes: a shell hook | Yes: requests to GitHub through gh. |  |  |
 | gstack | add-on | garrytan | MIT | [db35b8e5bffb](https://github.com/garrytan/gstack/commit/db35b8e5bffb596144c4c7f4a3b7eb5c078edaaf) | Scripts only: ships scripts Claude may run if the skill says so | Not checked. Scripts run only if Claude runs them, and a skill can tell Claude to use a tool or service. |  |  |
 | treg | add-on | superdesigndev | Apache-2.0 plus the author's additional terms | [6ffe8df71264](https://github.com/superdesigndev/treg/commit/6ffe8df7126479631a4c649467aa307505e28a1b) | Yes: MCP server | Yes: tool calls go to the treg service. |  |  |

@@ -37,7 +37,7 @@ Any plugin that makes a model call does so through Claude Code, on your own acco
 - `dispatch-router`, `prompt-enhancer`, `run-ledger`: send text to `api.typesafe.ai` with your key. The last one only when its `mode` is not `off`.
 - `reddit-watch`: fetches public RSS feeds from `www.reddit.com`. Off until you type `/reddit on`.
 - `fork-cleanup`: talks to GitHub through `gh`.
-- MCP servers in bundles: `context7` (core-bundle) sends library lookups to the Context7 service. `alphaxiv` (research) sends paper searches to alphaxiv.org. `aws-mcp` (cloud) talks to AWS. `claude-peers` and `kanzo` (multi-agent) run on your machine.
+- MCP servers in bundles: `context7` (core-bundle) sends library lookups to the Context7 service. `alphaxiv` (research) sends paper searches to alphaxiv.org. `claude-peers` and `kanzo` (multi-agent) run on your machine.
 - Third-party: `treg` sends tool calls to the treg service. `codex` runs the Codex CLI, which sends text to OpenAI. `cache-tax` sends model requests to keep your prompt cache warm, which cost tokens.
 
 Each plugin's README, under "What it sends off the machine", has the detail.
@@ -47,7 +47,6 @@ Each plugin's README, under "What it sends off the machine", has the detail.
 - `jev` group (`prompt-enhancer`, `run-ledger`, the `typesafe` skill) and `dispatch-router`: a TypeSafe API key, paid per call. Without a key they do nothing and say so.
 - `treg`: a treg account, paid.
 - `media` group: some skills need a paid image or video key.
-- `cloud` group: an AWS account. AWS bills what you use through it.
 - `research` group: the alphaXiv server needs a free account.
 
 Keys that a plugin asks for are stored through Claude Code's plugin settings as sensitive values. They are not written to `settings.json` or the chat.
@@ -80,4 +79,4 @@ More detail is in [docs/third-party-skills-notes.md](third-party-skills-notes.md
 - `graphify`'s skill file is lower-case `skill.md` at the pinned commit. Claude Code looks for `SKILL.md`, so on a case-sensitive disk the skill may not load.
 - `diagram-skills` is pinned to a commit that the author's repo has since moved past. The pin keeps working while the commit exists. If the author removes it, the entry stops installing.
 - `hyperframes` is pinned to a commit that holds five of the author's ten skills. The other five were retired by the author and are not in this entry.
-- Some entries load the author's whole plugin, not only the skills named in the description. `pocock-skills` loads 27 skills, `accessibility` loads 6, `hyperframes` loads 7 and `aws-core` loads 27.
+- Some entries load the author's whole plugin, not only the skills named in the description. `pocock-skills` loads 27 skills, `accessibility` loads 6 and `hyperframes` loads 7.

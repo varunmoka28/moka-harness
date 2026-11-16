@@ -41,7 +41,7 @@ test('every other tool is denied until plan_steps, then allowed', async ($, on) 
 
   const planned = await $.tool.call({
     tool: PLAN,
-    input: { steps: ['Read your brand notes', 'Build the pricing section'] },
+    steps: ['Read your brand notes', 'Build the pricing section'],
   } as any)
   expect(planned.result).toBe('Planned 2 steps. The first one has started.')
 
@@ -52,13 +52,25 @@ test('every other tool is denied until plan_steps, then allowed', async ($, on) 
 test('report_progress at 100 checks off the first step and starts the second', async ($, on) => {
   engine(on)
   await start($, 'Build my landing page')
-  await $.tool.call({ tool: PLAN, input: { steps: ['Read your brand notes', 'Build the pricing section'] } } as any)
+  await $.tool.call({ tool: PLAN, steps: ['Read your brand notes', 'Build the pricing section'] } as any)
 
-  const first = await $.tool.call({ tool: REPORT, input: { task: 'Read your brand notes', percent: 100 } } as any)
+  const first = await $.tool.call({ tool: REPORT, task: 'Read your brand notes', percent: 100 } as any)
   expect(first.result).toBe('Recorded 100% on "Read your brand notes".')
 
-  const second = await $.tool.call({ tool: REPORT, input: { task: 'Build the pricing section', percent: 60 } } as any)
+  const second = await $.tool.call({ tool: REPORT, task: 'Build the pricing section', percent: 60 } as any)
   expect(second.result).toBe('Recorded 60% on "Build the pricing section".')
+})
+
+test('plan_steps and report_progress refuse bad arguments', async ($, on) => {
+  engine(on)
+  await start($, 'Build my landing page')
+
+  const one = await $.tool.call({ tool: PLAN, steps: ['Only one'] } as any)
+  expect(one.result).toBe('Give 2 to 8 short step names.')
+
+  await $.tool.call({ tool: PLAN, steps: ['Read your brand notes', 'Build the pricing section'] } as any)
+  const unknown = await $.tool.call({ tool: REPORT, task: 'Nope', percent: 10 } as any)
+  expect(unknown.result).toContain('No planned step is named "Nope"')
 })
 
 test('/simple off and on flips the setting and says so', async ($, on) => {

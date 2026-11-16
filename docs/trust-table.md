@@ -5,9 +5,9 @@ One row per entry in `.claude-plugin/marketplace.json`. Read [how far to trust t
 - **Pinned commit**: the commit a third-party entry is frozen to. Each links to that commit on GitHub. Entries marked "in this repo" are files in `plugins/`.
 - **Runs code**: whether the entry ships a hook or an MCP server that runs on its own, ships scripts that Claude may run when a skill says so, or is text only. This was read from the file list of each repo at its pinned commit, not from the code itself.
 - **Sends text off the machine**: from each own plugin's README, which was checked against its code. For third-party entries with hooks or MCP servers the answer is "not checked" unless stated. Any entry that makes a model call does so through Claude Code, on your account, and your conversation goes to the model as it always does.
-- **Code read** and **Why I use this** are left blank for the owner to fill in. A blank means not yet.
+- **Code read** and **Why it is here** are left blank until filled in. A blank means not yet.
 
-| Entry | Group | Author | Licence | Pinned commit | Runs code | Sends text off the machine | Code read | Why I use this |
+| Entry | Group | Author | Licence | Pinned commit | Runs code | Sends text off the machine | Code read | Why it is here |
 |---|---|---|---|---|---|---|---|---|
 | assumption-log | core | moka-harness, from Terminal Desk by ClariSortAi | MIT | in this repo | Yes: mod hooks (TypeScript) | No |  |  |
 | band-frame | core | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript) | No |  |  |

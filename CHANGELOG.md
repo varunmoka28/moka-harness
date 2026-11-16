@@ -4,6 +4,8 @@ Every change to a pinned commit of a third-party entry gets a line here naming t
 
 ## Unreleased
 
+- clean-view's plan_steps and report_progress now read their arguments from the event, so its tool gate no longer denies every tool.
+
 ## v0.1.0 (2026-11-15)
 
 First release.

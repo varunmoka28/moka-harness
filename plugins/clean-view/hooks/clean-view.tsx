@@ -275,7 +275,7 @@ export function registerCleanView(on: On): void {
   }).catch(($, e, next) => next(e))
 
   on('tool.call', { tool: PLAN_TOOL }, async ($, e) => {
-    const steps = (e.input as { steps?: unknown }).steps
+    const steps = (e as { steps?: unknown }).steps
     if (!Array.isArray(steps) || steps.length < 2 || steps.length > 8 || !steps.every(s => typeof s === 'string')) {
       return { result: 'Give 2 to 8 short step names.' }
     }
@@ -300,7 +300,7 @@ export function registerCleanView(on: On): void {
   }).catch(($, e, next) => next(e))
 
   on('tool.call', { tool: REPORT_TOOL }, async ($, e) => {
-    const { task, percent } = e.input as { task?: unknown; percent?: unknown }
+    const { task, percent } = e as { task?: unknown; percent?: unknown }
     const list = await read($, checklist)
     if (list === null) return { result: 'No plan yet. Call plan_steps first.' }
     if (typeof task !== 'string' || typeof percent !== 'number' || !Number.isFinite(percent)) {

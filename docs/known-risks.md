@@ -4,7 +4,7 @@ Read this before installing. It covers what can go wrong, where each risky piece
 
 ## Hooks that delete or stop something
 
-Each of these is my own code. The first six rows follow one rule: it starts in dry-run or off, it acts only inside a scope you set (a folder list, a tuios session, a match text or a GitHub account; it never guesses one), and it logs its actions in the plugin's data folder. They have tests under `tests/` or in the plugin folder. The rows after those are guards of a different kind, and each says how it is limited.
+Each of these is written for this repo. The first six rows follow one rule: it starts in dry-run or off, it acts only inside a scope you set (a folder list, a tuios session, a match text or a GitHub account; it never guesses one), and it logs its actions in the plugin's data folder. They have tests under `tests/` or in the plugin folder. The rows after those are guards of a different kind, and each says how it is limited.
 
 | Plugin | What it can do | Guard |
 |---|---|---|
@@ -26,7 +26,7 @@ Smaller ones, all limited to the plugin's own files: `design-direction` deletes 
 
 Three more can compact or send something when you ask or opt in: `context-guard` (auto-compact is off unless `CONTEXT_GUARD_AUTO_COMPACT=1`), `cache-clock` (a button you press) and `agent-board` (sends `/compact` to an idle Codex tab only with `AGENT_BOARD_COMPACT=1`).
 
-Third-party hooks are not covered by these rules. `scope-guard`, `modwall`, `micro-compaction`, `smart-compact`, `cache-tax`, `secret-box`, `mod-scout`, `session-board`, `impeccable`, `codex`, `watch` and others ship hooks that run on your machine. I list which ones run code in the trust table. I have not read all of that code.
+Third-party hooks are not covered by these rules. `scope-guard`, `modwall`, `micro-compaction`, `smart-compact`, `cache-tax`, `secret-box`, `mod-scout`, `session-board`, `impeccable`, `codex`, `watch` and others ship hooks that run on your machine. The trust table lists which ones run code. Not all of that code has been read.
 
 ## Plugins that send text to a model or an outside service
 

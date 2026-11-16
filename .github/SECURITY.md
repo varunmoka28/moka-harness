@@ -15,4 +15,4 @@ A bug inside a third-party plugin or skill belongs in its author's repo. [CREDIT
 
 ## What to expect
 
-This is one person's setup, kept in spare time. There is no response-time promise. [How far to trust this](../README.md#how-far-to-trust-this) says what the pins do and do not protect against.
+It is maintained in spare time. There is no response-time promise. [How far to trust this](../README.md#how-far-to-trust-this) says what the pins do and do not protect against.

@@ -61,5 +61,5 @@ The bundle also carries these MCP servers, started when the bundle is enabled:
 ## Rough context cost
 
 Counted words added to every session by the members above: about 2,826. This is the sum of skill description words and the session-start text that could be counted. It is a rough guide in words, not a measurement of tokens; tokens run somewhat higher than words.
-11 members in this group have text that was not counted: hooks that add session text, or skills whose descriptions were not read. Own mods add text for the model only where a figure appears above, plus short instructions some add when you trigger them.
+11 members in this group have text that was not counted: hooks that add session text, or skills whose descriptions were not read. Harness mods add text for the model only where a figure appears above, plus short instructions some add when you trigger them.
 Skill descriptions are what load at every session start. The body of a skill loads only when it is used. Third-party description counts come from the SKILL.md at the pinned commit.

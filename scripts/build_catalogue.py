@@ -3,7 +3,7 @@
 
 Sources: .claude-plugin/marketplace.json (every entry), marketplace.d/ (third-party
 plugin or skill), docs/trust-table.md (author, licence, runs code, sends text),
-docs/WIRING.md (events, commands, tools of own plugins), each own plugin's README
+docs/WIRING.md (events, commands, tools of harness plugins), each harness plugin's README
 ("What it does") and plugin.json (bundle members), the bundles' .mcp.json, and
 plugins/core/working-style.md (rules).
 
@@ -139,7 +139,7 @@ def main():
                 e["type"] = "mod"
             else:
                 e["type"] = "hook"
-            e["source"] = "adapted" if name in ADAPTED else "own"
+            e["source"] = "adapted" if name in ADAPTED else "harness"
             if name in ADAPTED:
                 e["facts"].append(("Adapted from", ADAPTED[name]))
             w = wiring.get(name)
@@ -152,7 +152,7 @@ def main():
                 body = sk.read_text()
                 d = re.search(r"^description:\s*(.*)$", body, re.M)
                 entries.append({"name": f"{name}:{sk.parent.name}", "desc": d.group(1) if d else "",
-                                "type": "skill", "source": "own", "group": e["group"], "facts": [("Part of", name)],
+                                "type": "skill", "source": "harness", "group": e["group"], "facts": [("Part of", name)],
                                 "how": md(body.split("---", 2)[-1].strip(), base),
                                 "ref": (f"{REPO}/blob/main/{p['source'][2:]}/skills/{sk.parent.name}/SKILL.md", "SKILL.md"),
                                 "author": e["author"], "licence": e["licence"], "runs": "", "sends": ""})
@@ -161,7 +161,7 @@ def main():
                 for srv, cfg in json.loads(mcp.read_text())["mcpServers"].items():
                     run = cfg.get("url") or " ".join([cfg.get("command", "")] + cfg.get("args", []))
                     entries.append({"name": srv, "desc": f"MCP server started when the {name} bundle is enabled.",
-                                    "type": "mcp", "source": "own", "group": name, "how": "",
+                                    "type": "mcp", "source": "harness", "group": name, "how": "",
                                     "facts": [("Starts", run), ("Part of", name)], "ref": (f"{REPO}/blob/main/{p['source'][2:]}/.mcp.json", ".mcp.json"),
                                     "author": "", "licence": "", "runs": "", "sends": ""})
         else:
@@ -181,7 +181,7 @@ def main():
         first = re.sub(r"\*\*|`|^[-\d.]+\s+", "", body.split("\n")[0]).strip()
         first = re.split(r"(?<=[.])\s", first)[0]
         entries.append({"name": re.sub(r"^\d+(\.\d+)?\.?\s+", "", m.group(1)), "i": m.start(), "desc": first, "type": "rule",
-                        "source": "own", "group": "core", "facts": [], "how": md(body, f"{REPO}/blob/main/plugins/core"),
+                        "source": "harness", "group": "core", "facts": [], "how": md(body, f"{REPO}/blob/main/plugins/core"),
                         "ref": (f"{REPO}/blob/main/plugins/core/working-style.md", "working-style.md"),
                         "author": "", "licence": "", "runs": "", "sends": ""})
 
@@ -199,11 +199,13 @@ def main():
                 facts.append((k, v))
         dl = "".join(f"<dt>{esc(k)}</dt><dd>{inline(v, REPO)}</dd>" for k, v in facts)
         how = f'<details><summary>How it works</summary><div class="how">{e["how"]}</div></details>' if e["how"] else ""
+        shots = [f for f in [ROOT / "docs/shots" / f'{e["name"]}.png', *(f for f in sorted((ROOT / "docs/shots").glob("*.png")) if f.name.startswith(e["name"] + "--"))] if f.exists()]
+        imgs = "".join(f'<img src="shots/{f.name}" alt="{esc(e["name"] + (": " + f.stem.split("--", 1)[1] if "--" in f.stem else ""))}" loading="lazy">' for f in shots)
         ref = f'<a class="ref" href="{esc(e["ref"][0])}">{esc(e["ref"][1])}</a>'
         text = esc(" ".join([e["name"], e["desc"], e["group"], e["source"]]).lower())
         return (f'<article class="e" data-type="{e["type"]}" data-source="{e["source"]}" data-text="{text}">'
                 f'<h3><code>{esc(e["name"])}</code>{tags}</h3><p class="d">{inline(e["desc"], REPO)}</p>'
-                f'<dl>{dl}<dt>Source</dt><dd>{ref}</dd></dl>{how}</article>')
+                f'{imgs}<dl>{dl}<dt>Source</dt><dd>{ref}</dd></dl>{how}</article>')
 
     body = "".join(
         f'<section id="{k}"><h2>{label}</h2>' + "".join(card(e) for e in entries if e["type"] == k) + "</section>"
@@ -245,6 +247,7 @@ h2{font-size:19px;border-bottom:1px solid var(--rule);padding-bottom:4px;margin:
 .e h3 code{font:600 15px 'SF Mono',Menlo,monospace}
 .tag{font:11px -apple-system,sans-serif;border:1px solid var(--tag);border-radius:10px;padding:0 7px;margin-left:7px;color:#6b6457;vertical-align:2px}
 .d{margin:4px 0}
+.e img{display:block;max-width:100%;height:auto;margin:8px 0;border:1px solid var(--rule);border-radius:4px}
 dl{display:grid;grid-template-columns:max-content 1fr;gap:0 14px;margin:6px 0;font:13px/1.6 -apple-system,sans-serif;color:#4b473f}
 dt{color:var(--mute)}dd{margin:0}
 code{font:13px 'SF Mono',Menlo,monospace;background:#ece6da;padding:0 3px;border-radius:3px}
@@ -257,11 +260,11 @@ pre{background:#ece6da;padding:8px 10px;overflow:auto;font:12px 'SF Mono',Menlo,
 </style></head><body>
 <nav><input id="q" type="search" placeholder="Search" aria-label="Search the catalogue">
 <b>TYPE</b><a data-f="all" class="on">Everything</a>{{NAV}}
-<b>SOURCE</b><a data-s="own">Own</a><a data-s="adapted">Adapted</a><a data-s="third-party">Third-party</a>
+<b>SOURCE</b><a data-s="harness">Harness</a><a data-s="adapted">Adapted</a><a data-s="third-party">Third-party</a>
 <b>REPO</b><a href="{{REPO}}">GitHub</a><a href="{{REPO}}#prerequisites">Prerequisites</a><a href="{{REPO}}/blob/main/docs/trust-table.md">Trust table</a></nav>
 <main><h1>The moka-harness catalogue</h1>
 <p class="sub">Every rule, mod, hook, skill, plugin and MCP server in the marketplace: what it does, how it hooks into Claude Code, and where it comes from.</p>
-<p class="intro"><b>Own</b> entries are written for this repo and live in <code>plugins/</code>. <b>Adapted</b> ones are built on someone else's mod, credited on the entry. <b>Third-party</b> entries install from their author's repo, frozen to the commit shown; nothing from them is copied here. "Runs code" and "Sends text off the machine" come from the trust table; "Not checked" means nobody has read that code yet.</p>
+<p class="intro"><b>Harness</b> entries live in <code>plugins/</code>; most started from mods other people published. <b>Adapted</b> ones are harness plugins that name their original on the entry. <b>Third-party</b> entries install from their author's repo, frozen to the commit shown; nothing from them is copied here. "Runs code" and "Sends text off the machine" come from the trust table; "Not checked" means nobody has read that code yet.</p>
 {{BODY}}</main>
 <script>
 const q=document.getElementById('q'),arts=[...document.querySelectorAll('.e')];let type='all',src='';

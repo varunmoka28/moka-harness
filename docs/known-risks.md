@@ -4,7 +4,7 @@ Read this before installing. It covers what can go wrong, where each risky piece
 
 ## Hooks that delete or stop something
 
-Each of these is written for this repo. The first six rows follow one rule: it starts in dry-run or off, it acts only inside a scope you set (a folder list, a tuios session, a match text or a GitHub account; it never guesses one), and it logs its actions in the plugin's data folder. They have tests under `tests/` or in the plugin folder. The rows after those are guards of a different kind, and each says how it is limited.
+Each of these is a harness plugin. The first six rows follow one rule: it starts in dry-run or off, it acts only inside a scope you set (a folder list, a tuios session, a match text or a GitHub account; it never guesses one), and it logs its actions in the plugin's data folder. They have tests under `tests/` or in the plugin folder. The rows after those are guards of a different kind, and each says how it is limited.
 
 | Plugin | What it can do | Guard |
 |---|---|---|
@@ -65,7 +65,7 @@ Keys that a plugin asks for are stored through Claude Code's plugin settings as 
 
 ## Orphaned cache folders after removal
 
-`claude plugin marketplace remove moka-harness` removes the plugin and marketplace records but leaves `plugins/cache/moka-harness/<plugin>/<version>/` folders, each with an `.orphaned_at` marker, plus `plugins/.last_inuse_sweep`. The [README](../README.md#remove-it) lists everything that stays.
+`claude plugin marketplace remove moka-harness` removes the plugin and marketplace records but leaves `plugins/cache/moka-harness/<plugin>/<version>/` folders, each with an `.orphaned_at` marker, plus `plugins/.last_inuse_sweep`.
 
 ## Licence cautions
 

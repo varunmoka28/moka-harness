@@ -1,6 +1,6 @@
 # Wiring
 
-What each of this repo's own plugins adds to a Claude Code session, read from the plugin code and its `hooks.json` and `plugin.json`. Third-party entries are not covered here: they are the authors' code, listed in the [trust table](trust-table.md).
+What each of this repo's harness plugins adds to a Claude Code session, read from the plugin code and its `hooks.json` and `plugin.json`. Third-party entries are not covered here: they are the authors' code, listed in the [trust table](trust-table.md).
 
 How to read it:
 

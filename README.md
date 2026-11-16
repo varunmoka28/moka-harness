@@ -1,6 +1,4 @@
-<p align="center"><img src="docs/readme/icon.svg" alt="moka-harness icon" width="112"></p>
-
-<h1 align="center"><img src="docs/readme/wordmark.svg" alt="moka-harness" width="100%"></h1>
+<h1 align="center"><img src="docs/readme/banner-plug.svg" alt="moka-harness" width="100%"></h1>
 
 <div align="center">
 

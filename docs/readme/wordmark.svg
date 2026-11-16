@@ -15,8 +15,4 @@
     <text x="64" y="204" font-size="84" font-weight="700" fill="#e6edf3">moka-harness</text>
     <text x="66" y="258" font-size="26" fill="#9da7b3">A Claude Code harness as one plugin marketplace</text>
   </g>
-  <g transform="translate(1040,72) scale(1.4667)">
-    <rect width="120" height="120" rx="26" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <path d="M48 26v20M72 26v20M36 46h48v20a24 24 0 0 1-48 0zM60 90v16" stroke="#3fb950" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
 </svg>

@@ -15,7 +15,9 @@ The [catalogue](https://varunmoka28.github.io/moka-harness/) lists every entry w
 
 ## Install
 
-Run these in a shell. Inside a session, `/plugin` only opens a panel.
+Install [herdr](https://herdr.dev) first (`brew install herdr`) and run Claude Code inside it. `agent-board` and the `multi-agent` group need it, and `park`, `terminal-desk` and `noticeboard` use it when it is there.
+
+Then run these in a shell. Inside a session, `/plugin` only opens a panel.
 
 ```
 claude plugin marketplace add varunmoka28/moka-harness

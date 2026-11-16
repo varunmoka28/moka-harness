@@ -24,7 +24,7 @@ claude plugin marketplace add varunmoka28/moka-harness
 claude plugin install core@moka-harness
 ```
 
-`core` is the working-style file, three guard hooks and a `doctor` skill. Run `/core:doctor` in a session to see which tools and keys your installed plugins still need. It installs nothing.
+`core` is the working-style file, three guard hooks, a `doctor` skill, and `band-frame`, which draws a coloured rule and tinted background around the band above the prompt so plugin output is easy to tell from the main session. Run `/core:doctor` in a session to see which tools and keys your installed plugins still need. It installs nothing.
 
 For more, install a group bundle (for example `claude plugin install core-bundle@moka-harness`) or single plugins by name. To update:
 

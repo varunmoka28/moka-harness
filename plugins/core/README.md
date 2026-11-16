@@ -1,6 +1,6 @@
 # core
 
-The working style for Claude Code, three guard hooks, and a `doctor` skill.
+The working style for Claude Code, three guard hooks, and a `doctor` skill. It also installs `band-frame`, the coloured rule above the prompt.
 
 ## What it does
 
@@ -14,7 +14,7 @@ All three guards start in dry-run and do nothing until you give them a scope (se
 
 ## What it needs
 
-Claude Code, `python3` (delete guard), `bash`, `git` and `jq` (the sweep and `doctor`). `ps` for the reaper.
+Claude Code (2.1.287 or newer, for `band-frame`), `python3` (delete guard), `bash`, `git` and `jq` (the sweep and `doctor`). `ps` for the reaper.
 
 ## Hook events it uses
 

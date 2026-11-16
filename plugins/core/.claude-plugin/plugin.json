@@ -4,6 +4,7 @@
   "description": "Working-style rules for Claude Code, loaded into each session by a SessionStart hook, plus guard hooks that start in dry-run.",
   "author": { "name": "moka-harness" },
   "license": "MIT",
+  "dependencies": ["band-frame"],
   "userConfig": {
     "delete_guard_dry_run": {
       "type": "boolean",

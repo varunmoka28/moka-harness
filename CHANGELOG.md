@@ -4,6 +4,8 @@ Every change to a pinned commit of a third-party entry gets a line here naming t
 
 ## Unreleased
 
+- `core` now depends on `band-frame`, so the default install draws the coloured rule above the prompt. Before, only `core-bundle` carried it, and a `core`-only install showed no line between plugin output and the main session.
+
 ## v0.3.0 (2026-11-16)
 
 - Removed the `cloud` group and the `aws-core` entry (aws/agent-toolkit-for-aws), pinned at `f18bffee72a2b35cb979a015926208fdab8b6548`. It needed an AWS account and credentials. `doctor` no longer checks for AWS credentials.

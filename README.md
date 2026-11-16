@@ -15,7 +15,12 @@ The [catalogue](https://varunmoka28.github.io/moka-harness/) lists every entry w
 
 ## Install
 
-Install [herdr](https://herdr.dev) first (`brew install herdr`) and run Claude Code inside it. `agent-board` and the `multi-agent` group need it, and `park`, `terminal-desk` and `noticeboard` use it when it is there.
+Install [herdr](https://herdr.dev) and [tuios](https://tuios.dev) first (`brew install herdr tuios`) and run Claude Code inside herdr.
+
+- **herdr** is the terminal app that holds your Claude Code sessions as tabs. `agent-board` and `tab-namer` read and name those tabs, and `park`, `terminal-desk` and `noticeboard` use it when it is there.
+- **tuios** is a terminal window manager. Its job here is to run each helper agent in its own window that you can watch, type into and close, instead of as a hidden subagent. The `multi-agent` group (`multi-agent-kit`) lists those windows to Claude, sends them verified prompts, waits for one to finish, and closes finished ones.
+
+The `core` plugin needs neither. Without tuios, the tuios hooks do nothing.
 
 Then run these in a shell. Inside a session, `/plugin` only opens a panel.
 
@@ -69,7 +74,7 @@ Most single mods work from Claude Code 2.1.287. The [group pages](docs/groups/co
 | [multi-agent](docs/groups/multi-agent.md) | Running several agents side by side. |
 | [jev](docs/groups/jev.md) | Mods and a skill that call the TypeSafe (Jev) service. |
 
-Three entries belong to no group: `fork-cleanup`, `gstack` and `treg` ([add-ons](docs/groups/add-ons.md)). Three pairs overlap, so pick one of each: `cache-clock` or `cache-tax`, `agent-board` or `session-board`, `input-router` or `big-read-guard`.
+Four entries belong to no group: `fork-cleanup`, `gstack`, `terminal-browser` and `treg` ([add-ons](docs/groups/add-ons.md)). Three pairs overlap, so pick one of each: `cache-clock` or `cache-tax`, `agent-board` or `session-board`, `input-router` or `big-read-guard`.
 
 ## How far to trust this
 

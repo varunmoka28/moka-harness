@@ -1,0 +1,16 @@
+{
+  "name": "web-access",
+  "version": "0.1.0",
+  "description": "Picks the right tool for live web needs (search, read a URL, crawl, platform data), starting with free search and fetch. Needs a treg key.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-plugin",
+    "web",
+    "research"
+  ]
+}

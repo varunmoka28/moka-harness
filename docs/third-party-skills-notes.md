@@ -61,3 +61,8 @@ How an entry is written:
 - `treg`, `make-ugc`: the licence is Apache-2.0 with additional terms that bar offering the software to third parties as a hosted or embedded service. Linking is fine; copying or forking needs a read of those terms.
 - `unslop`: CC-BY-4.0 requires credit to the author. The entry links to the author's repo, which keeps it.
 - `caveman`, `graphify`: two licence files; the entry text above names both.
+
+## Considered and not added (2026-11-16)
+
+- `llm-council` (aiwithremy/claude-skills-llm-council): the repo has no licence, the same reason `homunculus` left.
+- `jargon-flagger`: the author and repo could not be traced, so there is nothing to pin.

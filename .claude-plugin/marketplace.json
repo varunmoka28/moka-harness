@@ -205,6 +205,21 @@
       "description": "Refuses whole-file Reads of text files over 50 KB. Needs awk."
     },
     {
+      "name": "repo-health",
+      "source": "./plugins/repo-health",
+      "description": "Read-only health check of a git repo and its GitHub remote: PRs, merged and stale branches, worktrees, stashes. Deletes nothing."
+    },
+    {
+      "name": "web-access",
+      "source": "./plugins/web-access",
+      "description": "Picks the right tool for live web needs, starting with free search and fetch. Needs the treg entry and a treg account."
+    },
+    {
+      "name": "statusline",
+      "source": "./plugins/statusline",
+      "description": "Coloured status line (model, folder, branch, time) built on claude-hud. You add one statusLine line to settings.json yourself."
+    },
+    {
       "name": "dispatch-router",
       "source": "./plugins/dispatch-router",
       "description": "Asks a TypeSafe model which CLI and model should take each agent task and refuses unrouted launches. Needs a TypeSafe API key; without one it does nothing. Sends task text to api.typesafe.ai."
@@ -452,6 +467,33 @@
       },
       "author": {
         "name": "TypeSafe AI"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "hud",
+      "description": "Status line showing context use, tools, agents and git state. The statusline entry redraws its output.",
+      "source": {
+        "source": "github",
+        "repo": "jarrodwatts/claude-hud",
+        "sha": "9d2b6fa4df43c8ced61c0c23956fd291551726ac"
+      },
+      "author": {
+        "name": "Jarrod Watts"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "terminal-browser",
+      "description": "A real browser inside your terminal that Claude can open and drive. Experimental. Needs the terminal-browser app (brew install terminal-browser).",
+      "source": {
+        "source": "git-subdir",
+        "url": "zenbu-labs/terminal-browser",
+        "path": "claude-code-plugin",
+        "sha": "b77065999de3fff271b6e3de29757b7ca1221fe3"
+      },
+      "author": {
+        "name": "zenbu-labs"
       },
       "license": "MIT"
     },
@@ -933,6 +975,20 @@
         "sha": "6ffe8df7126479631a4c649467aa307505e28a1b"
       },
       "homepage": "https://github.com/superdesigndev/treg"
+    },
+    {
+      "name": "leanrea",
+      "description": "Reverse engineering with plain local command-line tools: which command to use for each kind of file, and the traps.",
+      "source": {
+        "source": "github",
+        "repo": "aicodeking/leanrea",
+        "sha": "09ba4aa0217f82cd880f855a60b877f59f39b22b"
+      },
+      "strict": false,
+      "skills": [
+        "./leanrea"
+      ],
+      "homepage": "https://github.com/aicodeking/leanrea"
     }
   ]
 }

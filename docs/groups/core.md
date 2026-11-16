@@ -57,6 +57,10 @@ The bundle also carries these MCP servers, started when the bundle is enabled:
 | `debug-agent` | Debugging from runtime evidence: adds logging, guides reproduction and cites log lines to prove the root cause. |  | 1 skill, 45 words of descriptions |
 | `health` | Audits a Claude Code setup: instruction drift, hooks, MCP servers and config layers. |  | 1 skill, 32 words of descriptions |
 | `tare` | Finds where Claude Code usage went, from the session logs already on disk. |  | 1 skill, 214 words of descriptions |
+| `leanrea` | Reverse engineering with plain command-line tools: which command for each kind of file, and the traps. |  | 1 skill, see its SKILL.md |
+| `repo-health` | Read-only health check of a git repo and its GitHub remote. Needs git, jq and gh. | git, jq, gh | 1 skill |
+| `web-access` | Picks the tool for live web needs, free search first. Needs the `treg` entry and a treg account. | treg account | 1 skill |
+| `statusline` | Coloured status line built on claude-hud (listed as `hud`). Needs bun; you add one `statusLine` line to settings.json. | bun | no always-on text |
 
 ## Rough context cost
 

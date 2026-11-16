@@ -4,6 +4,11 @@ Every change to a pinned commit of a third-party entry gets a line here naming t
 
 ## Unreleased
 
+- Added `leanrea` (aicodeking/leanrea, MIT) at `09ba4aa0217f82cd880f855a60b877f59f39b22b`, `hud` (jarrodwatts/claude-hud, MIT) at `9d2b6fa4df43c8ced61c0c23956fd291551726ac`, listed as `hud` because Claude Code reserves names starting with `claude-`, and `terminal-browser` (zenbu-labs/terminal-browser, MIT, its `claude-code-plugin` folder) at `b77065999de3fff271b6e3de29757b7ca1221fe3`.
+- Added harness plugins `statusline` (coloured status line on top of `hud`), `repo-health` and `web-access`; `core-bundle` now includes them and `leanrea`.
+- `multi-agent-kit` gained two tuios helper scripts, `tuios-send-verified.sh` and `tuios-worker-watch.sh`. Both need `TUIOS_SESSION`.
+- README now asks for tuios as well as herdr and says what each is for.
+
 - `core` now depends on `band-frame`, so the default install draws the coloured rule above the prompt. Before, only `core-bundle` carried it, and a `core`-only install showed no line between plugin output and the main session.
 
 ## v0.3.0 (2026-11-16)

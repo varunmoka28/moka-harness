@@ -1,12 +1,14 @@
 # multi-agent-kit
 
-One skill on splitting work between agents, and two hooks for people who run agents in tuios. herdr installs its own agent-state integration for Claude, so this plugin does not ship one.
+One skill on splitting work between agents, two hooks and two helper scripts for people who run agents in tuios. herdr installs its own agent-state integration for Claude, so this plugin does not ship one.
 
 ## What it does
 
 - **Skill `agent-orchestration`.** Guidance Claude reads when it plans to hand work to subagents or parallel sessions: one task per agent, its own files, a named check, its own git worktree when agents run in parallel, the brief in a file, the result in a file. The original skill also listed trigger words and one project-specific example prompt; nothing general was left in those parts, so they are dropped.
 - **`tuios-status-hook.sh`** (UserPromptSubmit). Prints one line per window in your tuios session (name, agent state, minutes unchanged) and lists windows waiting on you, so Claude sees every agent you have running. Read-only.
 - **`tuios-window-reaper.sh`** (SessionStart and Stop). Closes tuios windows that are finished or empty. See "What it deletes or stops".
+- **`tuios-send-verified.sh`** (helper script, not a hook). Types a prompt into a Claude window in tuios and checks it was submitted, retrying Enter if text is left in the box. Never answers a question menu. Needs `TUIOS_SESSION` set to your session name. Usage: `send <window> <text>`, `enter <window>`, `check <window>`.
+- **`tuios-worker-watch.sh`** (helper script, not a hook). Blocks until a worker window needs you: a `STATUS: done` or `STATUS: blocked` line in its task file, the window gone, or the agent waiting for input for two minutes. Prints why and the last screen lines. Needs `TUIOS_SESSION`.
 
 ## What it needs
 

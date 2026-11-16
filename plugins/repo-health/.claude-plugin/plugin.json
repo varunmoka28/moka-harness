@@ -1,0 +1,16 @@
+{
+  "name": "repo-health",
+  "version": "0.1.0",
+  "description": "Read-only health check of a git repo and its GitHub remote: open PRs, merged, unpushed and stale branches, worktrees with disk size, stashes. Deletes nothing.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-plugin",
+    "git",
+    "github"
+  ]
+}

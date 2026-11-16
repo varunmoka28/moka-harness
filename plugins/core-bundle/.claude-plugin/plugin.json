@@ -46,7 +46,11 @@
     "pocock-skills",
     "debug-agent",
     "health",
-    "tare"
+    "tare",
+    "leanrea",
+    "repo-health",
+    "web-access",
+    "statusline"
   ],
   "userConfig": {
     "context7_api_key": {

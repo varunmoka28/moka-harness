@@ -18,5 +18,20 @@
     "name": "big-read-guard",
     "source": "./plugins/big-read-guard",
     "description": "Refuses whole-file Reads of text files over 50 KB. Needs awk."
+  },
+  {
+    "name": "repo-health",
+    "source": "./plugins/repo-health",
+    "description": "Read-only health check of a git repo and its GitHub remote: PRs, merged and stale branches, worktrees, stashes. Deletes nothing."
+  },
+  {
+    "name": "web-access",
+    "source": "./plugins/web-access",
+    "description": "Picks the right tool for live web needs, starting with free search and fetch. Needs the treg entry and a treg account."
+  },
+  {
+    "name": "statusline",
+    "source": "./plugins/statusline",
+    "description": "Coloured status line (model, folder, branch, time) built on claude-hud. You add one statusLine line to settings.json yourself."
   }
 ]

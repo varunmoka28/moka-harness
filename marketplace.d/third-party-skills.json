@@ -477,5 +477,19 @@
       "sha": "6ffe8df7126479631a4c649467aa307505e28a1b"
     },
     "homepage": "https://github.com/superdesigndev/treg"
+  },
+  {
+    "name": "leanrea",
+    "description": "Reverse engineering with plain local command-line tools: which command to use for each kind of file, and the traps.",
+    "source": {
+      "source": "github",
+      "repo": "aicodeking/leanrea",
+      "sha": "09ba4aa0217f82cd880f855a60b877f59f39b22b"
+    },
+    "strict": false,
+    "skills": [
+      "./leanrea"
+    ],
+    "homepage": "https://github.com/aicodeking/leanrea"
   }
 ]

@@ -239,5 +239,32 @@
       "name": "TypeSafe AI"
     },
     "license": "MIT"
+  },
+  {
+    "name": "hud",
+    "description": "Status line showing context use, tools, agents and git state. The statusline entry redraws its output.",
+    "source": {
+      "source": "github",
+      "repo": "jarrodwatts/claude-hud",
+      "sha": "9d2b6fa4df43c8ced61c0c23956fd291551726ac"
+    },
+    "author": {
+      "name": "Jarrod Watts"
+    },
+    "license": "MIT"
+  },
+  {
+    "name": "terminal-browser",
+    "description": "A real browser inside your terminal that Claude can open and drive. Experimental. Needs the terminal-browser app (brew install terminal-browser).",
+    "source": {
+      "source": "git-subdir",
+      "url": "zenbu-labs/terminal-browser",
+      "path": "claude-code-plugin",
+      "sha": "b77065999de3fff271b6e3de29757b7ca1221fe3"
+    },
+    "author": {
+      "name": "zenbu-labs"
+    },
+    "license": "MIT"
   }
 ]

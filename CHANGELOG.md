@@ -4,7 +4,12 @@ Every change to a pinned commit of a third-party entry gets a line here naming t
 
 ## Unreleased
 
-- clean-view's plan_steps and report_progress now read their arguments from the event, so its tool gate no longer denies every tool.
+## v0.2.0 (2026-11-16)
+
+- Fixed clean-view: plan_steps and report_progress now read their arguments from the event, so its tool gate no longer denies every tool.
+- Catalogue page on GitHub Pages (https://varunmoka28.github.io/moka-harness/), built from the marketplace by `scripts/build_catalogue.py`, with screenshots on nine entries.
+- README shortened, with a banner, a plug icon and a request to install herdr first.
+- The plugins in `plugins/` are called harness plugins, since most started from mods other people published.
 
 ## v0.1.0 (2026-11-15)
 

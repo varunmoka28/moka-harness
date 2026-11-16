@@ -48,6 +48,7 @@ make-ugc: make-ugc
 k-dense-science: datacommons-client edgartools fred-economic-data generate-image geopandas literature-review market-research-reports markitdown matplotlib openalex-database parallel-web peer-review perplexity-search research-grants research-lookup scientific-schematics scientific-slides scientific-visualization scientific-writing scikit-learn writing
 orchestra-research: 0-autoresearch-skill
 book-to-skill: book-to-skill
+leanrea: leanrea
 anysearch: anysearch
 agent-reach: agent-reach
 graphify: graphify

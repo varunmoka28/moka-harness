@@ -4,6 +4,8 @@ Every change to a pinned commit of a third-party entry gets a line here naming t
 
 ## Unreleased
 
+- `unattended` gained route mode (`/unattended route`, or `CLAUDE_UNATTENDED=route` with `CLAUDE_TASK_FILE`): a refused question is written to the worker's task file as `STATUS: blocked` and `QUESTION:` lines for the orchestrator, instead of Claude picking. Without a writable task file it falls back to on mode and says so.
+
 ## v0.4.0 (2026-11-16)
 
 - Added `leanrea` (aicodeking/leanrea, MIT) at `09ba4aa0217f82cd880f855a60b877f59f39b22b`, `hud` (jarrodwatts/claude-hud, MIT) at `9d2b6fa4df43c8ced61c0c23956fd291551726ac`, listed as `hud` because Claude Code reserves names starting with `claude-`, and `terminal-browser` (zenbu-labs/terminal-browser, MIT, its `claude-code-plugin` folder) at `b77065999de3fff271b6e3de29757b7ca1221fe3`.

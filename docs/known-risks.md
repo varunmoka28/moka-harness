@@ -26,6 +26,8 @@ Smaller ones, all limited to the plugin's own files: `design-direction` deletes 
 
 Three more can compact or send something when you ask or opt in: `context-guard` (auto-compact is off unless `CONTEXT_GUARD_AUTO_COMPACT=1`), `cache-clock` (a button you press) and `agent-board` (sends `/compact` to an idle Codex tab only with `AGENT_BOARD_COMPACT=1`).
 
+`autoharness` (third-party, add-on) writes and archives skill files on its own. After about 50 tool calls its hooks start a background `claude -p` session with `--dangerously-skip-permissions`, so that session runs tools without asking. It touches only skills it wrote, and an archive is a folder move. Unless you set `AUTOHARNESS_CHILD_ISOLATION=1`, that background session also loads your own hooks. `AUTOHARNESS_SKILL_PREFIX` and `AUTOHARNESS_STATE_HOME` keep its skills and state apart from yours.
+
 Third-party hooks are not covered by these rules. `scope-guard`, `modwall`, `micro-compaction`, `smart-compact`, `cache-tax`, `secret-box`, `mod-scout`, `session-board`, `impeccable`, `codex`, `watch` and others ship hooks that run on your machine. The trust table lists which ones run code. Not all of that code has been read.
 
 ## Plugins that send text to a model or an outside service

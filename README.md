@@ -74,7 +74,7 @@ Most single mods work from Claude Code 2.1.287. The [group pages](docs/groups/co
 | [multi-agent](docs/groups/multi-agent.md) | Running several agents side by side. |
 | [jev](docs/groups/jev.md) | Mods and a skill that call the TypeSafe (Jev) service. |
 
-Four entries belong to no group: `fork-cleanup`, `gstack`, `terminal-browser` and `treg` ([add-ons](docs/groups/add-ons.md)). Three pairs overlap, so pick one of each: `cache-clock` or `cache-tax`, `agent-board` or `session-board`, `input-router` or `big-read-guard`.
+Five entries belong to no group: `autoharness`, `fork-cleanup`, `gstack`, `terminal-browser` and `treg` ([add-ons](docs/groups/add-ons.md)). Three pairs overlap, so pick one of each: `cache-clock` or `cache-tax`, `agent-board` or `session-board`, `input-router` or `big-read-guard`.
 
 ## How far to trust this
 

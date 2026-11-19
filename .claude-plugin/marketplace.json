@@ -498,6 +498,19 @@
       "license": "MIT"
     },
     {
+      "name": "autoharness",
+      "description": "Learns skills from your sessions: after about 50 tool calls a background Claude run proposes new or edited skills, a script checks them before writing, and skills nobody loads are archived. Needs python3 3.11 or newer.",
+      "source": {
+        "source": "github",
+        "repo": "tigerless-labs/autoharness",
+        "sha": "6d85325ab5ef436d1d4d52ffa82e43ea0365d144"
+      },
+      "author": {
+        "name": "Tigerless Labs"
+      },
+      "license": "MIT"
+    },
+    {
       "name": "humanizer",
       "description": "Rewrites AI-sounding text so it reads like the writer without changing what it says.",
       "source": {

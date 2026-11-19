@@ -29,6 +29,7 @@ recorded commit equals the pin.
 | modern-web-guidance | GoogleChrome/modern-web-guidance | 4dd968349e54 | Apache-2.0 | repo root | text only: two skills | none |
 | watch | bradautomates/claude-video | c333c2289e57 | MIT | repo root | yes: hooks, scripts; installs and runs yt-dlp and ffmpeg | none |
 | typesafe | typesafe-ai/skills | 65a39f393687 | MIT | repo root | text only: one skill | none |
+| autoharness | tigerless-labs/autoharness | 6d85325ab5ef | MIT | repo root | yes: hooks, an MCP server (`stage_skill`), and a background `claude -p --dangerously-skip-permissions` run that writes skill files | none; the repo is its own marketplace with the plugin at `./` |
 
 Full pins are in the JSON file. Authors are as given in each repo's plugin.json.
 

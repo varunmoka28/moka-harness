@@ -4,6 +4,7 @@ Every change to a pinned commit of a third-party entry gets a line here naming t
 
 ## Unreleased
 
+- Added `autoharness` (tigerless-labs/autoharness, MIT) at `6d85325ab5ef436d1d4d52ffa82e43ea0365d144` (v0.5.3), as an add-on outside every group.
 - `unattended` gained route mode (`/unattended route`, or `CLAUDE_UNATTENDED=route` with `CLAUDE_TASK_FILE`): a refused question is written to the worker's task file as `STATUS: blocked` and `QUESTION:` lines for the orchestrator, instead of Claude picking. Without a writable task file it falls back to on mode and says so.
 
 ## v0.4.0 (2026-11-16)

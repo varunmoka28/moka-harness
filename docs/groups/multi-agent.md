@@ -12,8 +12,8 @@ herdr and tuios installed; Codex and agy are optional; `dispatch-router` needs a
 
 The bundle also carries these MCP servers, started when the bundle is enabled:
 
-- `claude-peers`: bun ${user_config.claude_peers_dir}/server.ts
-- `kanzo`: kanzo mcp
+- `claude-peers`: bun ${user_config.claude_peers_dir}/server.ts. Needs bun and a clone of [louislva/claude-peers-mcp](https://github.com/louislva/claude-peers-mcp) after `bun install`; you give its folder when the plugin asks.
+- `kanzo`: kanzo mcp. Install the [kanzo](https://crates.io/crates/kanzo) board with `cargo install kanzo`.
 
 ## Members
 

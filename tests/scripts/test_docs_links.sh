@@ -27,7 +27,7 @@ for f in docs:
         if m.group(1) not in names:
             bad.append(f'{f}: unknown plugin {m.group(1)}')
 readme = pathlib.Path('README.md').read_text()
-tools = {'python3', 'git', 'jq', 'herdr', 'tuios', 'ffmpeg', 'yt-dlp', 'claude', 'plugin', 'doctor'}
+tools = {'python3', 'git', 'jq', 'herdr', 'tuios', 'ffmpeg', 'yt-dlp', 'claude', 'plugin', 'doctor', 'agy'}
 for tok in sorted(set(re.findall(r'`([a-z][a-z0-9-]*)`', readme))):
     if tok not in names and tok not in tools:
         bad.append(f'README.md: `{tok}` is not a plugin in marketplace.json')

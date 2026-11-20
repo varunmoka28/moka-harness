@@ -15,14 +15,7 @@ The [catalogue](https://varunmoka28.github.io/moka-harness/) lists every entry w
 
 ## Install
 
-Install [herdr](https://herdr.dev) and [tuios](https://tuios.dev) first (`brew install herdr tuios`) and run Claude Code inside herdr.
-
-- **herdr** is the terminal app that holds your Claude Code sessions as tabs. `agent-board` and `tab-namer` read and name those tabs, and `park`, `terminal-desk` and `noticeboard` use it when it is there.
-- **tuios** is a terminal window manager. Its job here is to run each helper agent in its own window that you can watch, type into and close, instead of as a hidden subagent. The `multi-agent` group (`multi-agent-kit`) lists those windows to Claude, sends them verified prompts, waits for one to finish, and closes finished ones.
-
-The `core` plugin needs neither. Without tuios, the tuios hooks do nothing.
-
-Then run these in a shell. Inside a session, `/plugin` only opens a panel.
+Run these in a shell. Inside a session, `/plugin` only opens a panel.
 
 ```
 claude plugin marketplace add varunmoka28/moka-harness
@@ -30,6 +23,17 @@ claude plugin install core@moka-harness
 ```
 
 `core` is the working-style file, three guard hooks, a `doctor` skill, and `band-frame`, which draws a coloured rule and tinted background around the band above the prompt so plugin output is easy to tell from the main session. Run `/core:doctor` in a session to see which tools and keys your installed plugins still need. It installs nothing.
+
+The install ends with a note that seven `core` options are not set yet. That is expected. The delete guard, worktree sweep and process reaper start in dry-run with nothing in scope, so they do nothing until you give them paths or a match. Set them with `/plugin configure core@moka-harness` when you want them to act; [docs/known-risks.md](docs/known-risks.md) says what each one deletes or stops.
+
+### herdr and tuios
+
+`core` needs neither. The `multi-agent` group and a few mods use [herdr](https://herdr.dev) and [tuios](https://tuios.dev) (`brew install herdr tuios`):
+
+- **herdr** is the terminal app that holds your Claude Code sessions as tabs. `agent-board` and `tab-namer` read and name those tabs, and `park`, `terminal-desk` and `noticeboard` use it when it is there. Run Claude Code inside herdr to use them.
+- **tuios** is a terminal window manager. Its job here is to run each helper agent in its own window that you can watch, type into and close, instead of as a hidden subagent. The `multi-agent` group (`multi-agent-kit`) lists those windows to Claude, sends them verified prompts, waits for one to finish, and closes finished ones.
+
+Without them, the hooks that use them do nothing.
 
 For more, install a group bundle (for example `claude plugin install core-bundle@moka-harness`) or single plugins by name. To update:
 
@@ -54,7 +58,7 @@ The `core` plugin needs `python3`, `git`, `jq`, bash, awk and ps. The rest depen
 | Group | Needs |
 |---|---|
 | core-bundle | Claude Code 2.1.295 or newer. Node 18 or newer (`mod-scout`, and npx for the context7 server). sips for `image-shrinker`, macOS only. |
-| multi-agent | `herdr` and `tuios`. bun and a claude-peers folder, kanzo, tmux for `session-board`, a TypeSafe key for `dispatch-router`. Codex CLI and agy are optional. |
+| multi-agent | `herdr` and `tuios`. bun and a clone of [claude-peers-mcp](https://github.com/louislva/claude-peers-mcp), [kanzo](https://crates.io/crates/kanzo) (`cargo install kanzo`), tmux for `session-board`, a TypeSafe key for `dispatch-router`. Codex CLI and agy are optional. |
 | research | A free alphaXiv account. `ffmpeg` and `yt-dlp` for `watch`. |
 | jev | A TypeSafe API key, paid per call. |
 | design, media | Some entries need their author's API keys. |

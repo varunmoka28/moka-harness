@@ -5,7 +5,8 @@ Sources: .claude-plugin/marketplace.json (every entry), marketplace.d/ (third-pa
 plugin or skill), docs/trust-table.md (author, licence, runs code, sends text),
 docs/WIRING.md (events, commands, tools of harness plugins), each harness plugin's README
 ("What it does") and plugin.json (bundle members), the bundles' .mcp.json, and
-plugins/core/working-style.md (rules).
+plugins/core/working-style.md (rules), and docs/third-party-shots.json (README images of
+third-party entries, linked at the pinned commit, never copied).
 
 Usage: build_catalogue.py [--check]   --check exits 1 if docs/index.html is stale.
 """
@@ -110,6 +111,7 @@ def main():
     trust = table_rows(ROOT / "docs/trust-table.md")
     wiring = table_rows(ROOT / "docs/WIRING.md")
     skill_packs = {p["name"] for p in json.loads((ROOT / "marketplace.d/third-party-skills.json").read_text())}
+    tp_shots = json.loads((ROOT / "docs/third-party-shots.json").read_text())
     group_of, entries = {}, []
 
     for p in market:
@@ -169,6 +171,7 @@ def main():
             e["type"] = "skill" if name in skill_packs else "plugin"
             e["source"] = "third-party"
             e["facts"].append(("Pinned commit", s["sha"][:12]))
+            e["facts"].append(("Install", f"`claude plugin install {name}@moka-harness`"))
             e["how"] = ""
             repo = s.get("repo") or s["url"]
             sub = f"/{s['path']}" if s.get("path") else ""
@@ -201,6 +204,8 @@ def main():
         how = f'<details><summary>How it works</summary><div class="how">{e["how"]}</div></details>' if e["how"] else ""
         shots = [f for f in [ROOT / "docs/shots" / f'{e["name"]}.png', *(f for f in sorted((ROOT / "docs/shots").glob("*.png")) if f.name.startswith(e["name"] + "--"))] if f.exists()]
         imgs = "".join(f'<img src="shots/{f.name}" alt="{esc(e["name"] + (": " + f.stem.split("--", 1)[1] if "--" in f.stem else ""))}" loading="lazy">' for f in shots)
+        if e["source"] == "third-party":
+            imgs += "".join(f'<img src="{esc(s["src"])}" alt="{esc(e["name"] + ": " + s["alt"])}" loading="lazy">' for s in tp_shots.get(e["name"], []))
         ref = f'<a class="ref" href="{esc(e["ref"][0])}">{esc(e["ref"][1])}</a>'
         text = esc(" ".join([e["name"], e["desc"], e["group"], e["source"]]).lower())
         return (f'<article class="e" data-type="{e["type"]}" data-source="{e["source"]}" data-text="{text}">'
@@ -261,10 +266,16 @@ pre{background:#ece6da;padding:8px 10px;overflow:auto;font:12px 'SF Mono',Menlo,
 <nav><input id="q" type="search" placeholder="Search" aria-label="Search the catalogue">
 <b>TYPE</b><a data-f="all" class="on">Everything</a>{{NAV}}
 <b>SOURCE</b><a data-s="harness">Harness</a><a data-s="adapted">Adapted</a><a data-s="third-party">Third-party</a>
-<b>REPO</b><a href="{{REPO}}">GitHub</a><a href="{{REPO}}#prerequisites">Prerequisites</a><a href="{{REPO}}/blob/main/docs/trust-table.md">Trust table</a></nav>
+<b>REPO</b><a href="#install">Before you install</a><a href="{{REPO}}">GitHub</a><a href="{{REPO}}#prerequisites">Prerequisites</a><a href="{{REPO}}/blob/main/docs/trust-table.md">Trust table</a></nav>
 <main><h1>The moka-harness catalogue</h1>
 <p class="sub">Every rule, mod, hook, skill, plugin and MCP server in the marketplace: what it does, how it hooks into Claude Code, and where it comes from.</p>
 <p class="intro"><b>Harness</b> entries live in <code>plugins/</code>; most started from mods other people published. <b>Adapted</b> ones are harness plugins that name their original on the entry. <b>Third-party</b> entries install from their author's repo, frozen to the commit shown; nothing from them is copied here. "Runs code" and "Sends text off the machine" come from the trust table; "Not checked" means nobody has read that code yet.</p>
+<section id="install"><h2>Before you install</h2>
+<p>Install <a href="https://herdr.dev">herdr</a> and <a href="https://tuios.dev">tuios</a> first with <code>brew install herdr tuios</code>, and run Claude Code inside herdr. herdr is the terminal app that holds your Claude Code sessions as tabs: <code>agent-board</code> and <code>tab-namer</code> read and name those tabs, and <code>park</code>, <code>terminal-desk</code> and <code>noticeboard</code> use it when it is there. tuios is a terminal window manager. The <code>multi-agent</code> group runs each helper agent in its own tuios window that you can watch, type into and close. The <code>core</code> plugin needs neither.</p>
+<p>Then add the marketplace and the core plugin from a shell (inside a session, <code>/plugin</code> only opens a panel):</p>
+<pre>claude plugin marketplace add varunmoka28/moka-harness
+claude plugin install core@moka-harness</pre>
+<p>Every third-party plugin and skill below installs the same way, by its name: <code>claude plugin install &lt;name&gt;@moka-harness</code>. It comes from its author's repo at the pinned commit on its card. Screenshots on third-party cards load from the author's own README at that commit, except clawd-spinner's, which was taken in this harness because its repo has none.</p></section>
 {{BODY}}</main>
 <script>
 const q=document.getElementById('q'),arts=[...document.querySelectorAll('.e')];let type='all',src='';

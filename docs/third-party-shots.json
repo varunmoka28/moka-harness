@@ -1,0 +1,160 @@
+{
+ "scope-guard": [
+  {
+   "src": "https://raw.githubusercontent.com/yash-gadodia/claude-mods/f4c1c751f67918c73f29977cbd52b8398f8556ac/docs/wod-band.png",
+   "alt": "usage-band, wod-band and wod-timer above the prompt"
+  }
+ ],
+ "smart-compact": [
+  {
+   "src": "https://raw.githubusercontent.com/hellosverre/smart-compact/5808714645dafabac65c4f51aab577759f615fc3/docs/demo.gif",
+   "alt": "Claude runs the tests, commits, then calls request_compact with what the summary must keep; when the turn ends a dialog above the prompt reads"
+  },
+  {
+   "src": "https://raw.githubusercontent.com/hellosverre/smart-compact/5808714645dafabac65c4f51aab577759f615fc3/docs/cache.png",
+   "alt": "The dialog after a few idle minutes:"
+  }
+ ],
+ "cache-tax": [
+  {
+   "src": "https://raw.githubusercontent.com/karanb192/cache-tax/06cac47ec125a41a4aeeb78a6b006bec8cc6d6ed/site/assets/refusal.gif",
+   "alt": "Real recording of cache-tax stopping a cold send with a $6.61 estimate"
+  },
+  {
+   "src": "https://raw.githubusercontent.com/karanb192/cache-tax/06cac47ec125a41a4aeeb78a6b006bec8cc6d6ed/site/assets/keepwarm-receipt.png",
+   "alt": "Real keepwarm status showing a 75k-token cache read at $0.02"
+  }
+ ],
+ "secret-box": [
+  {
+   "src": "https://raw.githubusercontent.com/ray-amjad/claude-code-mods/812a5e91bf14f70f210d3f93b7a99f7737b5d38e/plugins/secret-box/screenshot.png",
+   "alt": "secret-box: on the left Claude calls secret-box - request_secret for STRIPE_SECRET_KEY and waits; on the right the secret box pane asks for STRIPE_SECRET_KEY with the reason, and the value field shows only dots; below, the four steps: Claude calls a tool, you paste into a masked box, the mod writes .env and .gitignore, Claude gets a placeholder that turns into the key when a tool runs"
+  },
+  {
+   "src": "https://raw.githubusercontent.com/ray-amjad/claude-code-mods/812a5e91bf14f70f210d3f93b7a99f7737b5d38e/plugins/secret-box/images/use.png",
+   "alt": "Using a key without seeing it: Claude writes the placeholder into a Bash command, the shell runs it with the real key, and Claude reads back length 27 and first 8 characters sk_test_"
+  }
+ ],
+ "claude-code-setup": [
+  {
+   "src": "https://raw.githubusercontent.com/anthropics/claude-plugins-official/fbe07fb6ce7d51d8e86ca6efdf050059894cdb80/plugins/claude-code-setup/automation-recommender-example.png",
+   "alt": "Automation recommender analyzing a codebase and providing tailored recommendations"
+  }
+ ],
+ "diagram-design": [
+  {
+   "src": "https://raw.githubusercontent.com/cathrynlavery/diagram-design/f6db0decea96de66b901331a0f79a8d4b147ebae/docs/hero/hero-light.webp",
+   "alt": "Diagram Design. Editorial diagrams your designer won"
+  },
+  {
+   "src": "https://raw.githubusercontent.com/cathrynlavery/diagram-design/f6db0decea96de66b901331a0f79a8d4b147ebae/docs/hero/demo.gif",
+   "alt": "A prompt typed into an agent session becomes a finished architecture diagram, then a plain first-pass diagram is redrawn with the skill, then the gallery of diagram types"
+  }
+ ],
+ "diagram-pane": [
+  {
+   "src": "https://raw.githubusercontent.com/ray-amjad/claude-code-mods/3af667dde3d41a7b4a0e493b98af9a0048ec0638/plugins/diagram-pane/screenshot.png",
+   "alt": "diagram-pane: Claude adds a discount module on the left; on the right the live work map shows checkout.js fanning out to cart.js, discounts.js and the pay callback, with the pinned call flow below"
+  },
+  {
+   "src": "https://raw.githubusercontent.com/ray-amjad/claude-code-mods/3af667dde3d41a7b4a0e493b98af9a0048ec0638/plugins/diagram-pane/images/pinned.png",
+   "alt": "A mermaid chart in Claude's reply on the left, the same chart drawn as boxes and arrows in the pane on the right"
+  }
+ ],
+ "hud": [
+  {
+   "src": "https://raw.githubusercontent.com/jarrodwatts/claude-hud/9d2b6fa4df43c8ced61c0c23956fd291551726ac/claude-hud-preview-5-2.png",
+   "alt": "Claude HUD in action"
+  }
+ ],
+ "unslop": [
+  {
+   "src": "https://raw.githubusercontent.com/heydamir/unslop/becf3ed1b3386b03a5545b29d06cecd2bc11542b/skills/unslop/references/refs/story-dashboard-frames.webp",
+   "alt": "A vibecoded dashboard unslopping itself, frame by frame"
+  }
+ ],
+ "tare": [
+  {
+   "src": "https://github.com/user-attachments/assets/24809e7c-065d-4ec1-99d1-d7ae44dd4bb3",
+   "alt": "image"
+  }
+ ],
+ "fireworks-tech-graph": [
+  {
+   "src": "https://raw.githubusercontent.com/yizhiyanhua-ai/fireworks-tech-graph/ec98579d6c234fdd8b133db53fd4839a7f6520fe/assets/samples/sample-style2-dark.png",
+   "alt": "Style 2 — Dark Terminal"
+  },
+  {
+   "src": "https://raw.githubusercontent.com/yizhiyanhua-ai/fireworks-tech-graph/ec98579d6c234fdd8b133db53fd4839a7f6520fe/assets/samples/sample-style3-blueprint.png",
+   "alt": "Style 3 — Blueprint"
+  }
+ ],
+ "anatomy": [
+  {
+   "src": "https://raw.githubusercontent.com/wheresryan22/anatomy/1482e8469b0a9e0d8cc18ea2740a01423d29ae80/.github/assets/raptor-engine-firing.webp",
+   "alt": "An isometric drawing of a Raptor 2 rocket engine hanging in a test stand, firing: a red exhaust plume, drawn by a WebGL shader, pours onto the stand"
+  },
+  {
+   "src": "https://raw.githubusercontent.com/wheresryan22/anatomy/1482e8469b0a9e0d8cc18ea2740a01423d29ae80/.github/assets/raptor-engine-apart.webp",
+   "alt": "The Raptor 2 engine taken apart in its test stand: its assemblies, pipes and harness hang apart from each other between the posts of the stand."
+  }
+ ],
+ "reanimate": [
+  {
+   "src": "https://raw.githubusercontent.com/NiazMorshed2007/reanimate/3f7a55a2986a84ca2173e86ee9127eefe31d046d/.github/assets/demo.webp",
+   "alt": "Moments from the demo video: /reanimate slides in; three browsers record widgets on stripe.com, resend.com and clerk.com; the copies are measured against them until the difference is gone; the 18 examples turn on a helix; the install command types itself in."
+  },
+  {
+   "src": "https://raw.githubusercontent.com/NiazMorshed2007/reanimate/3f7a55a2986a84ca2173e86ee9127eefe31d046d/.github/assets/entrance.webp",
+   "alt": "Two recordings of the same three cards fading in: stripe.com on top, the copy reanimate built below. The chat bubbles, the particle ring, the Visa card and the dotted globe appear at the same moments in both."
+  }
+ ],
+ "blank-page": [
+  {
+   "src": "https://raw.githubusercontent.com/StewdioAI/blank-page/cd42b37fa7cd0a5550e51f45cc8f82f63377b98c/media/payments-api-before.gif",
+   "alt": "payments api, before"
+  },
+  {
+   "src": "https://raw.githubusercontent.com/StewdioAI/blank-page/cd42b37fa7cd0a5550e51f45cc8f82f63377b98c/media/payments-api-after.gif",
+   "alt": "payments api, after"
+  }
+ ],
+ "hyperframes": [
+  {
+   "src": "https://github.com/user-attachments/assets/f6ff9fae-f33d-4f68-bd54-f3ed4ba6473b",
+   "alt": "HyperFrames app opening from the Dock: native Mac and Linux app now available"
+  }
+ ],
+ "gpt-image-2": [
+  {
+   "src": "https://raw.githubusercontent.com/ConardLi/garden-skills/9578a34edf3c359da23d8a632b72790834961d11/dist/imgs/covers/gpt-image-2.webp",
+   "alt": "GPT Image 2 Skill"
+  }
+ ],
+ "orchestra-research": [
+  {
+   "src": "https://raw.githubusercontent.com/Orchestra-Research/AI-research-SKILLs/773a52944ba4747a18bd4ae9ade53fff041adcbc/docs/assets/promo.gif",
+   "alt": "AI Research Skills Demo"
+  },
+  {
+   "src": "https://raw.githubusercontent.com/Orchestra-Research/AI-research-SKILLs/773a52944ba4747a18bd4ae9ade53fff041adcbc/docs/skills.png",
+   "alt": "AI Research Agent System"
+  }
+ ],
+ "big-arrow": [
+  {
+   "src": "https://raw.githubusercontent.com/franzenzenhofer/big-arrow-on-the-screen/64ed5397e45c44164629e0aef6c3622fe233b881/docs/images/hero-hn.png",
+   "alt": "A real macOS desktop, Hacker News of 2014-06-10 in Chrome, nine bigarrow arrows in nine colours from every side: same since 2007, already argued in 2014, not a lurker? log in, the article is in here, remember me? (Firefox 30), nothing. nothing changed. (a spiral, going round in circles), 20,000 devs 40,000 opinions, finally a bigger arrow, 12 years later: still no consensus"
+  },
+  {
+   "src": "https://raw.githubusercontent.com/franzenzenhofer/big-arrow-on-the-screen/64ed5397e45c44164629e0aef6c3622fe233b881/docs/images/demo.gif",
+   "alt": "bigarrow pointing at a dialog's Allow button"
+  }
+ ],
+ "treg": [
+  {
+   "src": "https://raw.githubusercontent.com/superdesigndev/treg/6ffe8df7126479631a4c649467aa307505e28a1b/docs/assets/treg-hero.png",
+   "alt": "treg — the tool catalog for your agent"
+  }
+ ]
+}

@@ -69,11 +69,62 @@ async function around($: EngineInterface, session: string, id: unknown): Promise
   }
 }
 
-// The herdr tab this session runs in. Outside herdr, or when herdr does not answer, there is none and the mod does nothing.
+// One JSON-RPC call to the Herdr desktop app's core (herdr-core), which keeps the app's spaces and tabs in the doc "herdr-app".
+async function core($: EngineInterface, method: string, params: object) {
+  const request = JSON.stringify({ jsonrpc: '2.0', id: 1, method, params })
+  const got = await $.process.run(['herdr-core', 'connect'], { stdin: request + '\n', timeoutMs: 10_000 })
+  const reply = JSON.parse(got.stdout.split('\n')[0])
+  if (got.exitCode !== 0 || reply.error !== undefined) throw new Error(`herdr-core ${method} failed`)
+
+  return reply.result
+}
+
+type AppSpace = { id: string; name: string; tabs: { name: string; root: unknown }[] }
+
+const holds = (tab: { root: unknown }, terminal: string) => JSON.stringify(tab.root).includes(`"terminal":"${terminal}"`)
+
+// Writes one name into the app doc. doc.set only takes the version it was read at, so a doc that moved meanwhile is read again.
+async function setName($: EngineInterface, spaceId: string, terminal: string, of: 'space' | 'tab', title: string) {
+  for (let tries = 0; tries < 3; tries++) {
+    const doc = await core($, 'doc.get', { name: 'herdr-app' })
+    const space = (doc.value.spaces as AppSpace[]).find(s => s.id === spaceId)
+    const target = of === 'space' ? space : space?.tabs.find(t => holds(t, terminal))
+    if (target === undefined) return false
+    target.name = title
+    if (await core($, 'doc.set', { name: 'herdr-app', value: doc.value, version: doc.version }).then(() => true, () => false)) return true
+  }
+
+  return false
+}
+
+// The tab this session runs in inside the Herdr desktop app. An unnamed space shows its folder's name, so it reads as `home` here.
+async function inApp($: EngineInterface): Promise<Tab | undefined> {
+  const terminal = await $.env.get('HC_TERMINAL_ID')
+  if (terminal === undefined) return undefined
+
+  try {
+    const spaceId = (await core($, 'terminal.get', { terminal })).labels['herdr.space']
+    const space = ((await core($, 'doc.get', { name: 'herdr-app' })).value.spaces as AppSpace[]).find(s => s.id === spaceId)
+    const tab = space?.tabs.find(t => holds(t, terminal))
+    if (space === undefined || tab === undefined) return undefined
+
+    return {
+      label: tab.name,
+      isDefault: tab.name === '',
+      rename: title => setName($, space.id, terminal, 'tab', title),
+      space: { label: space.name || home, rename: title => setName($, space.id, terminal, 'space', title) },
+    }
+  } catch {
+    return undefined
+  }
+}
+
+// The herdr tab this session runs in: herdr in a terminal first, then the Herdr desktop app.
+// Outside both, or when herdr does not answer, there is none and the mod does nothing.
 async function here($: EngineInterface): Promise<Tab | undefined> {
   const session = await $.env.get('HERDR_SESSION')
   const tab = await $.env.get('HERDR_TAB_ID')
-  if (session === undefined || tab === undefined) return undefined
+  if (session === undefined || tab === undefined) return inApp($)
 
   try {
     const got = await $.process.run(['herdr', '--session', session, 'tab', 'get', tab])

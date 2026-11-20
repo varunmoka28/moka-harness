@@ -1,7 +1,7 @@
 {
   "name": "tab-namer",
-  "version": "0.6.0",
-  "description": "Names your herdr tab and its workspace after the task you give Claude, from your first prompt. Can also rename it as the work changes, if you turn that on.",
+  "version": "0.7.0",
+  "description": "Names your herdr tab and its workspace (a space in the Herdr desktop app) after the task you give Claude, from your first prompt. Can also rename it as the work changes, if you turn that on.",
   "author": {
     "name": "moka-harness"
   },

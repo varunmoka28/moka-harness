@@ -29,7 +29,7 @@ const host = (on: On, w: World = {}) => {
   const seen = { runs: [] as { argv: string[]; cwd?: string }[], merged: [] as string[], head: w.head ?? HEAD }
   const files: Record<string, string> = {}
   if (w.ledger) files[LEDGER] = w.ledger.map(r => JSON.stringify({ repo: '/repo/.git', branch: 't1', ok: false, ...r }) + '\n').join('')
-  mock.env(on, { HOME: '/home', CLAUDE_PLUGIN_DATA: '/data', TMPDIR: '/tmp/' })
+  mock.env(on, { HOME: '/u', CLAUDE_PLUGIN_DATA: '/data', TMPDIR: '/tmp/' })
   on('session.cwd', () => ({ value: '/repo' }))
   on('fs.exists', (_, e) => ({ value: files[e.path] !== undefined || (w.ledgerBroken === true && e.path === LEDGER) }))
   on('fs.read', (_, e) => {
@@ -245,7 +245,7 @@ test('AC9: cd dir && git merge and git -C dir merge are gated in that folder', a
     h.state.runs.length = 0
     expect((await merge($, command)).deny).toContain('b/x')
     const dirs = new Set(h.state.runs.filter(r => r.argv[0] === 'git').map(r => r.argv[2]))
-    expect([...dirs]).toEqual([{ 'cd sub && git merge t1': '/repo/sub', 'git -C sub merge t1': '/repo/sub', 'cd /abs/repo; git merge t1': '/abs/repo', 'cd ~/work && git merge t1': '/home/work' }[command]])
+    expect([...dirs]).toEqual([{ 'cd sub && git merge t1': '/repo/sub', 'git -C sub merge t1': '/repo/sub', 'cd /abs/repo; git merge t1': '/abs/repo', 'cd ~/work && git merge t1': '/u/work' }[command]])
   }
 })
 

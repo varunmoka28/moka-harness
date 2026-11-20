@@ -263,3 +263,79 @@ test('a tab herdr has labelled with the shell name counts as unlabelled', async 
   expect(seen.renames).toEqual(['w1:t1 what is cost band'])
   expect(seen.spaces).toEqual(['w1 what is cost band'])
 })
+
+// Stands for the Herdr desktop app: herdr-core answers terminal.get, doc.get and doc.set over `herdr-core connect`.
+// `conflicts` makes that many doc.set calls fail as if the doc moved; `core: 'fails'` makes every call fail.
+const app = (on: On, o: { space?: string; tab?: string; reply?: string; conflicts?: number; core?: 'fails'; alsoTerminal?: boolean } = {}) => {
+  const doc = {
+    version: 7,
+    value: { spaces: [{ id: 'sp1', name: o.space ?? '', folder: '/work/repo', tabs: [{ id: 'tb1', name: o.tab ?? '', root: { children: [{ content: { terminal: 't9' } }] } }] }] },
+  }
+  const calls: string[] = []
+  let conflicts = o.conflicts ?? 0
+  on('turn.complete', () => ({ text: 'done' }))
+  on('model.complete', () => ({ value: { isAnswered: true, text: o.reply ?? '', usage: USAGE } }))
+  mock.env(on, o.alsoTerminal ? { HC_TERMINAL_ID: 't9', HERDR_SESSION: 'main', HERDR_TAB_ID: 'w1:t1' } : { HC_TERMINAL_ID: 't9' })
+  on('session.start', (_, e) => ({ cwd: e.cwd }))
+  on('prompt.submit', (_, e) => ({ text: e.text }))
+  on('command.register', (_, e) => ({ value: { command: e.name } }) as never)
+  on('store.get', () => ({ value: true }) as never)
+  on('ui.toast', () => ({ value: undefined }))
+  on('process.run', (_, e) => {
+    if (e.argv[0] !== 'herdr-core') return { value: { ...OK, exitCode: 1, stdout: '' } }
+    const { method, params } = JSON.parse(String(e.init?.stdin))
+    calls.push(method)
+    const answer = (result: unknown) => ({ value: { ...OK, stdout: JSON.stringify({ jsonrpc: '2.0', id: 1, result }) + '\n' } })
+    const error = { value: { ...OK, stdout: JSON.stringify({ jsonrpc: '2.0', id: 1, error: { code: -32000, message: 'conflict' } }) + '\n' } }
+    if (o.core === 'fails') return error
+    if (method === 'terminal.get') return answer({ address: 't9', labels: { 'herdr.space': 'sp1' } })
+    if (method === 'doc.get') return answer(JSON.parse(JSON.stringify(doc)))
+    if (method === 'doc.set') {
+      if (conflicts-- > 0 || params.version !== doc.version) return error
+      doc.value = params.value
+      doc.version++
+      return answer({ version: doc.version })
+    }
+    return error
+  })
+  const names = () => ({ space: doc.value.spaces[0].name, tab: doc.value.spaces[0].tabs[0].name })
+
+  return { calls, names }
+}
+
+test('in the Herdr app the first prompt names an unnamed space and its tab', async ($, on) => {
+  const seen = app(on)
+  await $.session.start(REPO)
+  await submit($, 'fix the login page bug and rerun the tests')
+  expect(seen.names()).toEqual({ space: 'fix the login page bug', tab: 'fix the login page bug' })
+})
+
+test('in the Herdr app a relabel follows the work, reading the doc again when it moved', async ($, on) => {
+  const seen = app(on, { reply: 'cost band review', conflicts: 1 })
+  await $.session.start(REPO)
+  await submit($, 'what is cost band?')
+  await $.turn.complete(TURN)
+  expect(seen.names()).toEqual({ space: 'cost band review', tab: 'cost band review' })
+})
+
+test('in the Herdr app a space somebody named keeps its name', async ($, on) => {
+  const seen = app(on, { space: 'wave 23' })
+  await $.session.start(REPO)
+  await submit($, 'what is cost band?')
+  expect(seen.names()).toEqual({ space: 'wave 23', tab: 'what is cost band' })
+})
+
+test('herdr in a terminal wins over the Herdr app when both are set', async ($, on) => {
+  const seen = app(on, { alsoTerminal: true })
+  await $.session.start(REPO)
+  await submit($, 'what is cost band?')
+  expect(seen.calls).toEqual([])
+})
+
+test('when herdr-core fails, the prompt goes through and nothing is renamed', async ($, on) => {
+  const seen = app(on, { core: 'fails', reply: 'x' })
+  await $.session.start(REPO)
+  await submit($, 'what is cost band?')
+  await $.turn.complete(TURN)
+  expect(seen.names()).toEqual({ space: '', tab: '' })
+})

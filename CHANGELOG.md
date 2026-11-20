@@ -2,6 +2,10 @@
 
 Every change to a pinned commit of a third-party entry gets a line here naming the entry.
 
+## Unreleased
+
+- `tab-namer` 0.7.0 also names the space and tab in the Herdr desktop app, through `herdr-core`. herdr in a terminal is unchanged and wins when both are present.
+
 ## v0.5.0 (2026-11-20)
 
 - Added `scripts/sync_public.sh`: copies the published files over an existing public clone, refuses one with uncommitted changes, lists files only the public clone tracks without deleting them, and leak-scans. The published file set moved to `scripts/published_files.sh`, which `export_public.sh` now uses too.

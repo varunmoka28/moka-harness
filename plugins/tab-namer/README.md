@@ -1,10 +1,10 @@
 # tab-namer
 
-Needs [herdr](https://herdr.dev). Names your herdr tab, and the workspace it sits in, after the task you start working on.
+Needs [herdr](https://herdr.dev), in a terminal or as the Herdr desktop app. Names your herdr tab, and the workspace it sits in, after the task you start working on.
 
 ## What it does
 
-With several Claude Code sessions open in herdr, every tab is just a number. This gives each tab a short name from your first request. If you start with "please fix the login page bug and rerun the tests", the tab becomes "fix the login page bug". The workspace gets the same name, as long as it still has the name herdr gave it (its folder name).
+With several Claude Code sessions open in herdr, every tab is just a number. This gives each tab a short name from your first request. If you start with "please fix the login page bug and rerun the tests", the tab becomes "fix the login page bug". The workspace gets the same name, as long as it still has the name herdr gave it (its folder name). In the Herdr desktop app the workspace is called a space, and it works the same way.
 
 Nothing to do for the first name: it happens on your first request in a session. A slash command counts too, using what you typed after it.
 
@@ -14,7 +14,7 @@ Nothing to do for the first name: it happens on your first request in a session.
 
 ## What it needs
 
-Claude Code 2.1.287 or newer, and [herdr](https://herdr.dev), the terminal tool whose tabs it names. Without herdr (or when herdr does not answer) it runs nothing, writes nothing and shows no error. Only tried on macOS.
+Claude Code 2.1.287 or newer, and [herdr](https://herdr.dev), the terminal tool whose tabs it names. In the Herdr desktop app it uses the `herdr-core` command the app installs. Without herdr (or when herdr does not answer) it runs nothing, writes nothing and shows no error. Only tried on macOS.
 
 Install: `claude plugin install tab-namer@moka-harness`.
 
@@ -34,6 +34,8 @@ Nothing leaves your machine except Claude's own model call, and only when relabe
 
 - A workspace counts as unnamed only while its name is the folder name of the folder Claude was started in. With several sessions in one workspace, the first one to name it keeps it.
 - Names are at most 40 characters and about five words.
+- In the Herdr desktop app the names live in the app's own state (the `herdr-app` document in `herdr-core`), which the app does not document. Tried with herdr-core 0.1.21; a later app version may store them differently, and then the mod names nothing.
+- When herdr runs inside a Herdr desktop app terminal, the herdr tab is named, not the app's space.
 - Relabelling is a guess by a small model and can be off.
 - The first name comes from your words as typed, so a vague first request gives a vague name.
 

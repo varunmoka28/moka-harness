@@ -137,7 +137,7 @@
     {
       "name": "tab-namer",
       "source": "./plugins/tab-namer",
-      "description": "Names your herdr tab and its workspace after the task you give Claude, from your first prompt. Can also rename it as the work changes, if you turn that on. Needs herdr and Claude Code 2.1.287 or newer; sends your first prompt to Haiku only if relabelling is on."
+      "description": "Names your herdr tab and its workspace (a space in the Herdr desktop app) after the task you give Claude, from your first prompt. Can also rename it as the work changes, if you turn that on. Needs herdr and Claude Code 2.1.287 or newer; sends your first prompt to Haiku only if relabelling is on."
     },
     {
       "name": "disk-sweep",

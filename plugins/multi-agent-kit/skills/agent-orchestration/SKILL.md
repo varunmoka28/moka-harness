@@ -24,6 +24,7 @@ Don't read files in your own session just to describe them to an agent. Name the
 
 - **One task per agent.** If the brief has an "and" joining two outcomes, make two briefs.
 - **Own files.** Say which files or folders the agent may change. Two agents never edit the same file.
+  - With `merge-gate` installed, record them as `git config branch.<branch>.scope "<paths>"` (space-separated; a trailing `/` marks a folder), so a merge outside them is refused.
 - **A named check.** Give the command or condition that proves the work is done (a test, a build, a diff to compare). An agent without one reports "done" on its own judgment.
 - **Own worktree when parallel.** Agents running at the same time each get their own git worktree and branch, so they cannot overwrite each other or leave your tree half-edited.
 - **Brief in a file.** Write the task to a file and point the agent at it. A file can be re-read, reviewed and reused after a restart; a long pasted prompt cannot.

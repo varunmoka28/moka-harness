@@ -19,6 +19,7 @@ Each of these is a harness plugin. The first six rows follow one rule: it starts
 | `unattended` | While on, refuses Claude's question prompts and plan mode, so a session carries on without you. | Off until you type `/unattended`. Claude then picks an option itself, so it may do something you would have chosen differently. |
 | `dispatch-router` | Refuses an agent launch that was not routed first. | Part of what it is for. Remove the plugin to stop it. |
 | `collision-guard` | Can cancel one edit when another session changed the same file in the last 30 minutes. | Asks you first. With `unattended` on, the edit goes ahead and a note is added. |
+| `merge-gate` | Can refuse a merge Claude runs. | Only branches with a declared scope; refuses, never deletes. It is a text check on the command line, so a merge it cannot read can get past it. |
 | `read-fence` | Refuses reads of the fenced skill folders. | Off by default. |
 | `big-read-guard` | Refuses a whole-file read of a text file over 50 KB. | Claude is told how to read a range, and a read with `offset` and `limit` always goes through. |
 

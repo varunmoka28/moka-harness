@@ -16,13 +16,7 @@ mkdir -p "$TARGET" || exit 1
 TARGET="$(cd "$TARGET" && pwd)"
 
 cd "$HERE" || exit 1
-git ls-files -z -- .claude-plugin plugins scripts tests marketplace.d README.md CREDITS.md \
-    CHANGELOG.md LICENSE .github docs \
-  | python3 -c '
-import sys
-for f in sys.stdin.buffer.read().split(b"\0"):
-    if f and not f.startswith((b"docs/specs/", b"docs/plans/", b"docs/sources/")):
-        sys.stdout.buffer.write(f + b"\0")' \
+bash "$HERE/scripts/published_files.sh" "$HERE" \
   | tar -cf - --null -T - | tar -xf - -C "$TARGET" || { echo "export_public: copy failed" >&2; exit 1; }
 
 cd "$TARGET" || exit 1

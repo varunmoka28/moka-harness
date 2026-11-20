@@ -1,0 +1,27 @@
+{
+  "name": "merge-gate",
+  "version": "0.1.0",
+  "description": "Refuses a merge Claude runs when the branch touches files outside its declared scope, carries a secret, or fails its tests; stops after three failed rounds.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness",
+  "keywords": [
+    "claude-code",
+    "claude-code-mod",
+    "claude-code-plugin",
+    "function-hooks",
+    "safety",
+    "multi-agent",
+    "git"
+  ],
+  "userConfig": {
+    "testCommand": {
+      "type": "string",
+      "title": "Test command",
+      "description": "Run in the branch's worktree before a merge, through sh -c. Empty: tests are reported as not run.",
+      "default": ""
+    }
+  }
+}

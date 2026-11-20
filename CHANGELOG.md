@@ -2,11 +2,14 @@
 
 Every change to a pinned commit of a third-party entry gets a line here naming the entry.
 
-## Unreleased
+## v0.5.0 (2026-11-20)
 
+- Added `scripts/sync_public.sh`: copies the published files over an existing public clone, refuses one with uncommitted changes, lists files only the public clone tracks without deleting them, and leak-scans. The published file set moved to `scripts/published_files.sh`, which `export_public.sh` now uses too.
+- `scripts/credits.py` keeps a row's date checked unless its pin changed; before, every run re-dated every row.
 - Added `human-in-the-loop` (tzafrir/human-in-the-loop, MIT) at `d8df5ff0ddc0dd00ff4d5e0955374de618dffdd4` (v0.1.10), in the core group; `core-bundle` now includes it.
 - Added `autoharness` (tigerless-labs/autoharness, MIT) at `6d85325ab5ef436d1d4d52ffa82e43ea0365d144` (v0.5.3), as an add-on outside every group.
 - `unattended` gained route mode (`/unattended route`, or `CLAUDE_UNATTENDED=route` with `CLAUDE_TASK_FILE`): a refused question is written to the worker's task file as `STATUS: blocked` and `QUESTION:` lines for the orchestrator, instead of Claude picking. Without a writable task file it falls back to on mode and says so.
+- Added `merge-gate`: refuses a merge Claude runs (`git merge`, `gh pr merge`) when the branch touches files outside its declared scope, carries a secret or fails its tests, and stops after three failed rounds. The orchestrator sets the scope with `git config branch.<branch>.scope` (#1).
 
 ## v0.4.0 (2026-11-16)
 

@@ -12,3 +12,12 @@ for want in ("Someone", "https://github.com/someone/ext", "MIT", sys.argv[2], "2
 assert "| own" not in t
 PY
 pass "row has author, link, licence, pin, date; local entry left out"
+
+python3 "$REPO_ROOT/scripts/credits.py" --root "$r" --date 2026-03-04
+grep -q "| ext .*| 2026-01-02 |" "$r/CREDITS.md" || fail "unchanged pin kept its date: $(cat "$r/CREDITS.md")"
+pass "unchanged pin keeps its old date"
+
+write_market "$r" "$SHA_B"
+python3 "$REPO_ROOT/scripts/credits.py" --root "$r" --date 2026-03-04
+grep -q "| ext .*$SHA_B.*| 2026-03-04 |" "$r/CREDITS.md" || fail "re-pinned row dated: $(cat "$r/CREDITS.md")"
+pass "re-pinned row gets the new date"

@@ -51,6 +51,8 @@ The steps below use `<session>` for your tuios session name. Set the plugin's `t
    git -C <repo> worktree add ../<repo>-<task> -b <task>
    ```
 
+   With `merge-gate` installed, also run `git -C <repo> config branch.<task>.scope "<path> <folder>/"`, so a merge of files outside that scope is refused.
+
 3. **Open one window per agent, in auto mode**, so it never waits on a permission prompt. Put `--` before the agent command, or tuios reads the agent's flags as its own:
 
    ```bash

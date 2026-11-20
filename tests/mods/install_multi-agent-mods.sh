@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Installs dispatch-router and multi-agent-kit from a temporary marketplace, in a sandbox config folder.
+# Installs dispatch-router, merge-gate and multi-agent-kit from a temporary marketplace, in a sandbox config folder.
 source "$(dirname "$0")/../step0/lib.sh"
 
-NAMES="dispatch-router multi-agent-kit"
+NAMES="dispatch-router merge-gate multi-agent-kit"
 M="moka-multi-agent-test"
 before="$(real_fingerprint)"
 sandbox_up

@@ -90,6 +90,7 @@ One row per entry in `.claude-plugin/marketplace.json`. Read [how far to trust t
 | watch | research | Bradley Bonanno | MIT | [c333c2289e57](https://github.com/bradautomates/claude-video/commit/c333c2289e57bf040b32846f18d669e3f8edad9b) | Yes: hooks | Not checked. Hooks run on your machine; where they send text, if anywhere, has not been read. |  |  |
 | agent-board | multi-agent | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript) | No |  |  |
 | dispatch-router | multi-agent | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript) | Yes: task text (first 4,000 characters) to api.typesafe.ai with your key. |  |  |
+| merge-gate | multi-agent | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript); runs your test command if you set one | No |  |  |
 | multi-agent-kit | multi-agent | moka-harness | MIT | in this repo | Yes: shell hooks | No |  |  |
 | tab-namer | multi-agent | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript) | Yes: a few recent requests go to Haiku to name the tab. |  |  |
 | codex | multi-agent | OpenAI | Apache-2.0 | [8e403f9d4b49](https://github.com/openai/codex-plugin-cc/commit/8e403f9d4b496b0b0aff50fa3673f889f6a22cb1) | Yes: hooks | Yes: scripts run the Codex CLI, which sends text to OpenAI. |  |  |

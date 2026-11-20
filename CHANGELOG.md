@@ -4,6 +4,7 @@ Every change to a pinned commit of a third-party entry gets a line here naming t
 
 ## Unreleased
 
+- Added `human-in-the-loop` (tzafrir/human-in-the-loop, MIT) at `d8df5ff0ddc0dd00ff4d5e0955374de618dffdd4` (v0.1.10), in the core group; `core-bundle` now includes it.
 - Added `autoharness` (tigerless-labs/autoharness, MIT) at `6d85325ab5ef436d1d4d52ffa82e43ea0365d144` (v0.5.3), as an add-on outside every group.
 - `unattended` gained route mode (`/unattended route`, or `CLAUDE_UNATTENDED=route` with `CLAUDE_TASK_FILE`): a refused question is written to the worker's task file as `STATUS: blocked` and `QUESTION:` lines for the orchestrator, instead of Claude picking. Without a writable task file it falls back to on mode and says so.
 

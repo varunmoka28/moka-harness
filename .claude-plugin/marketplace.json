@@ -511,6 +511,19 @@
       "license": "MIT"
     },
     {
+      "name": "human-in-the-loop",
+      "description": "Claude assigns you the tasks only you can do (a key in .env, an approval, a decision). They wait in a My tasks pane, counted under the prompt, until you do, answer or reject them, and your answer goes back to Claude. Needs Claude Code 2.1.301 or newer.",
+      "source": {
+        "source": "github",
+        "repo": "tzafrir/human-in-the-loop",
+        "sha": "d8df5ff0ddc0dd00ff4d5e0955374de618dffdd4"
+      },
+      "author": {
+        "name": "Tzafrir Rehan"
+      },
+      "license": "MIT"
+    },
+    {
       "name": "humanizer",
       "description": "Rewrites AI-sounding text so it reads like the writer without changing what it says.",
       "source": {

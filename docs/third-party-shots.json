@@ -151,6 +151,12 @@
    "alt": "bigarrow pointing at a dialog's Allow button"
   }
  ],
+ "human-in-the-loop": [
+  {
+   "src": "https://raw.githubusercontent.com/tzafrir/human-in-the-loop/d8df5ff0ddc0dd00ff4d5e0955374de618dffdd4/media/hero.gif",
+   "alt": "Human in the loop: Claude hands you the tasks only you can do; they wait in the My tasks pane until you answer, and your answers go back to Claude"
+  }
+ ],
  "treg": [
   {
    "src": "https://raw.githubusercontent.com/superdesigndev/treg/6ffe8df7126479631a4c649467aa307505e28a1b/docs/assets/treg-hero.png",

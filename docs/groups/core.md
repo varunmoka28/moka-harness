@@ -48,6 +48,7 @@ The bundle also carries these MCP servers, started when the bundle is enabled:
 | `micro-compaction` | Adds /compact micro, which drops old file reads and thinking from the transcript without a model summary. Needs Claude Code 2.1.287 or newer. |  | hook text not counted |
 | `cache-tax` | Keeps the one-hour prompt cache warm during breaks and warns once before a cold send. Warming sends model requests that cost tokens. Needs Claude Code 2.1.287 or newer. |  | hook text not counted |
 | `secret-box` | Lets Claude use a secret without seeing it: you paste the key in a masked box and Claude gets a placeholder. Needs Claude Code 2.1.287 or newer. | Nothing | hook text not counted |
+| `human-in-the-loop` | Claude assigns you the tasks only you can do; they wait in a My tasks pane until you do, answer or reject them, and your answer goes back to Claude. Needs Claude Code 2.1.301 or newer. |  | a few lines added to the system prompt (its README) |
 | `modwall` | Shows what each mod can reach as it loads and holds or refuses it by your policy. Needs Claude Code 2.1.287 or newer. |  | hook text not counted |
 | `claude-code-setup` | Reads a codebase and recommends hooks, skills, MCP servers and subagents for it. Needs nothing. | Nothing | 1 skill, 55 words of descriptions |
 | `mod-scout` | Ranks the mods you would use most from your recent sessions, with a skill that designs them. Needs Claude Code 2.1.287 or newer and Node 18 or newer. |  | 1 skill, 53 words of descriptions; plus hook text not counted |
@@ -65,5 +66,5 @@ The bundle also carries these MCP servers, started when the bundle is enabled:
 ## Rough context cost
 
 Counted words added to every session by the members above: about 2,826. This is the sum of skill description words and the session-start text that could be counted. It is a rough guide in words, not a measurement of tokens; tokens run somewhat higher than words.
-11 members in this group have text that was not counted: hooks that add session text, or skills whose descriptions were not read. Harness mods add text for the model only where a figure appears above, plus short instructions some add when you trigger them.
+12 members in this group have text that was not counted: hooks that add session text, or skills whose descriptions were not read. Harness mods add text for the model only where a figure appears above, plus short instructions some add when you trigger them.
 Skill descriptions are what load at every session start. The body of a skill loads only when it is used. Third-party description counts come from the SKILL.md at the pinned commit.

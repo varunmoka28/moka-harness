@@ -113,6 +113,16 @@ def main():
     skill_packs = {p["name"] for p in json.loads((ROOT / "marketplace.d/third-party-skills.json").read_text())}
     tp_shots = json.loads((ROOT / "docs/third-party-shots.json").read_text())
     group_of, entries = {}, []
+    # Release history per entry: every CHANGELOG release whose lines name it in backticks, newest first,
+    # with the entry's own version when the line gives one ("`side-chat` 0.4.5").
+    updates = {}
+    for m in re.finditer(r"^## (v[\d.]+)[^\n]*\n(.*?)(?=^## |\Z)", (ROOT / "CHANGELOG.md").read_text(), re.M | re.S):
+        seen = {}
+        for n, ver in re.findall(r"`([\w-]+)`(?: (\d+\.\d+\.\d+))?", m.group(2)):
+            if ver or n not in seen:
+                seen[n] = ver
+        for n, ver in seen.items():
+            updates.setdefault(n, []).append(f"[{m.group(1)}]({REPO}/releases/tag/{m.group(1)})" + (f" ({ver})" if ver else ""))
 
     for p in market:
         if isinstance(p["source"], str):
@@ -134,6 +144,7 @@ def main():
             hooks = folder / "hooks/hooks.json"
             pj = json.loads((folder / ".claude-plugin/plugin.json").read_text())
             deps = [d if isinstance(d, str) else d["name"] for d in pj.get("dependencies", [])]
+            e["facts"].append(("Version", pj.get("version", "")))
             if deps and not hooks.exists():
                 e["type"], e["group"] = "bundle", name
                 e["facts"].append(("Members", ", ".join(deps)))
@@ -187,6 +198,11 @@ def main():
                         "source": "harness", "group": "core", "facts": [], "how": md(body, f"{REPO}/blob/main/plugins/core"),
                         "ref": (f"{REPO}/blob/main/plugins/core/working-style.md", "working-style.md"),
                         "author": "", "licence": "", "runs": "", "sends": ""})
+
+    names = {p["name"] for p in market}
+    for e in entries:
+        if e["name"] in names and e["name"] in updates:
+            e["facts"].append(("Updated in", ", ".join(updates[e["name"]])))
 
     order = {k: i for i, (k, _) in enumerate(TYPES)}
     entries.sort(key=lambda e: (order[e["type"]], e["source"] == "third-party", e.get("i", 0), e["name"]))

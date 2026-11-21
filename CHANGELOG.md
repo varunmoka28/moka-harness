@@ -2,6 +2,10 @@
 
 Every change to a pinned commit of a third-party entry gets a line here naming the entry.
 
+## v0.6.1 (2026-11-21)
+
+- The catalogue shows each harness plugin's version, and on every card the releases that changed it (from the CHANGELOG lines that name it), each linked to its GitHub release.
+
 ## v0.6.0 (2026-11-21)
 
 - `side-chat` 0.4.5: card buttons sit on their own row as coloured pills (Copy, Draft, Send, Now, Fork), so they stay visible in a narrow pane (before, under about 170 terminal columns they were not drawn and Fork could not be pressed); quick asks are labelled Doing?, Explain and Next? and still send the full questions; Older and Newer pick the card Copy and Fork act on; Fork hands a question and answer to a full-tools agent in the same folder; `/btw ^name` reads a subagent that has just finished; up to 20 earlier side turns within 8,000 characters; `/clear`, `/new` and a history pick drop an answer still on its way; a side note is no longer appended to an idle main twice; fork answers show the main step they saw; the Haiku fallback lists tool names, says when there is no main context, and notes when an answer only wrote tool calls as text; quick ask "Explain that in plain words".

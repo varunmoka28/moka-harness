@@ -2,6 +2,8 @@ import { test, expect, mock } from 'claude-code/testing'
 
 test('/btw @name starts that agent type with the question', async ($, on) => {
   mock.store(on)
+  on('session.root', async () => ({ value: '/proj/a' }) as never)
+  on('session.id', async () => ({ value: 's-a' }) as never)
   const spawned: unknown[] = []
   on('agent.spawn', async (_t, e) => {
     spawned.push(e)

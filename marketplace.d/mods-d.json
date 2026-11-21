@@ -7,7 +7,7 @@
   {
     "name": "side-chat",
     "source": "./plugins/side-chat",
-    "description": "A side pane for follow-up questions (/btw). macOS only. Sends your question and the main conversation to a model fork; falls back to Haiku."
+    "description": "A side pane for follow-up questions (/btw). macOS only. Sends your question and the main conversation to a model fork; falls back to Haiku. Its Fork button starts a full-tools agent in the same folder."
   },
   {
     "name": "layman",

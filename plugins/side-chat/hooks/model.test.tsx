@@ -2,6 +2,8 @@ import { test, expect, mock } from 'claude-code/testing'
 
 test('a model picked with /side model reaches the agent spawn', async ($, on) => {
   mock.store(on)
+  on('session.root', async () => ({ value: '/proj/a' }) as never)
+  on('session.id', async () => ({ value: 's-a' }) as never)
   const toasts: string[] = []
   on('ui.toast', async (_t: any, e: any) => {
     toasts.push(e.text)

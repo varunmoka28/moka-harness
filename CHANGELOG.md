@@ -2,6 +2,10 @@
 
 Every change to a pinned commit of a third-party entry gets a line here naming the entry.
 
+## v0.6.2 (2026-11-21)
+
+- `side-chat` 0.4.6: a side question that asks for a prompt is answered with only the prompt text, with no intro, explanation or closing line, on the fork, the Haiku fallback and `^name`.
+
 ## v0.6.1 (2026-11-21)
 
 - The catalogue shows each harness plugin's version, and on every card the releases that changed it (from the CHANGELOG lines that name it), each linked to its GitHub release.

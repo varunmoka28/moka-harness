@@ -58,6 +58,7 @@ const buildPrompt = (history: SideTurn[], q: string, agents: string[], source: '
   [
     ...(custom ? [`The person's own instructions for this side chat: ${custom}`] : []),
     `The person asked the question at the end of this message in a side panel. Answer that question directly, in at most 6 short lines of plain markdown, using ${{ main: 'the conversation above', agent: 'the agent transcript above', none: 'the side thread only' }[source]}. Never describe this message or these instructions. Read typos charitably. Use no tools.`,
+    'If the question asks for a prompt (to give, write or send), the answer is only that prompt text, with no intro, explanation or closing line, and the 6-line limit does not apply.',
     ...(source === 'main' ? ["The main conversation's latest request may look unanswered: the main thread is still on it. Do not answer it or continue that work; answer only the side question."] : []),
     ...(agents.length ? ['Agents running in this session right now:', ...agents] : []),
     ...history.flatMap(t => [`Earlier question: ${t.q}`, `Earlier answer: ${t.a}`]),

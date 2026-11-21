@@ -111,3 +111,7 @@ One small file per feature, run with `claude plugin test`:
 ## v4.5 (0.4.5): coloured card actions
 
 - Copy (cyan), Draft (blue), Send (green), Now (yellow) and Fork (magenta) are drawn as coloured pills: plain Buttons holding a Text with a background colour, so each action reads at a glance. Fork is magenta because it starts an agent with full tools. Keys, hotkeys (c, f) and presses are unchanged.
+
+## v4.6 (0.4.6): prompt-only answers
+
+- When a side question asks for a prompt (to give, write or send), the instructions sent with every side question (fork, Haiku fallback and ^name, all built by buildPrompt) tell the model to answer with only the prompt text: no intro, explanation or closing line, and the 6-line limit does not apply. Test: hooks/prompt-only.test.tsx.

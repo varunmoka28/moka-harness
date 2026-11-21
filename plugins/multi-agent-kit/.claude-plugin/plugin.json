@@ -1,7 +1,7 @@
 {
   "name": "multi-agent-kit",
-  "version": "0.1.0",
-  "description": "Guidance on splitting work between agents, plus hooks for tuios users: list tuios windows, close finished ones (dry-run until switched on). Each hook does nothing when its tool is missing.",
+  "version": "0.2.0",
+  "description": "Guidance on splitting work between agents, plus hooks for tuios users: list tuios windows and flag finished or idle ones, close empty or runaway ones (dry-run until switched on). Each hook does nothing when its tool is missing.",
   "author": {
     "name": "moka-harness"
   },
@@ -26,13 +26,6 @@
       "title": "Window reaper: dry-run",
       "description": "On: log the tuios windows it would close and close nothing. Off: close them.",
       "default": true
-    },
-    "reaper_idle_minutes": {
-      "type": "number",
-      "title": "Window reaper: idle minutes",
-      "description": "A window whose screen has not changed for this long, with no agent working in it, is closed.",
-      "default": 15,
-      "min": 0
     },
     "herdr_tab_label": {
       "type": "string",

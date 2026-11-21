@@ -7,7 +7,7 @@ description: Read-only health check of a git repo and its GitHub remote. Reports
 
 ## 1. Run the report
 
-From the repo root:
+From the repo root. When the user asks how many worktrees exist across a whole workspace folder, the script covers only one repo, so run it or `git worktree list` per repo: find repos with `find <workspace> -maxdepth 4 -name .git -type d -not -path '*/node_modules/*'`, then drop nested `.claude` and `.brv` git dirs that duplicate a parent checkout, and list each repo's `git worktree list`. Report the linked worktrees (the main checkout is not an extra), and for "how much space" run `du -sh` on each linked worktree path.
 
 ```bash
 bash ~/.claude/skills/repo-health/repo-health.sh

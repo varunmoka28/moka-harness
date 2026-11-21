@@ -157,7 +157,16 @@ function show($: EngineInterface, nextView: View): void {
 // resets the run. Off at every session start; a hot reload turns it off too.
 const AUTO_CAP = 10
 // A suggestion naming one of these is never sent by itself, only offered.
-const RISKY = /\b(merge|push|delete|deploy|force|reset|drop|rm|publish|release)\b/i
+const RISKY_WORDS = 'merge|push|delete|deploy|force|reset|drop|rm|publish|release'
+const RISKY = new RegExp(`\\b(${RISKY_WORDS})\\b`, 'i')
+// "No push", "don't force push or merge": a risky word the prompt rules out is
+// not a reason to hold. Only words directly after the negation are covered.
+const NEGATED = new RegExp(
+  `\\b(?:no|not|never|without|don'?t)\\s+(?:${RISKY_WORDS})\\b(?:(?:,?\\s+(?:(?:and|or|nor)\\s+)?)(?:${RISKY_WORDS})\\b)*`,
+  'gi',
+)
+// Why auto mode did not send the suggestion on screen; shown in the header row.
+let held = ''
 let auto = false
 let autoSeconds = 10
 let streak = 0
@@ -204,14 +213,18 @@ function startCountdown($: EngineInterface, prompt: string): void {
 // After the offer is up: in auto mode, count down to sending suggestion 1.
 function autoSend($: EngineInterface, first: Suggestion): void {
   if (!auto) return
-  const risky = RISKY.exec(first.prompt)
-  if (risky) return void $.ui.toast(`auto held: suggestion 1 says "${risky[0]}", press 1 to use it`)
+  const risky = RISKY.exec(first.prompt.replace(NEGATED, ''))
+  if (risky) {
+    held = `auto held: suggestion 1 says "${risky[0]}", press 1 to use it`
+    return void $.ui.invalidate('ui.render')
+  }
   if (streak >= AUTO_CAP) return void $.ui.toast(`auto paused after ${AUTO_CAP} turns in a row; send anything to resume`)
   startCountdown($, first.prompt)
 }
 
 // Ask the fork, detached, so the band never waits on it.
 function ask($: EngineInterface, turnId: string, suggestsSkills: boolean): void {
+  held = ''
   show($, { kind: 'loading', turnId })
   // The fork keeps running; its late answer is dropped by the check below.
   const timer = $.clock.after(FORK_TIMEOUT_MS, () => {
@@ -368,6 +381,8 @@ export const register: Register = (on, options) => {
         {/* One header row: the band's height is capped, and a taller tree scrolls the countdown out of view */}
         {countdown > 0 ? (
           <Text color="yellow">{`next (auto ${streak}/${AUTO_CAP}): sending 1 in ${countdown}s, press 0 to stop`}</Text>
+        ) : auto && held !== '' ? (
+          <Text color="yellow">{`next (${held}):`}</Text>
         ) : (
           <Text dimColor>{auto ? `next (auto ${streak}/${AUTO_CAP}):` : 'next:'}</Text>
         )}

@@ -2,6 +2,13 @@
 
 Every change to a pinned commit of a third-party entry gets a line here naming the entry.
 
+## v0.7.0 (2026-11-21)
+
+- `multi-agent-kit` 0.2.0: the window reaper no longer closes a window on a `STATUS: done` line or after idle minutes (the `reaper_idle_minutes` setting is gone); it still closes empty shells and two-hour runaways, and gains `--done-line <cwd> <pid>`. The worker watch reads the named window, counts `STATUS: done` or `blocked` only at the start of a line, and ends on needs_input only when a prompt is on screen. The status hook flags finished Claude windows and windows idle 24 hours or more, and names the window that needs attention.
+- `next-steps-autopilot` 0.6.1: a risky word the suggestion rules out ("No push", "don't force push or merge") no longer holds auto mode, and the reason a suggestion was held shows in the band's header row instead of a toast.
+- `dispatch-router` 0.1.1: a Claude, Codex or agy launch typed through `herdr-app do tab.new` is routed like `send-keys` and `pane run`.
+- `repo-health` 0.1.1: the skill says how to count worktrees across a whole workspace folder, one repo at a time.
+
 ## v0.6.2 (2026-11-21)
 
 - `side-chat` 0.4.6: a side question that asks for a prompt is answered with only the prompt text, with no intro, explanation or closing line, on the fork, the Haiku fallback and `^name`.

@@ -214,12 +214,36 @@ test('a bad argument changes nothing', async ($, on) => {
   expect((await auto($, 'soon')).text).toContain('Usage')
 })
 
-test('a risky suggestion is held, not sent', async ($, on) => {
+const BAND = { plugin: 'next-steps-autopilot', surface: 'terminal', component: 'AbovePrompt', props: { hasSurvey: false, isWorking: false, maxRows: 10, bodyColumns: 120, scroll: { offset: 0, bodyRows: 10 }, view: {} } } as never
+
+test('a risky suggestion is held, not sent, and the header row says why', async ($, on) => {
   const { seen, clock } = host(on, undefined, JSON.stringify([{ label: 'Merge', prompt: 'merge the PR' }]))
+  on('ui.render', { component: 'AbovePrompt' }, ($, e) => $.ui.resolve(e).Box({}) as never)
   await $.session.start(START)
   await auto($, '1')
   await $.turn.complete(TURN)
   await clock.advance(5_000)
   expect(seen.submitted).toEqual([])
-  expect(seen.toasts.some(t => t.includes('auto held'))).toBe(true)
+  expect(seen.toasts).toEqual([])
+  const band = await $.ui.mount(BAND)
+  expect(await band.find({ text: /auto held: suggestion 1 says "merge"/ })).toBeDefined()
+})
+
+test('a negated mention like "No push" does not hold the suggestion', async ($, on) => {
+  const prompt = "Commit on the branch and run the checks. No push, don't force push or merge, never deploy."
+  const { seen, clock } = host(on, undefined, JSON.stringify([{ label: 'Commit', prompt }]))
+  await $.session.start(START)
+  await auto($, '1')
+  await $.turn.complete(TURN)
+  await clock.advance(1_000)
+  expect(seen.submitted).toEqual([prompt])
+})
+
+test('a negation does not cover a later risky word', async ($, on) => {
+  const { seen, clock } = host(on, undefined, JSON.stringify([{ label: 'Merge', prompt: 'No push yet. Then merge the PR' }]))
+  await $.session.start(START)
+  await auto($, '1')
+  await $.turn.complete(TURN)
+  await clock.advance(5_000)
+  expect(seen.submitted).toEqual([])
 })

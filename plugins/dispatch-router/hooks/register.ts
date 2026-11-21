@@ -72,10 +72,10 @@ function localOnly(text: string): boolean {
 }
 
 // `herdr agent start <name> --kind claude ...` (herdr is a terminal multiplexer; the other forms need no tool), or claude/codex/agy in command position
-// (start, after && ; | ||, env prefixes allowed), or typed into a pane with send-keys or pane run.
+// (start, after && ; | ||, env prefixes allowed), or typed into a pane with send-keys, pane run or tab.new.
 const LAUNCH_KIND = /\bagent\s+start\b[^\n]*--kind\s+(claude|codex|agy)\b/
 const LAUNCH_CMD = /(?:^|&&|\|\||;|\|)\s*(?:\w+=\S*\s+)*(claude|codex|agy)(?=\s|$)/m
-const LAUNCH_KEYS = /(?:send-keys|pane\s+run)\b[^\n]*["'](?:\w+=\S*\s+)*(claude|codex|agy)(?=\s|["'])/
+const LAUNCH_KEYS = /(?:send-keys|pane\s+run|tab\.new)\b[^\n]*["'](?:\w+=\S*\s+)*(claude|codex|agy)(?=\s|["'])/
 // Subcommands and flags that are not a session: `claude plugin validate`, `agy models`, `codex --version`.
 const NOT_A_SESSION =
   /(?:^|&&|\|\||;|\|)\s*(?:\w+=\S*\s+)*(?:claude|codex|agy)\s+(?:plugin|auth|mcp|models?|agents?|update|install|doctor|changelog|login|logout|config|help|--version|--help|-v|-h)\b/m

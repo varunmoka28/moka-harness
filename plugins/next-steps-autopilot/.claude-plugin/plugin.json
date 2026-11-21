@@ -1,6 +1,6 @@
 {
   "name": "next-steps-autopilot",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "A What next? button above the prompt box asks for suggested next prompts only when pressed. Type /auto to have suggestion 1 sent after a countdown you set; off by default.",
   "author": {
     "name": "moka-harness"

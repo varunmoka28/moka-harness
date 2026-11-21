@@ -34,7 +34,7 @@ Bundle plugins (`core-bundle`, `writing`, `design`, `media`, `research`, `multi-
 | `input-router` | `command.run`, `prompt.submit`, `session.end`, `session.start`, `tool.call`, `tool.check`, `ui.render` | `/input-router` | none | none | Saved large results in a private folder under /tmp. |
 | `layman` | `command.run`, `prompt.submit`, `session.start` | `/layman` | none | none | none |
 | `merge-gate` | `tool.call` | none | none | `testCommand` | merge-gate-ledger.jsonl in the plugin data folder. |
-| `multi-agent-kit` | SessionStart, UserPromptSubmit, Stop | none | none | `tuios_session`, `reaper_dry_run`, `reaper_idle_minutes`, `herdr_tab_label` | reaper.log, reaper.seen and a closed/ folder of last screens, in the plugin data folder. |
+| `multi-agent-kit` | SessionStart, UserPromptSubmit, Stop | none | none | `tuios_session`, `reaper_dry_run`, `herdr_tab_label` | reaper.log, reaper.seen and a closed/ folder of last screens, in the plugin data folder. |
 | `next-steps-autopilot` | `command.run`, `prompt.edit`, `prompt.submit`, `session.end`, `session.start`, `turn.complete`, `turn.start`, `ui.render` | `/auto` | none | `minAnswerChars`, `suggestSkills`, `autoSeconds` | none |
 | `noticeboard` | `classic.Stop`, `command.run`, `session.start`, `tool.call`, `turn.complete`, `ui.render` | `/board` | `pin` (registered only after /board send) | `NOTICEBOARD_WAIT` | none |
 | `park` | `command.run`, `session.end`, `session.start`, `turn.complete` | `/park`, `/unpark` | none | none | A .park folder with notes. |

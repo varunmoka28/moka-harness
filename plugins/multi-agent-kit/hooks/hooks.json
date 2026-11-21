@@ -1,5 +1,5 @@
 {
-  "description": "List tuios windows on each prompt, and close finished tuios windows (dry-run until switched on)",
+  "description": "List tuios windows on each prompt, and close empty or runaway tuios windows (dry-run until switched on)",
   "hooks": {
     "SessionStart": [
       {

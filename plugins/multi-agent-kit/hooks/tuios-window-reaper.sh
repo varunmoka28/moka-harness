@@ -1,51 +1,26 @@
 #!/bin/bash
-# SessionStart + Stop: close tuios windows, in the one tuios session the user named, that are finished or empty.
+# SessionStart + Stop: close tuios windows, in the one tuios session the user named, that are empty or have run away.
 #   1. no agent in it: a bare shell with no child process
-#   2. a Claude window whose agent has finished its turn and whose own last message ends with a line
-#      "STATUS: done" (read from the agent's transcript, never from the screen: the screen also shows
-#      what was typed into it, and a typed "end with STATUS: done." could close a healthy worker).
-#      Windows without a transcript (agy, Codex) have no completion rule and stay open until rule 3.
-#   3. screen unchanged for reaper_idle_minutes and the agent is not working
-#   4. agent in "working" state for over 2 hours (a runaway), unless the window's name is listed in
+#   2. agent in "working" state for over 2 hours (a runaway), unless the window's name is listed in
 #      ${CLAUDE_PLUGIN_DATA}/reaper.keep (one name per line)
+# It does not close a window for finishing or for sitting idle: close a worker yourself once you have accepted its
+# result. tuios-status-hook.sh flags finished and idle windows.
 # Never touches a window listed in `tuios list-attention` (approval, question, plan, error).
 # The last screen of each closed window goes to ${CLAUDE_PLUGIN_DATA}/closed/.
 # When no windows remain and herdr_tab_label is set, closes the herdr tab with that label.
+# --done-line <cwd> <pid>: needs no session, daemon or plugin data, prints nothing, and exits 0 only when the agent's
+# own last message in its transcript ends with a line "STATUS: done", else 1. Read from the transcript, never from
+# the screen: the screen also shows what was typed into it, and a typed "end with STATUS: done." could read as done.
+# tuios-status-hook.sh calls it. Windows without a transcript (agy, Codex) are never done.
 #
 # It closes things, so: it does nothing until tuios_session names a session; it only reports
 # ("would close") until reaper_dry_run is switched off; every action goes to
 # ${CLAUDE_PLUGIN_DATA}/reaper.log. Needs tuios and jq; with either missing it does nothing.
 # macOS: uses md5 and stat -f.
-# REAPER_SOCK overrides the daemon socket path (used by tests/test_reaper.sh).
+# REAPER_SOCK and REAPER_PROJECTS override the daemon socket and the transcript folder (used by tests/multi-agent-kit/test_hooks.sh).
 set -u
-SESSION=${CLAUDE_PLUGIN_OPTION_TUIOS_SESSION:-}
-[ -z "$SESSION" ] && exit 0
-command -v tuios >/dev/null 2>&1 && command -v jq >/dev/null 2>&1 || exit 0
-STATE=${CLAUDE_PLUGIN_DATA:-}
-[ -z "$STATE" ] && { echo "multi-agent-kit reaper: CLAUDE_PLUGIN_DATA not set, no log possible, doing nothing"; exit 0; }
-export TUIOS_SERVER=$SESSION
-case "$(printf '%s' "${CLAUDE_PLUGIN_OPTION_REAPER_DRY_RUN:-true}" | tr 'A-Z' 'a-z')" in
-  false|0|no|off) DRY=0 ;; *) DRY=1 ;;
-esac
-[ "${1:-}" = --dry-run ] && DRY=1
-IDLE=$(awk -v m="${CLAUDE_PLUGIN_OPTION_REAPER_IDLE_MINUTES:-15}" 'BEGIN{ if (m+0 >= 0) printf "%d", m*60; else print 900 }')
-CAP=7200
-PROJECTS=${REAPER_PROJECTS:-${CLAUDE_CONFIG_DIR:-$HOME/.claude}/projects}
-SOCK=${REAPER_SOCK:-/tmp/tuios-$(id -u)/servers/$SESSION/tuios.sock}
-LOG=$STATE/reaper.log
-SEEN=$STATE/reaper.seen   # "<window_id> <screen md5> <first-seen epoch>"
-WORK=$STATE/reaper.work   # "<window_id> <first-seen-working epoch>"
-KEEP=$STATE/reaper.keep   # window names exempt from the working cap
-mkdir -p "$STATE"
-
-[ -S "$SOCK" ] || exit 0   # no daemon: do not start one
 now=$(date +%s)
-say() { # $1 what, $2 reason
-  local verb="closed"; [ $DRY = 1 ] && verb="would close"
-  echo "$(date '+%F %T') $verb $1 ($2)" >> "$LOG"
-  [ $DRY = 1 ] && echo "multi-agent-kit reaper: would close $1 ($2)"
-}
-
+PROJECTS=${REAPER_PROJECTS:-${CLAUDE_CONFIG_DIR:-$HOME/.claude}/projects}
 # The last non-empty line of the agent's own last message, from its transcript. Empty when there is none.
 # $1 cwd, $2 pid: only a transcript written since this window's process started counts, because two windows in
 # the same folder share the transcript folder and a fresh window has no transcript of its own until its first turn.
@@ -60,12 +35,37 @@ agent_last_line() {
   jq -r 'select(.type=="assistant") | [.message.content[]? | select(.type=="text") | .text] | join("\n")' "$f" 2>/dev/null \
     | grep -v '^[[:space:]]*$' | tail -n 1
 }
+[ "${1:-}" = --done-line ] && { [[ "$(agent_last_line "${2:-}" "${3:-}")" =~ ^[[:space:]]*STATUS:\ done ]]; exit; }   # before the guards below: their exit 0 would read as "done"
+SESSION=${CLAUDE_PLUGIN_OPTION_TUIOS_SESSION:-}
+[ -z "$SESSION" ] && exit 0
+command -v tuios >/dev/null 2>&1 && command -v jq >/dev/null 2>&1 || exit 0
+STATE=${CLAUDE_PLUGIN_DATA:-}
+[ -z "$STATE" ] && { echo "multi-agent-kit reaper: CLAUDE_PLUGIN_DATA not set, no log possible, doing nothing"; exit 0; }
+export TUIOS_SERVER=$SESSION
+case "$(printf '%s' "${CLAUDE_PLUGIN_OPTION_REAPER_DRY_RUN:-true}" | tr 'A-Z' 'a-z')" in
+  false|0|no|off) DRY=0 ;; *) DRY=1 ;;
+esac
+[ "${1:-}" = --dry-run ] && DRY=1
+CAP=7200
+SOCK=${REAPER_SOCK:-/tmp/tuios-$(id -u)/servers/$SESSION/tuios.sock}
+LOG=$STATE/reaper.log
+SEEN=$STATE/reaper.seen   # "<window_id> <screen md5> <first-seen epoch>"
+WORK=$STATE/reaper.work   # "<window_id> <first-seen-working epoch>"
+KEEP=$STATE/reaper.keep   # window names exempt from the working cap
+mkdir -p "$STATE"
+
+[ -S "$SOCK" ] || exit 0   # no daemon: do not start one
+say() { # $1 what, $2 reason
+  local verb="closed"; [ $DRY = 1 ] && verb="would close"
+  echo "$(date '+%F %T') $verb $1 ($2)" >> "$LOG"
+  [ $DRY = 1 ] && echo "multi-agent-kit reaper: would close $1 ($2)"
+}
 
 windows=$(tuios list-windows -s "$SESSION" --json 2>/dev/null) || exit 0
 attention=$(tuios list-attention -s "$SESSION" --kind approval,plan,ask,question,errored --json 2>/dev/null | jq -c '.items[]?' 2>/dev/null)
 touch "$SEEN" "$WORK"; newseen=$(mktemp); newwork=$(mktemp)
 
-while IFS=$'\x1f' read -r id name state pid cwd fg; do
+while IFS=$'\x1f' read -r id name state pid; do
   [ -z "$id" ] && continue
   if grep -qF -e "$id" -e "\"$name\"" <<<"$attention"; then
     grep "^$id " "$SEEN" >> "$newseen"; grep "^$id " "$WORK" >> "$newwork"; continue   # blocked on a human
@@ -76,11 +76,8 @@ while IFS=$'\x1f' read -r id name state pid cwd fg; do
     reason="no agent"
   fi
   screen=$(tuios capture-pane -s "$SESSION" -w "$id" 2>/dev/null)
-  if [ -z "$reason" ] && [ "$state" != working ] && [ "${fg##*/}" = claude ] \
-     && [[ "$(agent_last_line "$cwd" "$pid")" =~ ^[[:space:]]*STATUS:\ done ]]; then reason="STATUS: done (transcript)"; fi
   h=$(md5 -q -s "$screen"); first=$(grep "^$id $h " "$SEEN" | cut -d' ' -f3)
   [ -z "$first" ] && first=$now
-  if [ -z "$reason" ] && [ "$state" != working ] && [ $((now-first)) -ge $IDLE ]; then reason="screen unchanged $(( (now-first)/60 )) min"; fi
   if [ "$state" = working ]; then
     wfirst=$(grep "^$id " "$WORK" | cut -d' ' -f2); [ -z "$wfirst" ] && wfirst=$now
     if [ -z "$reason" ] && [ $((now-wfirst)) -ge $CAP ] && ! grep -qxF "$name" "$KEEP" 2>/dev/null; then
@@ -95,7 +92,7 @@ while IFS=$'\x1f' read -r id name state pid cwd fg; do
     echo "$id $h $first" >> "$newseen"
     [ "$state" = working ] && echo "$id $wfirst" >> "$newwork"
   fi
-done < <(jq -r '.windows[] | [.window_id, .display_name, (.agent_state // "none"), .pid, (.cwd // ""), (.foreground_cmd // "")] | map(tostring) | join("\u001f")' <<<"$windows")
+done < <(jq -r '.windows[] | [.window_id, .display_name, (.agent_state // "none"), .pid] | map(tostring) | join("\u001f")' <<<"$windows")
 mv "$newseen" "$SEEN"; mv "$newwork" "$WORK"
 
 LABEL=${CLAUDE_PLUGIN_OPTION_HERDR_TAB_LABEL:-}

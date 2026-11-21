@@ -1,6 +1,6 @@
 {
   "name": "repo-health",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Read-only health check of a git repo and its GitHub remote: open PRs, merged, unpushed and stale branches, worktrees with disk size, stashes. Deletes nothing.",
   "author": {
     "name": "moka-harness"

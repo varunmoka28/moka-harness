@@ -134,6 +134,7 @@ test('a sure cloud call on a Claude runner goes to the cloud, and only a cloud l
   expect((await bash($, 'claude --model sonnet')).deny).toContain('no routed local decision')
   expect((await bash($, 'claude --cloud "Write the products doc"')).deny).toBeUndefined()
   expect((await bash($, 'claude --cloud "again"')).deny).toContain('no routed decision sends this work to the cloud')
+  expect((await bash($, `herdr-app do tab.new --name "cloud: x" --folder /repo --argv '["zsh","-lc","claude --cloud \\"$(cat /tmp/b.md)\\""]' --focus false`)).deny).toContain('no routed decision sends this work to the cloud')
   expect((await bash($, 'claude -p "status?" --cloud abc123')).deny).toBeUndefined()
 })
 

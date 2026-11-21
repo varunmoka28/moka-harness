@@ -1,6 +1,6 @@
 {
   "name": "dispatch-router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Asks a TypeSafe model which CLI and model should take each agent task, and refuses an agent launch that was not routed. Needs a TypeSafe API key; without one it does nothing. Sends the task text to api.typesafe.ai.",
   "author": {
     "name": "moka-harness"

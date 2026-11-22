@@ -146,25 +146,13 @@ test('a fork answer shows how much the cache served', async ($, on) => {
   expect(await m.find({ type: 'Text', text: /s · read 73\.0k · new 12 · out 300$/ })).toBeDefined()
 })
 
-test('Now joins a running turn, and is sent as a message when main is idle', async ($, on) => {
+test('a card has Send but no Now button (Now removed in 0.4.7)', async ($, on) => {
   base(on)
-  const submitted: string[] = []
-  on('prompt.submit', async (_t: any, e: any) => {
-    submitted.push(e.text)
-    return { drop: 'test' } as never
-  })
-  const rows = mock.session(on)
-  on('turn.start', async (_t: any, e: any) => ({ turnId: e.turnId }) as never)
   await $.command.run({ command: 'btw', args: 'q' } as never)
   await settle()
   const m = await mount($)
-  await m.press({ key: 'now-0' })
-  expect(submitted).toEqual(['Use **pnpm**.'])
-
-  await $.turn.start({ text: 'main work', turnId: 't1' } as never)
-  await m.press({ key: 'now-0' })
-  expect(submitted).toHaveLength(1)
-  expect(JSON.stringify(rows.appended())).toContain('From my side chat: Use **pnpm**.')
+  expect(await m.find({ key: 'send-0' })).toBeDefined()
+  expect(await m.find({ key: 'now-0' })).toBeUndefined()
 })
 
 test('a fallback with no main transcript text answers from the side thread only and says so', async ($, on) => {

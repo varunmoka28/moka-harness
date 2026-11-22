@@ -24,7 +24,6 @@ const ACTIONS = [
   { name: 'copy', label: 'Copy', bg: 'cyan', fg: 'black', key: 'c' },
   { name: 'draft', label: 'Draft', bg: 'blue', fg: 'white', key: undefined },
   { name: 'send', label: 'Send', bg: 'green', fg: 'black', key: undefined },
-  { name: 'now', label: 'Now', bg: 'yellow', fg: 'black', key: undefined },
   { name: 'fork', label: 'Fork', bg: 'magenta', fg: 'white', key: 'f' },
 ] as const
 
@@ -41,10 +40,6 @@ const PANE = 'side-chat'
 const MODELS = ['default', 'haiku', 'sonnet', 'opus']
 // The haiku fallback reads the main transcript's text, its tail cut to this.
 const TRANSCRIPT_CHARS = 60000
-// Main turns running now, by turnId, so "Now" knows whether there is a turn to join.
-// Only the main loop counts (turn.start carries no agentId there): Now appends to main, a note held on an idle main rides the next turn,
-// and with a second press that is a double delivery (checked live 2026-11-21).
-const turnsRunning = new Set<string>()
 // Index of the main loop's latest request in the running turn (main only, counted from 0; a subagent's steps must not touch it), undefined when idle.
 let mainStep: number | undefined
 
@@ -262,22 +257,11 @@ async function save($: EngineInterface) {
 
 const asText = (list: SideTurn[]) => list.map(t => `Q: ${t.q}\nA: ${t.a}`).join('\n\n')
 
-type How = 'copy' | 'draft' | 'send' | 'now'
+type How = 'copy' | 'draft' | 'send'
 
-// Copy, Draft, Send and Now, for one answer or (with `all`) the whole thread.
+// Copy, Draft and Send, for one answer or (with `all`) the whole thread.
 async function act($: EngineInterface, how: How, text: string) {
   if (!text) return 'Nothing to ' + how + ' yet.'
-  if (how === 'now') {
-    if (!turnsRunning.size) {
-      void $.prompt.submit({ text })
-      return 'The main chat was idle, so it was sent as a message.'
-    }
-    // Joins the running turn: the model reads the row on its next request.
-    const r = await $.session.append({ message: { type: 'user', content: [{ type: 'text', text: `From my side chat: ${text}` }] } })
-    if (r.deny === undefined) return 'Added to the running turn.'
-    void $.prompt.submit({ text })
-    return `Could not join the turn (${r.deny}); it is sent when the turn ends.`
-  }
   if (how === 'copy') {
     const r = await $.process.run(['pbcopy'], { stdin: text })
     return r.exitCode === 0 ? 'Copied.' : `Copy failed: ${r.stderr.trim() || r.exitCode}`
@@ -330,7 +314,7 @@ async function control($: EngineInterface, word: string) {
     await update($, model, () => wanted)
     return flash($, `Agent model set to ${wanted}.`)
   }
-  const verb = /^(copy|draft|send|now)(\s+all)?$/.exec(word)
+  const verb = /^(copy|draft|send)(\s+all)?$/.exec(word)
   if (verb) {
     const list = await read($, turns)
     const text = verb[2] ? asText(list) : (list.at(-1)?.a ?? '')
@@ -404,7 +388,7 @@ async function press($: EngineInterface, key: string) {
     return void update($, picked, () => (to === list.length - 1 ? -1 : to))
   }
   if (name === 'fold') return void update($, opened, o => (o.includes(+n) ? o.filter(x => x !== +n) : [...o, +n]))
-  if (['copy', 'draft', 'send', 'now'].includes(name)) {
+  if (['copy', 'draft', 'send'].includes(name)) {
     const t = (await read($, turns))[+n]
     if (t) await flash($, await act($, name as How, t.a))
   }
@@ -419,10 +403,7 @@ export const register: Register = (on, options) => {
   // Hand a started side-chat agent its answer; every hook sees a subagent's turn, so pass the event on.
   on('turn.start', async ($, e, next) => {
     if (e.agentId) await remember($, e.agentId)
-    if (!e.agentId) {
-      turnsRunning.add(e.turnId)
-      mainStep = undefined
-    }
+    if (!e.agentId) mainStep = undefined
     return next(e)
   })
 
@@ -433,7 +414,7 @@ export const register: Register = (on, options) => {
   })
 
   on('ui.press', async ($, e, next) => {
-    if (e.plugin !== 'side-chat' || e.requestId !== PANE || !/^(clear|close|stop|chip|fold|copy|draft|send|now|fork|older|newer)(-|$)/.test(e.element)) return next(e)
+    if (e.plugin !== 'side-chat' || e.requestId !== PANE || !/^(clear|close|stop|chip|fold|copy|draft|send|fork|older|newer)(-|$)/.test(e.element)) return next(e)
     await press($, e.element)
     return { element: e.element }
   })
@@ -458,7 +439,6 @@ export const register: Register = (on, options) => {
 
   on('turn.complete', async ($, e, next) => {
     if (e.agentId) await remember($, e.agentId)
-    turnsRunning.delete(e.turnId)
     if (!e.agentId) mainStep = undefined
     if (e.agentId && (started.has(e.agentId) || starting > 0)) {
       // Any ending counts, so the pane never hangs on an agent that failed or was aborted.
@@ -510,7 +490,7 @@ export const register: Register = (on, options) => {
         </Box>
         <Text bold>Side chat</Text>
         <Text dimColor>{total} saved (/history){note ? ' · ' + note : ''}</Text>
-        <Text dimColor>/copy /draft /send /now [all] · /history /new · /model {agentModel} · Esc: main prompt</Text>
+        <Text dimColor>/copy /draft /send [all] · /history /new · /model {agentModel} · Esc: main prompt</Text>
         {pick && (
           <Select
             key="history"

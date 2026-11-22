@@ -115,3 +115,7 @@ One small file per feature, run with `claude plugin test`:
 ## v4.6 (0.4.6): prompt-only answers
 
 - When a side question asks for a prompt (to give, write or send), the instructions sent with every side question (fork, Haiku fallback and ^name, all built by buildPrompt) tell the model to answer with only the prompt text: no intro, explanation or closing line, and the 6-line limit does not apply. Test: hooks/prompt-only.test.tsx.
+
+## v4.7 (0.4.7): Now removed (2026-11-22)
+
+- The Now button and /now are gone, with the turn tracking only they used. Live probe 2026-11-22 (Haiku, main turn waiting on a background agent): Now's note was read only when the agent finished, about 2 minutes later, so it did nothing Send does not. Send is unchanged: its prompt queues behind a running main turn and runs when the session is idle. Tests: now-route removed; v2 checks a card has Send and no Now.

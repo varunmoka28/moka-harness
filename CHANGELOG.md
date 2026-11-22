@@ -2,6 +2,10 @@
 
 Every change to a pinned commit of a third-party entry gets a line here naming the entry.
 
+## v0.7.1 (2026-11-22)
+
+- `side-chat` 0.4.7: the Now button and `/now` are removed. With the main turn waiting on an agent, Now's note reached the model no sooner than Send's queued prompt. Send is unchanged: it queues behind a running main turn.
+
 ## v0.7.0 (2026-11-21)
 
 - `multi-agent-kit` 0.2.0: the window reaper no longer closes a window on a `STATUS: done` line or after idle minutes (the `reaper_idle_minutes` setting is gone); it still closes empty shells and two-hour runaways, and gains `--done-line <cwd> <pid>`. The worker watch reads the named window, counts `STATUS: done` or `blocked` only at the start of a line, and ends on needs_input only when a prompt is on screen. The status hook flags finished Claude windows and windows idle 24 hours or more, and names the window that needs attention.

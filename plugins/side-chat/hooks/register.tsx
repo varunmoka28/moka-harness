@@ -28,7 +28,7 @@ const ACTIONS = [
 ] as const
 
 const CHIPS = [
-  { label: 'Doing?', q: 'What are you doing?' },
+  { label: 'WRD?', q: 'What are you doing?' },
   { label: 'Explain', q: 'Explain that in plain words' },
   { label: 'Next?', q: "What's next?" },
 ]
@@ -372,6 +372,8 @@ const selectedOf = (list: SideTurn[], p: number) => (list.length ? (p < 0 ? list
 async function press($: EngineInterface, key: string) {
   const [name, n] = key.split('-')
   if (name === 'clear') return void (await control($, 'clear'))
+  // The main session's own /clear; the side thread is left alone.
+  if (name === 'mainclear') return void $.command.run({ command: 'clear' }).catch(err => flash($, `/clear failed: ${err?.message ?? err}`))
   if (name === 'close') return void (await $.ui.close({ id: PANE }))
   if (name === 'stop') return stop($)
   if (name === 'chip') return void ask($, CHIPS[Number(n)].q)
@@ -414,7 +416,7 @@ export const register: Register = (on, options) => {
   })
 
   on('ui.press', async ($, e, next) => {
-    if (e.plugin !== 'side-chat' || e.requestId !== PANE || !/^(clear|close|stop|chip|fold|copy|draft|send|fork|older|newer)(-|$)/.test(e.element)) return next(e)
+    if (e.plugin !== 'side-chat' || e.requestId !== PANE || !/^(clear|mainclear|close|stop|chip|fold|copy|draft|send|fork|older|newer)(-|$)/.test(e.element)) return next(e)
     await press($, e.element)
     return { element: e.element }
   })
@@ -486,6 +488,7 @@ export const register: Register = (on, options) => {
       <Box flexDirection="column">
         <Box position="absolute" top={0} right={0} gap={1}>
           <Button key="clear" label="Clear" onPress={noop} />
+          <Button key="mainclear" label="/clear main" onPress={noop} />
           <Button key="close" label="Close" onPress={noop} />
         </Box>
         <Text bold>Side chat</Text>

@@ -25,6 +25,23 @@ function base(on: any, fork: (t: any, e: any) => Promise<unknown> = async () => 
   return toasts
 }
 
+test("the /clear main button runs the main session's /clear and leaves the side thread", async ($, on) => {
+  base(on)
+  let cleared = 0
+  on('command.run', { command: 'clear' }, async () => {
+    cleared++
+    return { value: {} } as never
+  })
+  await $.command.run({ command: 'btw', args: 'q' } as never)
+  await settle()
+  const m = await mount($)
+  expect((await m.find({ key: 'mainclear' }))?.text).toBe('/clear main')
+  await m.press({ key: 'mainclear' })
+  await settle()
+  expect(cleared).toBe(1)
+  expect(await m.find({ key: 'copy-0' })).toBeDefined()
+})
+
 test('an unforkable session is answered by haiku, tagged, and drawn as markdown', async ($, on) => {
   base(on)
   await $.command.run({ command: 'btw', args: 'which package manager?' } as never)
@@ -97,7 +114,7 @@ test('heading, chips, folding past 12 lines, and Stop drops the late answer', as
   expect(await m.find({ type: 'Text', text: /^Side chat$/ })).toBeDefined()
   expect(await m.find({ key: 'chip-0' })).toBeDefined()
   // Short labels keep the row inside a narrow pane; the full question is still what gets asked.
-  expect((await m.find({ key: 'chip-0' }))?.text).toBe('Doing?')
+  expect((await m.find({ key: 'chip-0' }))?.text).toBe('WRD?')
   expect((await m.find({ key: 'chip-1' }))?.text).toBe('Explain')
   expect((await m.find({ key: 'chip-2' }))?.text).toBe('Next?')
   await m.press({ key: 'chip-0' })

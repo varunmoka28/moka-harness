@@ -48,7 +48,7 @@ One bordered card per turn. Top row: the question, then the tag for how it was a
 | Context sent | Only the last 5 side turns go with each question. |
 | Agent model | `@agent` calls run on `haiku` unless `/model` picks another (`default` means the agent's own). |
 | Stop | Shown while thinking. The engine cannot cancel a fork or an agent, so Stop frees the pane and drops the late answer; the tokens are still spent. |
-| Quick asks | Buttons under the thread when idle, labelled Doing? · Explain · Next?, sending What are you doing? · Explain that in plain words · What's next?. Short labels and a wrapping row keep them inside a narrow pane (0.4.4). |
+| Quick asks | Buttons under the thread when idle, labelled WRD? · Explain · Next?, sending What are you doing? · Explain that in plain words · What's next?. Short labels and a wrapping row keep them inside a narrow pane (0.4.4). |
 | Folding | Answers over 12 lines show the first 12 and a `more (N lines)` button; `less` folds them again. |
 
 ## v4 ports from the built-in /btw (2026-11-21, 0.4.0)
@@ -119,3 +119,8 @@ One small file per feature, run with `claude plugin test`:
 ## v4.7 (0.4.7): Now removed (2026-11-22)
 
 - The Now button and /now are gone, with the turn tracking only they used. Live probe 2026-11-22 (Haiku, main turn waiting on a background agent): Now's note was read only when the agent finished, about 2 minutes later, so it did nothing Send does not. Send is unchanged: its prompt queues behind a running main turn and runs when the session is idle. Tests: now-route removed; v2 checks a card has Send and no Now.
+
+## v4.8 (0.4.8): WRD? and /clear main (2026-11-24)
+
+- The first quick ask is labelled WRD? and still sends What are you doing?.
+- A /clear main button sits between Clear and Close. It runs the main session's /clear through $.command.run, queued until the session is idle. The side thread stays; Clear still empties only the side thread.

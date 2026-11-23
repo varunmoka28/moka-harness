@@ -2,6 +2,10 @@
 
 Every change to a pinned commit of a third-party entry gets a line here naming the entry.
 
+## v0.8.0 (2026-11-24)
+
+- `side-chat` 0.4.8: a `/clear main` button between Clear and Close runs the main session's `/clear` (queued until the session is idle) and leaves the side thread; Clear still empties only the side thread. The first quick ask is labelled WRD? and still sends "What are you doing?".
+
 ## v0.7.1 (2026-11-22)
 
 - `side-chat` 0.4.7: the Now button and `/now` are removed. With the main turn waiting on an agent, Now's note reached the model no sooner than Send's queued prompt. Send is unchanged: it queues behind a running main turn.

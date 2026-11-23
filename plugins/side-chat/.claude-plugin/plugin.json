@@ -1,6 +1,6 @@
 {
   "name": "side-chat",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "A side chat for Claude Code, like the desktop app's /btw. Ask follow-up questions in a pane without touching the main conversation, or call an agent with /btw @name. macOS only (copy uses pbcopy). Independent mod, not made by Anthropic.",
   "author": {
     "name": "moka-harness"

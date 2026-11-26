@@ -1,6 +1,6 @@
 {
   "name": "core-bundle",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The everyday set: working-style rules, guard hooks, session mods, and general-purpose skills. Needs nothing beyond Claude Code, python3, git and jq; a few mods are macOS only.",
   "author": {
     "name": "moka-harness"
@@ -17,6 +17,7 @@
     "input-router",
     "read-fence",
     "skills-az",
+    "disabled-index",
     "next-steps-autopilot",
     "unattended",
     "park",

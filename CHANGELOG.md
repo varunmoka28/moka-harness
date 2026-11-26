@@ -2,6 +2,19 @@
 
 Every change to a pinned commit of a third-party entry gets a line here naming the entry.
 
+## v0.10.0 (2026-11-26)
+
+- `disabled-index` 0.1.0: new in core. At session start it indexes the skills inside the plugins switched off in `settings.json`; on each prompt it prints at most two lines naming a disabled skill whose name matches the prompt, with the path of its `SKILL.md`. Plain word overlap, no model calls, nothing sent off the machine.
+- `core-bundle` 0.1.1: lists `disabled-index` as a member.
+
+## v0.9.0 (2026-11-24)
+
+- `dispatch-router` 0.2.0: `/dispatch-router off` switches the router off for the current session (no launch checks, no routing call, status line cleared); `/dispatch-router on` restores it. A new session starts with it on.
+
+## v0.8.1 (2026-11-24)
+
+- `band-frame` 0.1.1: the top rule is a heavy line in the theme's blue accent colour, so the plugin band stands apart from the conversation above it. It was a thin tan line.
+
 ## v0.8.0 (2026-11-24)
 
 - `side-chat` 0.4.8: a `/clear main` button between Clear and Close runs the main session's `/clear` (queued until the session is idle) and leaves the side thread; Clear still empties only the side thread. The first quick ask is labelled WRD? and still sends "What are you doing?".

@@ -12,6 +12,7 @@ One row per entry in `.claude-plugin/marketplace.json`. Read [how far to trust t
 | assumption-log | core | moka-harness, from Terminal Desk by ClariSortAi | MIT | in this repo | Yes: mod hooks (TypeScript) | No |  |  |
 | band-frame | core | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript) | No |  |  |
 | big-read-guard | core | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript) | No |  |  |
+| disabled-index | core | moka-harness | MIT | in this repo | Yes: command hooks (Python) on SessionStart and UserPromptSubmit | No |  |  |
 | cache-clock | core | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript) | No. The compact button is an ordinary model call. |  |  |
 | clean-view | core | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript) | Yes: a short text to the Haiku model through Claude Code, to name the checklist. |  |  |
 | collision-guard | core | moka-harness | MIT | in this repo | Yes: mod hooks (TypeScript) | No |  |  |

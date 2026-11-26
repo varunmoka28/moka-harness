@@ -1,6 +1,6 @@
 {
   "name": "band-frame",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Top rule line and tinted background around the whole above-prompt band",
   "author": {
     "name": "moka-harness"

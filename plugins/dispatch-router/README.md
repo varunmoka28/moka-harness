@@ -8,6 +8,8 @@ Claude gets a tool, `mcp__dispatch-router__route`. Before starting an agent (a t
 
 After that the plugin checks launches. A `claude`, `codex` or `agy` command (also when typed into a pane with `herdr pane run` or `send-keys`), or an Agent tool call, is refused unless a routed decision matches it: the same CLI, the same model, launched within 30 minutes. A decision is used once. Forks, `claude plugin ...`, `agy models` and similar non-session commands pass.
 
+`/dispatch-router off` switches the router off for the current session: no launch is checked and `route` asks nothing. `/dispatch-router on` turns it back on, and every new session starts with it on.
+
 With no key, it does nothing and shows one notice at session start.
 
 ## What it needs

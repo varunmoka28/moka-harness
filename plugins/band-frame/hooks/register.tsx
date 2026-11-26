@@ -1,7 +1,7 @@
 import type { Register } from 'claude-code'
 
 const BG = '#3a342b'
-const LINE = '#c9a96e'
+const LINE = 'suggestion' // theme blue, bright in light and dark
 
 export const register: Register = on => {
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
@@ -10,7 +10,7 @@ export const register: Register = on => {
     const { Box, Text } = $.ui.resolve(e)
     return (
       <Box flexDirection="column" backgroundColor={BG}>
-        <Text color={LINE}>{'─'.repeat(e.props.bodyColumns)}</Text>
+        <Text color={LINE}>{'━'.repeat(e.props.bodyColumns)}</Text>
         {inner}
       </Box>
     )

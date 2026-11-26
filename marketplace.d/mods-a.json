@@ -38,5 +38,10 @@
     "name": "skills-az",
     "source": "./plugins/skills-az",
     "description": "Lists your slash commands and skills A to Z when you type /. Needs Claude Code 2.1.287 or newer; tested on macOS."
+  },
+  {
+    "name": "disabled-index",
+    "source": "./plugins/disabled-index",
+    "description": "Hints when a skill inside a plugin you switched off fits your prompt. Needs python3."
   }
 ]

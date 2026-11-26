@@ -58,6 +58,8 @@ const PENDING_MS = 30 * 60_000
 type Decision = { runner: string; confidence: number; place: Place; at: number }
 
 let pending: Decision[] = []
+// shortcut: in memory, so a plugin reload or a new session turns the router back on; move to $.state if off must survive a reload.
+let off = false
 
 // Every runner name in `pending` came from ask, which checked it against RUNNERS.
 const runnerOf = (d: Decision) => RUNNERS[d.runner] as Runner
@@ -199,10 +201,24 @@ export const register: Register = (on, options) => {
         required: ['task'],
       },
     })
+    await $.command.register({ name: 'dispatch-router', description: 'Switch the dispatch router off or on for this session: /dispatch-router off | on' })
     return next(e)
   })
 
+  on('command.run', { command: 'dispatch-router' }, ($, e) => {
+    const arg = e.args.trim().toLowerCase()
+    if (arg === 'off' || arg === 'on') {
+      off = arg === 'off'
+      if (off) {
+        pending = []
+        $.ui.status(undefined)
+      }
+    }
+    return { text: `dispatch-router is ${off ? 'off for this session: launches are not routed or checked. /dispatch-router on turns it back on.' : 'on. /dispatch-router off switches it off for this session.'}` }
+  })
+
   on('tool.call', { tool: 'mcp__dispatch-router__route' }, async ($, e) => {
+    if (off) return { result: 'dispatch-router is off for this session (the user ran /dispatch-router off). Launch without routing; still pass an explicit model.' }
     const task = String(e.task ?? '')
     const note = e.note === undefined ? '' : `\n\nOrchestrator note: ${String(e.note)}`
     const paths = Array.isArray(e.paths) ? e.paths.map(String) : []
@@ -261,7 +277,7 @@ export const register: Register = (on, options) => {
   // No key (or no pending route tool): nothing to route with, so nothing is enforced.
   on('tool.call', { tool: 'Bash' }, async ($, e, next) => {
     const launch = launchOf(e.command)
-    if (launch === undefined || (await apiKey($)) === undefined) return next(e)
+    if (off || launch === undefined || (await apiKey($)) === undefined) return next(e)
     if (/--(?:cloud|remote)\b/.test(e.command)) {
       // `-p --cloud <id>` messages a running session; only a new session is a dispatch.
       if (/(?:^|\s)(?:-p|--print)\b/.test(e.command)) return next(e)
@@ -280,7 +296,7 @@ export const register: Register = (on, options) => {
   })
 
   on('tool.call', { tool: 'Agent' }, async ($, e, next) => {
-    if (e.subagent_type === 'fork' || (await apiKey($)) === undefined || !Object.values(RUNNERS).some(r => r.cli === 'claude')) return next(e)
+    if (off || e.subagent_type === 'fork' || (await apiKey($)) === undefined || !Object.values(RUNNERS).some(r => r.cli === 'claude')) return next(e)
     if (e.model === undefined) return { deny: refusal('Agent call has no model.') }
     const d = take('claude', e.model, 'local')
     if (d === undefined) return { deny: refusal(`no routed local decision matches Agent model ${e.model}.`) }

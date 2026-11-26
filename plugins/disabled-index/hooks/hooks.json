@@ -1,0 +1,27 @@
+{
+  "description": "Index the skills of disabled plugins at session start; hint when one fits a prompt",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/disabled_index.py\" build",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/disabled_index.py\" hint",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

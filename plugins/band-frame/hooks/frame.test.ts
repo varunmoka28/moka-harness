@@ -11,7 +11,7 @@ test('wraps the band beneath in a top rule and background', async ($, on) => {
   on('session.start', async (_$: any, e: any) => ({ cwd: e.cwd }))
   await $.session.start({ source: 'startup', cwd: '/repo' } as any)
   const drawn = JSON.stringify(await (await mount($)).drawn())
-  expect(drawn).toContain('─'.repeat(40))
+  expect(drawn).toContain('━'.repeat(40))
   expect(drawn).toContain('Enhance')
   expect(drawn).toContain('#3a342b')
 })

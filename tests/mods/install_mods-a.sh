@@ -2,7 +2,7 @@
 # Installs every mod of batch A from a temporary marketplace, in a sandbox config folder.
 source "$(dirname "$0")/../step0/lib.sh"
 
-NAMES="assumption-log collision-guard context-guard cache-clock image-shrinker input-router read-fence skills-az"
+NAMES="assumption-log collision-guard context-guard cache-clock image-shrinker input-router read-fence skills-az disabled-index"
 M="moka-mods-a-test"
 before="$(real_fingerprint)"
 sandbox_up

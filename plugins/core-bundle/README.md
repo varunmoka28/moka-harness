@@ -13,6 +13,7 @@ The everyday set: working-style rules, guard hooks, session mods, and general-pu
 - `input-router`: Hands large file reads and connector results to a small model first. Off by default; sends the text to a model through your own account.
 - `read-fence`: Stops Claude from opening your skill, rule and plugin folders file by file while switched on. Off by default; macOS and Linux.
 - `skills-az`: Lists your slash commands and skills A to Z when you type /. Needs Claude Code 2.1.287 or newer; tested on macOS.
+- `disabled-index`: Hints when a skill inside a plugin you switched off fits your prompt. Needs python3.
 - `next-steps-autopilot`: A What next? button above the prompt box asks for suggested next prompts only when pressed. Type /auto to have suggestion 1 sent after a countdown you set; off by default. Needs Claude Code 2.1.287 or newer. Built on Thariq Shihipar's next-steps (MIT).
 - `unattended`: Stops a Claude Code session from asking you questions when nobody is at the keyboard. Type /unattended, or launch with CLAUDE_UNATTENDED=1. Needs Claude Code 2.1.287 or newer.
 - `park`: Save this Claude Code session and write a note for the next one. If you use herdr, /park also asks your other agent tabs to save, and can close them. /unpark picks the note up. Needs Claude Code 2.1.287 or newer. herdr optional: with it, /park also saves and /park close closes other agent tabs.

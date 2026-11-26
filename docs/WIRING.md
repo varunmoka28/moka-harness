@@ -20,6 +20,7 @@ Bundle plugins (`core-bundle`, `writing`, `design`, `media`, `research`, `multi-
 | `assumption-log` | `command.run`, `prompt.compose`, `session.end`, `session.start`, `tool.call`, `ui.render` | `/assumptions` | `note_assumption` | none | none |
 | `band-frame` | `ui.render` | none | none | none | none |
 | `big-read-guard` | `session.start`, `tool.call` | none | none | none | none |
+| `disabled-index` | SessionStart, UserPromptSubmit | none | none | none | disabled-plugins.md in the plugin data folder. |
 | `cache-clock` | `session.compact`, `session.start`, `turn.complete`, `turn.start`, `ui.render` | none | none | `CACHE_CLOCK_TTL_MINUTES` | none |
 | `clean-view` | `classic.Notification`, `classic.PermissionDenied`, `classic.PostToolUse`, `classic.PostToolUseFailure`, `classic.StopFailure`, `command.run`, `prompt.compose`, `prompt.submit`, `session.start`, `tool.call`, `turn.complete`, `turn.start`, `ui.render` | `/simple` | `plan_steps`, `report_progress` | none | none |
 | `collision-guard` | `session.start`, `tool.call` | none | none | none | none |

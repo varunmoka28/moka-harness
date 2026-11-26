@@ -15,6 +15,7 @@ const host = (on: On, runner: string, confidence = 0.9, env: Record<string, stri
     seen.registered.push(e.name)
     return { value: { tool: `mcp__dispatch-router__${e.name}` } }
   })
+  on('command.register', (_, e) => ({ value: { command: e.name } }))
   on('ui.status', (_, e) => {
     seen.status.push(e.text)
     return { value: undefined }
@@ -162,4 +163,16 @@ test('with cloud off everything is local and no place question is sent', { optio
   await $.session.start(START)
   expect((await route($, 'Tidy the docs index')).result).toContain('Place: local (cloud sessions are switched off)')
   expect(seen.fetched[0]).not.toContain('"place"')
+})
+
+test('/dispatch-router off stops the checks for the session and on restores them', { options: ALL }, async ($, on) => {
+  const seen = host(on, 'codex')
+  await $.session.start(START)
+  expect((await bash($, 'codex -s workspace-write')).deny).toBeDefined()
+  expect((await $.command.run({ command: 'dispatch-router', args: 'off' })).text).toContain('off for this session')
+  expect(seen.status.at(-1)).toBeUndefined()
+  expect((await bash($, 'codex -s workspace-write')).deny).toBeUndefined()
+  expect((await route($, 'anything')).result).toContain('is off for this session')
+  await $.command.run({ command: 'dispatch-router', args: 'on' })
+  expect((await bash($, 'codex -s workspace-write')).deny).toBeDefined()
 })

@@ -1,0 +1,10 @@
+{
+  "name": "disabled-index",
+  "version": "0.1.0",
+  "description": "Keeps an index of the skills inside the plugins you switched off, and tells Claude when one of them fits your prompt, so a disabled plugin's skill can still be read and followed without turning the plugin back on.",
+  "author": {
+    "name": "moka-harness"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/varunmoka28/moka-harness"
+}
